@@ -1,0 +1,89 @@
+.aside{
+	width: 40px;
+	height: 520px;
+	background-color: #EAEAEA;
+	position: fixed;
+	top: 60px;
+	z-index: 10;
+}
+.aside_bar > li{
+	text-align: center;
+}
+.aside_bar > li:hover{
+	color: #FF6600;
+	background-color: #FFFFFF;
+}
+.aside_bar > li:hover .aside_bar_content{
+	display: block;
+}
+.aside_bar_item{
+	height: 70px; 
+}
+.aside_bar_collect, .aside_bar_add{
+	height: 50px;
+	line-height: 50px;
+}
+/* 设置i的行高为40，剩下的30px 给span。保证两个元素在同一个li中居中 */
+.aside_bar_item >i{
+	line-height: 40px;
+}
+.aside_bar_item >span{
+	display: block;
+	height: 30px;
+}
+.aside_bar_content{
+	position: absolute;
+	z-index: 10px;
+	top: 0;
+	left: 40px;
+	height: 520px;
+	display: none;
+	width: 240px;
+	color: black;
+	background-color: #FFFFFF;
+	font-size: 12px;
+	box-shadow: 5px 5px 3px #EAEAEA;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.aside_bar_content li{
+	text-align: left;
+	padding-left: 2px;
+	position: relative;
+}
+.aside_bar_content li:hover{
+	background-color: #EAEAEA;
+}
+/* 实现下划线从中间向两边延伸 */
+.aside_bar_content li:after{
+	content: "";
+	width: 0px;
+	height: 1px;
+	border-bottom: 1px dotted #FF6600;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transition: all 1s;
+}
+.aside_bar_content li:hover:after{
+	left: 0%;
+	width: 100%   /*原理是left:50%变成0%的同时，宽度从0%变成100%*/
+}
+
+
+
+/* 实现图标靠左居中对齐，且右侧文字超出范围使用省略号代替（单行文本） */
+.url_left{
+	height:25px; 
+	line-height:25px; 
+	padding-left:20px; 
+	background:url(../image/taobao.ico) no-repeat left center;
+	background-size: 16px 16px;
+}
+.url_left  span{
+	display: inline-block;
+	width: 90%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}

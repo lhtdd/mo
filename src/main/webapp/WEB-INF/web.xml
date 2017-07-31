@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+	<display-name>MO</display-name>
+	<!-- 读取spring,mybatis配置文件 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+        	classpath:contextSources/applicationContext*.xml
+        </param-value>
+	</context-param>
+	<!-- 日志记录 -->
+	<context-param>
+		<!-- 日志配置文件路径 -->
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:contextSources/log4j.properties</param-value>
+	</context-param>
+	<!-- Spring字符集过滤器 -->
+	<filter>
+		<filter-name>SpringEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>SpringEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 验证码框架 -->
+	<servlet>
+		<servlet-name>Kaptcha</servlet-name>
+		<servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+		<!-- 是否有边框 -->
+		<init-param>
+			<param-name>kaptcha.border</param-name>
+			<param-value>no</param-value>
+		</init-param>
+		<!-- 字体颜色 -->
+		<init-param>
+			<param-name>kaptcha.textproducer.font.color</param-name>
+			<param-value>red</param-value>
+		</init-param>
+		<!-- 图片宽度 -->
+		<init-param>
+			<param-name>kaptcha.image.width</param-name>
+			<param-value>135</param-value>
+		</init-param>
+		<!-- 图片高度 -->
+		<init-param>
+			<param-name>kaptcha.image.height</param-name>
+			<param-value>50</param-value>
+		</init-param>
+		<!-- 使用哪些字符生成验证码 -->
+		<init-param>
+			<param-name>kaptcha.textproducer.char.string</param-name>
+			<param-value>ACDEFHKPRSTWX345679</param-value>
+		</init-param>
+		<!-- 字符个数 -->
+		<init-param>
+			<param-name>kaptcha.textproducer.char.length</param-name>
+			<param-value>4</param-value>
+		</init-param>
+		<!-- 字体大小 -->
+		<init-param>
+			<param-name>kaptcha.textproducer.font.size</param-name>
+			<param-value>43</param-value>
+		</init-param>
+		<!-- 干扰线的颜色 -->
+		<init-param>
+			<param-name>kaptcha.noise.color</param-name>
+			<param-value>black</param-value>
+		</init-param>
+		<!-- 背景渐变开始颜色 -->
+		<init-param>
+			<param-name>kaptcha.background.clear.from</param-name>
+			<param-value>white</param-value>
+		</init-param>
+		<!-- 背景渐变结束颜色 -->
+		<init-param>
+			<param-name>kaptcha.background.clear.to</param-name>
+			<param-value>blue</param-value>
+		</init-param>
+		<!-- 图片样式 WaterRipple 水纹，FishEyeGimpy 鱼眼，ShadowGimpy 阴影 -->
+		<init-param>
+			<param-name>kaptcha.obscurificator.impl</param-name>
+			<param-value>com.google.code.kaptcha.impl.ShadowGimpy</param-value>
+		</init-param>
+		<!-- 使用哪些字体 -->
+		<init-param>
+			<param-name>kaptcha.textproducer.font.names</param-name>
+			<param-value>Arial</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Kaptcha</servlet-name>
+		<url-pattern>/Kaptcha.jpg</url-pattern>
+	</servlet-mapping>
+	<!-- 加载spring监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- 防止spring内存溢出监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	<!-- 加载Log4j监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<!-- springMVC核心配置 -->
+	<servlet>
+		<servlet-name>springMvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:contextSources/spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springMvc</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- 错误跳转页面 -->
+	<!-- 请求错误 -->
+	<error-page>
+		<error-code>400</error-code>
+		<location>/publicPages/errorPage/400.jsp</location>
+	</error-page>
+	<!-- 没有找到请求页面 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/publicPages/errorPage/404.jsp</location>
+	</error-page>
+	<!-- 网关错误 -->
+	<error-page>
+		<error-code>502</error-code>
+		<location>/publicPages/errorPage/502.jsp</location>
+	</error-page>
+	<!-- 异常处理 -->
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/publicPages/errorPage/error.jsp</location>
+	</error-page>
+	<!-- 首页 -->
+	<welcome-file-list>
+		<welcome-file></welcome-file>
+	</welcome-file-list>
+</web-app>

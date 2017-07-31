@@ -1,0 +1,47 @@
+.header{
+	height: 50px;
+	width: 100%;
+}
+.header-note{
+	background-color: #FFFFFF;
+}
+.logo{
+	position: absolute;
+	left: -150px;
+}
+.logo img{
+	width: 103px;
+	height: 50px;
+}
+.nav-ul li{
+	float: left;
+	position: relative;
+	
+}
+.nav-ul li a{
+	display: inline-block;
+	line-height: 50px;
+	color: #99CC33;
+	width: 100px;
+	text-align: center;
+}
+.nav-ul li:hover a{
+	background-color: #99CC33;
+	color: #ffffff;
+	text-decoration: none;
+}
+.nav-ul li:hover .subnav{
+	display: block;
+}
+.subnav{
+	position: absolute;
+	width: 200px;
+	background-color: #99CC33;
+	display: none;
+}
+.user{
+	position: absolute;
+	right: -100px;
+	line-height: 50px;
+	color: #99CC33;
+}

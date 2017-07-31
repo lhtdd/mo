@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd  
+                        http://www.springframework.org/schema/context  
+                        http://www.springframework.org/schema/context/spring-context-3.2.xsd  
+           	             http://www.springframework.org/schema/tx   
+    					http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+                        http://www.springframework.org/schema/mvc 
+                        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+	<!-- 这个地方关闭默认扫描的方式，只扫描或不扫描指定的。这里扫描Controller 是只加载进子容器中，保证只有一个实例。在父容器中不扫描这个Controller，其他的都扫描，保证service在整个环境中都能使用，保证事务是可以处理的 -->
+	<context:component-scan base-package="com.lyao"
+		use-default-filters="false">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!-- 默认的注解映射的支持 是HandlerMapping与HandlerAdapter的集成功能 ，但是扩展性不好 -->
+	<!-- <mvc:annotation-driven /> -->
+	<!-- 处理器映射器HandlerMapping -->
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+
+	<!-- 处理器设配器HandlerAdapter -->
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 对静态资源文件的访问 ,被注释掉的这种方式依赖与WEB容器的的静态资源处理类，例如tomcat默认的是default -->
+	<!-- <mvc:default-servlet-handler /> -->
+	<mvc:resources location="/favicon.ico" mapping="/favicon.ico" />
+	<mvc:resources location="/staticSource/" mapping="/staticSource/**" />
+	<!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<!-- 多个拦截器，顺序执行 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/staticSource/**" />
+			<bean class="com.lyao.mo.container.interceptor.CheckLoginStatusInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<!-- mvc:view-controller可以在不需要Controller处理request的情况，转向到设置的View -->
+	<!-- 像下面这样设置，如果请求为/，则不通过controller，而直接解析为/index.jsp -->
+	<!-- path是JSP页面相对WEB-INF的路径, view-name的默认前缀是上面的prefix,后缀是下面的.jsp -->
+	<!-- <mvc:view-controller path="/" view-name="login"/> -->
+
+	<!-- 统一的异常处理 -->
+	<!-- <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> 
+		<property name="exceptionMappings"> <props> SpringMVC在超出上传文件限制时，会抛出org.springframework.web.multipart.MaxUploadSizeExceededException 
+		该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到Controller方法中 <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">.jsp</prop> 
+		<prop key="java.lang.Throwable">WEB-INF/errorpage/error.jsp</prop> </props> 
+		</property> </bean> -->
+
+</beans>
