@@ -8,7 +8,7 @@
 		<div class="nav">
 			<ul class="nav-ul">
 				<li><a href="#">随笔记事</a>
-					<div class="subnav subnav_notepad"> just do it </div>
+					<!-- <div class="subnav subnav_notepad"> just do it </div> -->
 				</li>
 				<li><a href="#">闲暇小憩</a></li>
 			</ul>

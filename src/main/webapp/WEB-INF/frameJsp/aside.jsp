@@ -8,114 +8,26 @@
 		<li class="aside_bar_item">
 			<i class="iconfont icon-changyong"></i>
 			<span>常用</span>
-			<div class="aside_bar_content scrollbar">
-				<ul>
-					<li>
-						<div class="url_left"><a href="https://www.taobao.com" target="_blank"><span>淘宝网</span></a></div>
-					</li>
-					<li>
-						<div class="url_left"><a href="https://qiye.163.com/login/?from=ym" target="_blank"><span>网易企业邮箱 - 登录入口</span></a></div>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>6</span>
-					</li>
-					<li>
-						<span>0</span>
-					</li>
-				</ul>
+			<div class="aside_bar_content scrollbar_aside">
+				<div class="scrollbar_wrap">
+					<ul>
+						<li class="url_item">
+							<div class="url_content">
+								<a class="url_info" href="https://www.taobao.com" target="_blank"><em title="淘宝网">淘宝网</em></a>
+								<div class="url_edit">
+									<i class='iconfont icon-xiugai fs12'></i>
+									<div class="url_edit_tip">
+										<ul>
+											<li>编辑</li>
+											<li>删除</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+						
+					</ul>
+				</div>
 			</div>
 		</li>
 		<li class="aside_bar_item">

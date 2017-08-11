@@ -22,7 +22,5 @@
 <![endif]-->
 <!-- <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 <!-- Jquery 2.0 以上的版本不再支持IE8及以下浏览器 -->
-<script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="${ctxStatic }/plugin/layui/layui.js"></script>
-<script src="https://cdn.bootcss.com/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
-<script type="text/javascript" src="${ctxStatic }/js/scroll/scrollbar.js"></script>

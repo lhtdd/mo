@@ -1,4 +1,12 @@
 *{margin: 0;padding: 0;list-style: none;}
+/* 元素的内边距和边框不再会增加它的宽度,边框仍然占宽高 */
+*{
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box; 
+	-o-box-sizing: border-box; 
+    -ms-box-sizing: border-box; 
+}
 /** 清除内外边距 **/
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
 dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
@@ -8,18 +16,18 @@ th, td /* table elements 表格元素 */ {
   margin: 0;
   padding: 0;
 }
-/* 元素的内边距和边框不再会增加它的宽度 */
-* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
-/** 设置默认字体 **/
-body,
-button, input, select, textarea /* for ie */ {
-  /* font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; */
-  font: 14px/1.5 "微软雅黑", "宋体", "黑体", Arial, sans-serif
+/** 设置默认字体，基础字体12px,正文内容14/16px,大号字体是18px、20px、26px、30px
+（注意使用双数字号，单数的字体在显示的时候会有毛边） **/
+body,button, input, select, textarea {
+  font: 12px/1.5 "微软雅黑", "宋体", "黑体", Arial, sans-serif
 }
+/* 标题字体大小适应网站基础设置即 12px */
 h1, h2, h3, h4, h5, h6 { font-size: 100%; }
-address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
-code, kbd, pre, samp { font-family: courier new, courier, monospace; } /* 统一等宽字体 */
+/* 将斜体扶正 */
+address, cite, dfn, em, var { font-style: normal; } 
+/* 统一等宽字体 */
+code, kbd, pre, samp { font-family: courier new, courier, monospace; } 
 small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
 
 /** 重置列表元素 **/
@@ -27,7 +35,6 @@ ul, ol { list-style: none; }
 
 /** 重置文本格式元素 **/
 a { text-decoration: none; }
-a:hover { text-decoration: underline; }
 
 
 /** 重置表单元素 **/
@@ -46,6 +53,7 @@ table { border-collapse: collapse; border-spacing: 0; }
   height: 0;
   clear: both;
 }
+/* IE去除浮动 */
 .ks-clear, .clear {
   *zoom: 1;
 }

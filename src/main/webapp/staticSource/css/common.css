@@ -1,32 +1,49 @@
-body,html{
+body, html {
 	background-color: #f7f7f7;
 	width: 100%;
 	height: 100%;
 }
-.wrapper{
+
+.wrapper {
 	width: 100%;
 	min-height: 100%;
 	position: relative;
 	padding-bottom: 60px;
 }
-.container{
+
+.container {
 	width: 1000px;
-	background-color: #ffffff;
 	margin: 10px auto 0px;
 }
-.fl{
+
+.fl {
 	float: left;
 }
-.fr{
+
+.fr {
 	float: right;
 }
-.ht{
+
+.ht {
 	margin: 0 auto;
 }
-.tc{
+
+.tc {
 	text-align: center;
 }
-.header-wrapper{
-	width: 1000px;
-	position: relative;
+
+.wdfull {
+	width: 100%;
+}
+.fs16{
+	font-size: 16px !important;
+}
+.fs14{
+	font-size: 14px !important;
+}
+.fs12{
+	font-size: 12px !important;
+}
+.file_selected{
+	background-color: #EEFFCC !important;
 }

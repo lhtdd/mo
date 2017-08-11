@@ -1,10 +1,11 @@
 .aside{
 	width: 40px;
-	height: 520px;
+	height: 440px;
 	background-color: #EAEAEA;
 	position: fixed;
 	top: 60px;
 	z-index: 10;
+	box-shadow: 0px 0px 1px 1px #888888;
 }
 .aside_bar > li{
 	text-align: center;
@@ -17,11 +18,11 @@
 	display: block;
 }
 .aside_bar_item{
-	height: 70px; 
+	height: 60px; 
 }
 .aside_bar_collect, .aside_bar_add{
-	height: 50px;
-	line-height: 50px;
+	height: 40px;
+	line-height: 40px;
 }
 /* 设置i的行高为40，剩下的30px 给span。保证两个元素在同一个li中居中 */
 .aside_bar_item >i{
@@ -30,10 +31,11 @@
 .aside_bar_item >span{
 	display: block;
 	height: 30px;
+	margin-top: -5px; /* 字体向上移动5个像素，离图标近点 */
 }
 .aside_bar_content{
 	position: absolute;
-	z-index: 10px;
+	z-index: 10;
 	top: 0;
 	left: 40px;
 	height: 520px;
@@ -46,44 +48,72 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 }
-.aside_bar_content li{
+.aside_bar_content .url_item{
 	text-align: left;
 	padding-left: 2px;
 	position: relative;
 }
-.aside_bar_content li:hover{
+.aside_bar_content .url_item:hover{
 	background-color: #EAEAEA;
 }
 /* 实现下划线从中间向两边延伸 */
-.aside_bar_content li:after{
+.aside_bar_content .url_item:after{
 	content: "";
 	width: 0px;
-	height: 1px;
+	height: 0px;
 	border-bottom: 1px dotted #FF6600;
 	position: absolute;
 	top: 100%;
 	left: 50%;
 	transition: all 1s;
 }
-.aside_bar_content li:hover:after{
+.aside_bar_content .url_item:hover:after{
 	left: 0%;
 	width: 100%   /*原理是left:50%变成0%的同时，宽度从0%变成100%*/
 }
-
-
-
 /* 实现图标靠左居中对齐，且右侧文字超出范围使用省略号代替（单行文本） */
-.url_left{
+.url_content{
 	height:25px; 
 	line-height:25px; 
 	padding-left:20px; 
 	background:url(../image/taobao.ico) no-repeat left center;
 	background-size: 16px 16px;
 }
-.url_left  span{
+.url_content .url_info{
 	display: inline-block;
 	width: 90%;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	vertical-align: middle;
+}
+/* 编辑URL */
+.url_content .url_edit{
+	display: none;
+}
+.url_content:hover .url_edit{
+	display: inline-block;
+}
+.url_edit:hover .url_edit_tip{
+	display: block;
+}
+.url_edit:hover i{
+	color: #FF6600;
+}
+.url_edit_tip{
+	display: none;
+	position: absolute;
+	width: 50px;
+	z-index: 20;
+	right: 0px;
+	background-color: #FFFFFF;
+	border: 1px solid #ffd1b2;
+}
+.url_edit_tip li{
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+}
+.url_edit_tip li:hover{
+	background-color: #fff0e5;
 }

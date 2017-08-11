@@ -4,6 +4,11 @@
 }
 .header-note{
 	background-color: #FFFFFF;
+	font-size: 16px;
+}
+.header-wrapper{
+	width: 1000px;
+	position: relative;
 }
 .logo{
 	position: absolute;
@@ -44,4 +49,5 @@
 	right: -100px;
 	line-height: 50px;
 	color: #99CC33;
+	font-size: 14px;
 }

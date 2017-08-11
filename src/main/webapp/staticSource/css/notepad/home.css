@@ -1,0 +1,119 @@
+/*记事本主页比较特殊，他需要适应整个页面的高度。*/
+/*padding-bottom 本身设置60px,但是在IE8及以下版本不兼容box-sizing: border-box;导致出现滚动条。*/
+.wrapper {
+	padding-bottom: 0px;
+}
+/*这里设置固定高度，防止出现滚动条*/
+.container {
+	height: 80%;
+}
+.menu_fileList{
+	background-color: #ffffff;
+	height: 500px;
+	width: 250px;
+	border: 1px solid #D2D2D2;
+}
+/* 列表上部，展示返回按钮，当前文件夹，及设置 */
+.menu_title{
+	height: 41px;
+	border-bottom: 1px solid #99CC33;
+	font-size: 14px;
+}
+.menu_title >ul >li{
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+.menu_title >ul >li:hover{
+	color: #FF6600;
+}
+.menu_title_return,.menu_title_settings{
+	width: 49px;
+}
+.menu_title_return i,.menu_title_settings >i{
+	font-size: 20px;
+}
+.menu_title .menu_title_fileName{
+	width: 150px;
+}
+/* 新建文件工具提示层 */
+.menu_title_settings{
+	position: relative;
+}
+.menu_title_settings:hover .settings_tip{
+	display: block;
+	color: #000000;
+}
+.settings_tip{
+	display: none;
+	position: absolute;
+	top: 40px;
+	width: 100px;
+	z-index: 20;
+	background-color: #FFFFFF;
+	border: 1px solid #ffd1b2;
+}
+.settings_tip li{
+	height: 30px;
+	line-height: 30px;
+	font-size: 12px;
+}
+.settings_tip li:hover{
+	background-color: #fff0e5;
+}
+/* 菜单下部 ，展示菜单列表*/
+.menu_content{
+	padding-right: 5px;
+	height: 468px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.menu_content_item{
+	padding: 0 0 0 10px;
+}
+.folder_title{
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #EAEAEA;
+	font-size: 14px;
+}
+.folder_title *{
+	vertical-align: middle;
+}
+.file{
+	height: 30px;
+	line-height: 30px;
+}
+.file:hover{
+	background-color: #fbfff2;
+}
+.file *{
+	vertical-align: middle;
+	font-size: 12px;
+}
+.folder_name,.file_name{
+	display: inline-block;
+	width: 70%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+/* 主体编辑框 */
+.main_notepad{
+	height: 100%;
+	width: 735px;
+}
+.address_file{
+	height: 30px;
+	line-height: 30px;
+	color: #a1a1a1;
+}
+.notepad_save_btn{
+	background-color: #FF6600
+}
+.content_notepad{
+	background-color: #ffffff;
+	height: 94%;
+}
+/* other */
