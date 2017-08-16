@@ -15,7 +15,13 @@ public class MainController {
 	@RequestMapping(value = "/",method = RequestMethod.GET)  
 	public ModelAndView notepadHome(HttpServletResponse response){  
 		ModelAndView md = new ModelAndView();
-		md.setViewName("notepad/notepad");
+		md.setViewName("notepad");
+		return md;
+	} 
+	@RequestMapping(value = "/leisure",method = RequestMethod.GET)  
+	public ModelAndView leisureHome(HttpServletResponse response){  
+		ModelAndView md = new ModelAndView();
+		md.setViewName("leisure");
 		return md;
 	} 
 	

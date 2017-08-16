@@ -17,7 +17,7 @@
 		</ul>
 	</div>
 	<div class="clear"></div>
-	<div class="about_mo ht">
+	<div class="about-mo ht">
 		<ul>
 			<li><a href="#">使用说明</a></li>
 			<li><a href="#">关于我们</a></li>

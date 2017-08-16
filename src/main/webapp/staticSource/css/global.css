@@ -20,7 +20,7 @@ th, td /* table elements 表格元素 */ {
 /** 设置默认字体，基础字体12px,正文内容14/16px,大号字体是18px、20px、26px、30px
 （注意使用双数字号，单数的字体在显示的时候会有毛边） **/
 body,button, input, select, textarea {
-  font: 12px/1.5 "微软雅黑", "宋体", "黑体", Arial, sans-serif
+  font: 12px/1.5 "Microsoft YaHei","微软雅黑", "宋体", "黑体", Arial, sans-serif
 }
 /* 标题字体大小适应网站基础设置即 12px */
 h1, h2, h3, h4, h5, h6 { font-size: 100%; }

@@ -14,6 +14,7 @@ body, html {
 .container {
 	width: 1000px;
 	margin: 10px auto 0px;
+	position: relative;
 }
 
 .fl {
@@ -44,6 +45,33 @@ body, html {
 .fs12{
 	font-size: 12px !important;
 }
-.file_selected{
+.file-selected{
 	background-color: #EEFFCC !important;
+}
+
+/* 页面公用部分 */
+.fix-tip{
+	position: fixed;
+	right: 200px;
+	bottom: 150px;
+	z-index: 20px;
+}
+.fix-tip-item{
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	background-color: #99CC33;
+	margin-top: 10px;
+	cursor: pointer;
+	border-radius: 3px;
+	color: #FFFFFF;
+}
+.fix-tip-item:hover{
+	background-color: #FFFFFF;
+	color: #99CC33;
+	border: 1px solid #99CC33;
+}
+.fix-tip .rolling-top{
+	display: none;
 }

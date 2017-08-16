@@ -14,6 +14,12 @@
 <meta http-equiv="Expires" content="-1">
 <link rel="shortcut icon" href="${ctx }/favicon.ico" />
 <link rel="stylesheet" href="${ctxStatic }/plugin/layui/css/layui.css"></link>
+<link rel="stylesheet" href="${ctxStatic }/css/global.css">
+<link rel="stylesheet" href="${ctxStatic }/css/common.css">
+<link rel="stylesheet" href="${ctxStatic }/font/iconfont.css"></link>
+<link rel="stylesheet" href="${ctxStatic }/css/aside.css">
+<link rel="stylesheet" href="${ctxStatic }/css/header.css">
+<link rel="stylesheet" href="${ctxStatic }/css/footer.css">	
 <!-- <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
 <!-- 以下为了让bootstrap 在IE8中也能正常显示，但是好像没起作用啊 -->
 <!--[if lt IE 9]>
@@ -24,3 +30,6 @@
 <!-- Jquery 2.0 以上的版本不再支持IE8及以下浏览器 -->
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="${ctxStatic }/plugin/layui/layui.js"></script>
+<script src="https://cdn.bootcss.com/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="${ctxStatic }/js/common.js"></script>
+<script type="text/javascript" src="${ctxStatic }/js/base.js"></script>

@@ -1,6 +1,8 @@
+/* header 布局 */
 .header{
 	height: 50px;
 	width: 100%;
+	box-shadow: 0px 1px 5px #cccccc;
 }
 .header-note{
 	background-color: #FFFFFF;
@@ -10,6 +12,7 @@
 	width: 1000px;
 	position: relative;
 }
+/* LOGO图片 */
 .logo{
 	position: absolute;
 	left: -150px;
@@ -18,32 +21,43 @@
 	width: 103px;
 	height: 50px;
 }
-.nav-ul li{
+/* 功能项 */
+.nav-ul .nav-ul-item{
 	float: left;
 	position: relative;
-	
 }
-.nav-ul li a{
+.nav-ul .nav-ul-item >a{
 	display: inline-block;
 	line-height: 50px;
 	color: #99CC33;
 	width: 100px;
 	text-align: center;
 }
-.nav-ul li:hover a{
+.nav-ul .nav-ul-item:hover >a{
 	background-color: #99CC33;
 	color: #ffffff;
 	text-decoration: none;
 }
-.nav-ul li:hover .subnav{
+.nav-ul .nav-ul-item:hover .subnav{
 	display: block;
 }
+.sub-selected{
+	display: inline-block;
+	width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid #99CC33;
+    position: absolute;
+}
+/* 列表分项 */
 .subnav{
 	position: absolute;
 	width: 200px;
 	background-color: #99CC33;
 	display: none;
 }
+/* 登录注册等，个人信息 */
 .user{
 	position: absolute;
 	right: -100px;

@@ -7,33 +7,33 @@
 	z-index: 10;
 	box-shadow: 0px 0px 1px 1px #888888;
 }
-.aside_bar > li{
+.aside-bar > li{
 	text-align: center;
 }
-.aside_bar > li:hover{
+.aside-bar > li:hover{
 	color: #FF6600;
 	background-color: #FFFFFF;
 }
-.aside_bar > li:hover .aside_bar_content{
+.aside-bar > li:hover .aside-bar-content{
 	display: block;
 }
-.aside_bar_item{
+.aside-bar-item{
 	height: 60px; 
 }
-.aside_bar_collect, .aside_bar_add{
+.aside-bar-collect, .aside-bar-add{
 	height: 40px;
 	line-height: 40px;
 }
 /* 设置i的行高为40，剩下的30px 给span。保证两个元素在同一个li中居中 */
-.aside_bar_item >i{
+.aside-bar-item >i{
 	line-height: 40px;
 }
-.aside_bar_item >span{
+.aside-bar-item >span{
 	display: block;
 	height: 30px;
 	margin-top: -5px; /* 字体向上移动5个像素，离图标近点 */
 }
-.aside_bar_content{
+.aside-bar-content{
 	position: absolute;
 	z-index: 10;
 	top: 0;
@@ -48,16 +48,16 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 }
-.aside_bar_content .url_item{
+.aside-bar-content .url-item{
 	text-align: left;
 	padding-left: 2px;
 	position: relative;
 }
-.aside_bar_content .url_item:hover{
-	background-color: #EAEAEA;
+.aside-bar-content .url-item:hover{
+	background-color: #F4F8FB;
 }
 /* 实现下划线从中间向两边延伸 */
-.aside_bar_content .url_item:after{
+.aside-bar-content .url-item:after{
 	content: "";
 	width: 0px;
 	height: 0px;
@@ -67,19 +67,19 @@
 	left: 50%;
 	transition: all 1s;
 }
-.aside_bar_content .url_item:hover:after{
+.aside-bar-content .url-item:hover:after{
 	left: 0%;
 	width: 100%   /*原理是left:50%变成0%的同时，宽度从0%变成100%*/
 }
 /* 实现图标靠左居中对齐，且右侧文字超出范围使用省略号代替（单行文本） */
-.url_content{
+.url-content{
 	height:25px; 
 	line-height:25px; 
 	padding-left:20px; 
 	background:url(../image/taobao.ico) no-repeat left center;
 	background-size: 16px 16px;
 }
-.url_content .url_info{
+.url-content .url-info{
 	display: inline-block;
 	width: 90%;
 	overflow: hidden;
@@ -88,32 +88,35 @@
 	vertical-align: middle;
 }
 /* 编辑URL */
-.url_content .url_edit{
+.url-content .url-edit{
 	display: none;
 }
-.url_content:hover .url_edit{
+.url-content:hover .url-edit{
 	display: inline-block;
 }
-.url_edit:hover .url_edit_tip{
+.url-edit:hover .url-edit-tip{
 	display: block;
 }
-.url_edit:hover i{
+.url-edit:hover i{
 	color: #FF6600;
 }
-.url_edit_tip{
+.url-edit-tip{
 	display: none;
 	position: absolute;
+	top: 24px;
 	width: 50px;
 	z-index: 20;
 	right: 0px;
 	background-color: #FFFFFF;
 	border: 1px solid #ffd1b2;
 }
-.url_edit_tip li{
+.url-edit-tip li{
 	height: 20px;
 	line-height: 20px;
 	text-align: center;
+	color: #4d4d4d;
+	cursor: default;
 }
-.url_edit_tip li:hover{
+.url-edit-tip li:hover{
 	background-color: #fff0e5;
 }
