@@ -1,3 +1,4 @@
+/*** happy.jsp ***/
 /* ×ó²àÄÚÈÝ */
 .happy-wrapper{
 	width: 680px;
@@ -9,30 +10,30 @@
 	padding: 20px;
 	border-radius: 3px;
 }
-.item-header img,.name-item-wrapper{
+.happy-header img,.happy-name-wrapper{
 	display: inline-block;
 	vertical-align: middle;
 }
-.item-header img{
+.happy-header img{
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
 	margin-right: 10px;
 }
-.name-item-wrapper span{
+.happy-name-wrapper span{
 	display: block;
 }
-.name-item-wrapper .user-name{
+.happy-name-wrapper .user-name{
 	color: #333333;
 }
-.name-item-wrapper .time{
+.happy-name-wrapper .time{
 	color: #a1a1a1;
 }
-.item-content{
+.happy-content{
 	padding: 10px 0 20px 0;
 	color: #4d4d4d;
 }
-.item-operation li{
+.happy-operation li{
 	display: inline-block;
 	height: 30px;
 	line-height: 30px;
@@ -41,13 +42,14 @@
 	cursor:pointer; 
 	color: #a1a1a1;
 }
-.item-operation li:hover{
+.happy-operation li:hover{
 	color: #EE6600;
 }
-.item-operation i{
+.happy-operation i{
 	font-size: 18px;
 	
 }
+/*** happyMine.jsp ***/
 /* ÓÒ²àÄÚÈÝ */
 .happy-right-wrapper{
 	width: 300px;
@@ -92,6 +94,7 @@
 }
 .mine-info-item:hover{
 	background-color: #F4F8FB;
+	cursor: pointer;
 }
 .mine-info-item i,.mine-info-item span{
 	display: inline-block;
@@ -105,3 +108,5 @@
 	font-size: 14px;
 	color: #a1a1a1;
 }
+
+/*** happyDetail.jsp ***/

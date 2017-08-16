@@ -14,19 +14,19 @@
 	<!-- 调整整个页面的宽高 -->
 	<div class="wrapper">
 		<!-- 网页头部 -->
-		<%@ include file="../frameJsp/header.jsp" %> 
+		<%@ include file="../../frameJsp/header.jsp" %> 
 		<!-- 左侧导航栏 -->
-		<%@ include file="../frameJsp/aside.jsp" %> 
+		<%@ include file="../../frameJsp/aside.jsp" %> 
 		<!-- 网页中部 -->
 		<div class="container">
 	    	<!-- 左侧菜单栏 -->
-	    	<%@ include file="../innerJsp/notepad/leftMenu.jsp" %> 
+	    	<%@ include file="../../innerJsp/notepad/leftMenu.jsp" %> 
 	    	<!-- 右侧主页面 -->    
-	    	<%@ include file="../innerJsp/notepad/editor.jsp" %> 
+	    	<%@ include file="../../innerJsp/notepad/editor.jsp" %> 
 		</div>
 		<div class="clear"></div>
 		<!-- 网页底部 -->
-		<%@ include file="../frameJsp/footer.jsp" %> 
+		<%@ include file="../../frameJsp/footer.jsp" %> 
 	</div>
 	<!-- 弹出层部分 -->
 </body>
