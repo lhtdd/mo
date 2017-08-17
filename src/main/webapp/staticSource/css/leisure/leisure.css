@@ -23,12 +23,6 @@
 .happy-name-wrapper span{
 	display: block;
 }
-.happy-name-wrapper .user-name{
-	color: #333333;
-}
-.happy-name-wrapper .time{
-	color: #a1a1a1;
-}
 .happy-content{
 	padding: 10px 0 20px 0;
 	color: #4d4d4d;
@@ -47,7 +41,6 @@
 }
 .happy-operation i{
 	font-size: 18px;
-	
 }
 /*** happyMine.jsp ***/
 /* 右侧内容 */
@@ -110,3 +103,68 @@
 }
 
 /*** happyDetail.jsp ***/
+/* 发表评论区 */
+.happy-comment-wrapper{
+	margin-top: 20px;
+}
+.happy-comment{
+	margin-top: 10px;
+}
+.happy-comment textarea{
+	width: 560px;
+}
+.happy-comment-confirm{
+	margin-top: 20px;
+	text-align: right;
+}
+.happy-comment-confirm span,.happy-comment-confirm button{
+	display: inline-block;
+}
+.happy-comment-confirm span{
+	margin-right: 20px;
+	font-size: 14px;
+	color: #D2D2D2;
+}
+.happy-comment-confirm span em{
+	font-size: 18px;
+	color: #EE6600;
+}
+.happy-comment-confirm button{
+	background-color: #EE6600;
+}
+/* 所有的已发表评论 */
+.all-comment-wrapper{
+	
+}
+.comment-item{
+	padding: 10px;
+	border-radius: 3px;
+	border-bottom: 1px solid #D2D2D2;
+}
+.comment-header img,.comment-name-wrapper{
+	display: inline-block;
+	vertical-align: middle;
+}
+.comment-header img{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+.comment-name-wrapper span{
+	display: block;
+}
+.comment-content{
+	padding: 10px 0;
+	color: #4d4d4d;
+}
+.comment-operation li{
+	display: inline-block;
+	text-align: center;
+	margin-right: 10px;
+	cursor:pointer; 
+	color: #a1a1a1;
+}
+.comment-operation li:hover{
+	color: #EE6600;
+}

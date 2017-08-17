@@ -6,8 +6,8 @@
 			<div class="happy-header">
 				<img src="${ctxStatic }/image/lmz.jpg" alt="头像"/>
 				<div class="happy-name-wrapper">
-					<span class="user-name">天神下凡</span>
-					<span class="time">08-14 15:55</span>
+					<span class="user-name cl33">天神下凡</span>
+					<span class="time clA1">08-14 15:55</span>
 				</div>
 			</div>
 			<div class="happy-content fs16">
@@ -27,8 +27,8 @@
 			<div class="happy-header">
 				<img src="${ctxStatic }/image/qm.jpg" alt="头像"/>
 				<div class="happy-name-wrapper">
-					<span class="user-name">天神下凡</span>
-					<span class="time">08-14 15:55</span>
+					<span class="user-name cl33">天神下凡</span>
+					<span class="time clA1">08-14 15:55</span>
 				</div>
 			</div>
 			<div class="happy-content fs16">
@@ -48,8 +48,8 @@
 			<div class="happy-header">
 				<img src="${ctxStatic }/image/defaultPic.jpg" alt="头像"/>
 				<div class="happy-name-wrapper">
-					<span class="user-name">天神下凡</span>
-					<span class="time">08-14 15:55</span>
+					<span class="user-name cl33">天神下凡</span>
+					<span class="time clA1">08-14 15:55</span>
 				</div>
 			</div>
 			<div class="happy-content fs16">

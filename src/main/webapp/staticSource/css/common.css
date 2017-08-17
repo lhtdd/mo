@@ -16,7 +16,7 @@ body, html {
 	margin: 10px auto 0px;
 	position: relative;
 }
-
+/* 浮动与居中对齐 */
 .fl {
 	float: left;
 }
@@ -36,6 +36,7 @@ body, html {
 .wdfull {
 	width: 100%;
 }
+/* 常用字体 */
 .fs16{
 	font-size: 16px !important;
 }
@@ -45,10 +46,35 @@ body, html {
 .fs12{
 	font-size: 12px !important;
 }
+/* 常用颜色 */
 .file-selected{
 	background-color: #EEFFCC !important;
 }
-
+.cl99{
+	color: #99CC33;
+}
+.clEE{
+	color: #EE6600;
+}
+.clA1{
+	color: #A1A1A1;
+}
+.cl4D{
+	color: #4d4d4d;
+}
+.clD2{
+	color: #D2D2D2;
+}
+.cl33{
+	color: #333333;
+}
+.bgFF{
+	background-color: #FFFFFF;
+}
+/* 圆角  */
+.br-circular{
+	border-radius: 50%;
+}
 /* 页面公用部分 */
 .fix-tip{
 	position: fixed;
