@@ -13,6 +13,8 @@
 				<li class="nav-ul-item"><a href="http://10.186.106.131:8081/mo/leisure">闲暇小憩</a></li>
 			</ul>
 		</div>
-		<div class="user">登录&nbsp;|&nbsp;注册</div>
+		<div class="user">
+			<a href="http://10.186.106.131:8081/mo/login?type=login">登录</a>&nbsp;|&nbsp;<a href="http://10.186.106.131:8081/mo/login?type=register">注册</a>
+		</div>
 	</div>
 </div>

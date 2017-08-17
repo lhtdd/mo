@@ -18,6 +18,12 @@ public class MainController {
 		md.setViewName("notepad/notepad");
 		return md;
 	} 
+	@RequestMapping(value = "/login",method = RequestMethod.GET)  
+	public ModelAndView doLogin(HttpServletResponse response){  
+		ModelAndView md = new ModelAndView();
+		md.setViewName("login");
+		return md;
+	} 
 	@RequestMapping(value = "/leisure",method = RequestMethod.GET)  
 	public ModelAndView leisureHome(HttpServletResponse response){  
 		ModelAndView md = new ModelAndView();
