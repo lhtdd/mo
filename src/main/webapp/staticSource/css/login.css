@@ -1,0 +1,48 @@
+/*记事本主页比较特殊，他需要适应整个页面的高度。*/
+/*padding-bottom 本身设置60px,但是在IE8及以下版本不兼容box-sizing: border-box;导致出现滚动条。*/
+.wrapper {
+	padding-bottom: 0px;
+	background-color: #FFFFFF;
+}
+/*这里设置固定高度，防止出现滚动条*/
+.container {
+	margin: 0 auto;
+	padding: 80px 50px;
+}
+/* 头部 */
+.login-header{
+	height: 60px;
+	border-bottom: 1px dashed #EE6600;
+}
+.mo-explain{
+	margin-left: 50px;
+	display: inline-block;
+}
+.mo-explain span{
+	display: inline-block;
+	margin-right: 30px;
+}
+/* 登录 */
+.submit-wrapper{
+	margin-top: 15px;
+}
+.spead{
+	border-right: 1px dashed #A1A1A1;
+	width: 70%;
+	padding: 0 20px 0 0;
+}
+.login-btn{
+	background-color: #EE6600;
+}
+/* 注册 */
+.shrink{
+	padding: 0 0 0 30px;
+	color: #333333;
+}
+.shrink >span{
+	display: block;
+	margin-bottom: 20px;
+}
+.register-a a:hover{
+	color: #EE6600;
+}

@@ -37,6 +37,9 @@ body, html {
 	width: 100%;
 }
 /* ³£ÓÃ×ÖÌå */
+.fs18{
+	font-size: 16px !important;
+}
 .fs16{
 	font-size: 16px !important;
 }

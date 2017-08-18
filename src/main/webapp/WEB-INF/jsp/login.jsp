@@ -1,28 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="/common/common.jsp" %>  
+	pageEncoding="UTF-8"%>
+<%@ include file="/common/common.jsp"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	<base href="<%=basePath %>">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>默--登录界面</title>
-	<link rel="stylesheet" href="${ctxStatic }/css/login.css">
-	<script type="text/javascript" src="${ctxStatic }/js/login.js"></script>
+<base href="<%=basePath%>">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>默--登录界面</title>
+<link rel="stylesheet" href="${ctxStatic }/css/login.css">
+<script type="text/javascript" src="${ctxStatic }/js/login.js"></script>
 </head>
 <body>
 	<!-- 调整整个页面的宽高 -->
 	<div class="wrapper">
-		<!-- 网页头部 -->
-		<%@ include file="../frameJsp/header.jsp" %> 
 		<!-- 网页中部 -->
 		<div class="container">
-	    	<!-- 左侧菜单栏 -->
-	    	<%@ include file="../innerJsp/login_register.jsp" %> 
+			<div class="login-header">
+				<a href="http://10.186.106.131:8081/mo"><img
+					src="${ctxStatic }/image/logo.png" alt="LOGO 默" title="LOGO MO" /></a>
+				<div class="mo-explain">
+					<span class="fs14 cl99">一种态度，一种沉淀...</span> <span class="fs18 cl99">恭默思道。——《书·说命》</span>
+				</div>
+			</div>
+			<!--  -->
+			<div class="submit-wrapper">
+				<!-- 登录 -->
+		    	<%-- <%@ include file="../innerJsp/login/loginInfo.jsp" %> --%> 
+		    	<!--  注册   --> 
+		    	<%@ include file="../innerJsp/login/registerInfo.jsp" %> 
+			</div>
 		</div>
 		<div class="clear"></div>
-		<!-- 网页底部 -->
-		<%@ include file="../frameJsp/footer.jsp" %> 
 	</div>
 </body>
 </html>
