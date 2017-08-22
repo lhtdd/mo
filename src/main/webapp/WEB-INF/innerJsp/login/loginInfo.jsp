@@ -38,7 +38,7 @@
 		<div class="shrink fl">
 			<span class="fs14">还没有账号?</span> <span class="register-a"><a
 				class="fs16 cl99"
-				href="http://10.186.106.131:8081/mo/login?type=register">立即注册</a></span>
+				href="http://10.186.106.131:8081/mo/member/register">立即注册</a></span>
 			<div>
 				<span class="clD2">暂不支持其它方式登录</span>
 			</div>

@@ -14,7 +14,7 @@
 			</ul>
 		</div>
 		<div class="user">
-			<a href="http://10.186.106.131:8081/mo/login?type=login">登录</a>&nbsp;|&nbsp;<a href="http://10.186.106.131:8081/mo/login?type=register">注册</a>
+			<a href="http://10.186.106.131:8081/mo/member/login">登录</a>&nbsp;|&nbsp;<a href="http://10.186.106.131:8081/mo/member/register">注册</a>
 		</div>
 	</div>
 </div>

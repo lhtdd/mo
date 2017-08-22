@@ -24,10 +24,14 @@
 			</div>
 			<!--  -->
 			<div class="submit-wrapper">
-				<!-- 登录 -->
-		    	<%-- <%@ include file="../innerJsp/login/loginInfo.jsp" %> --%> 
+			<c:if test="${type == 'register' }">
 		    	<!--  注册   --> 
 		    	<%@ include file="../innerJsp/login/registerInfo.jsp" %> 
+			</c:if>
+			<c:if test="${type != 'register' }">
+				<!-- 登录 -->
+		    	<%@ include file="../innerJsp/login/loginInfo.jsp" %> 
+			</c:if>
 			</div>
 		</div>
 		<div class="clear"></div>

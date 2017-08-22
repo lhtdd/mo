@@ -1,4 +1,4 @@
-package com.lyao.mo.controller.sysController;
+package com.lyao.mo.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,12 +16,6 @@ public class MainController {
 	public ModelAndView notepadHome(HttpServletResponse response){  
 		ModelAndView md = new ModelAndView();
 		md.setViewName("notepad/notepad");
-		return md;
-	} 
-	@RequestMapping(value = "/login",method = RequestMethod.GET)  
-	public ModelAndView doLogin(HttpServletResponse response){  
-		ModelAndView md = new ModelAndView();
-		md.setViewName("login");
 		return md;
 	} 
 	@RequestMapping(value = "/leisure",method = RequestMethod.GET)  
