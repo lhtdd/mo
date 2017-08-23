@@ -23,12 +23,12 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- servlet 依赖包 -->
-	    <dependency> 
-	        <groupId>javax.servlet</groupId> 
-	        <artifactId>servlet-api</artifactId> 
-	        <version>${servletApi.version}</version> 
-	        <scope>provided</scope> 
-	    </dependency> 
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servletApi.version}</version>
+			<scope>provided</scope>
+		</dependency>
 		<!-- spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -171,17 +171,16 @@
 	<!-- 工程编译阶段配置 -->
 	<build>
 		<finalName>mo</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
-	<!-- 默认情况下，Maven从Maven中央仓库下载所有依赖关系。但是，有些库在中央存储库丢失，只有在Java.net或JBoss的储存库远程仓库中能找到。 -->
-	<!-- 添加远程仓库 -->
-	<repositories>
-		<repository>
-			<id>java.net</id>
-			<url>https://maven.java.net/content/repositories/public/</url>
-		</repository>
-		<repository>
-			<id>JBoss repository</id>
-			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
-		</repository>
-	</repositories>
 </project>
