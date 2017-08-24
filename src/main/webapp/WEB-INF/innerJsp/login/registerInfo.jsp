@@ -12,22 +12,22 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">手机号</label>
 						<div class="layui-input-inline">
-							<input name="password" placeholder="手机号" autocomplete="off"
-								class="layui-input" type="password">
+							<input name="mobile" placeholder="手机号" lay-verify="required"
+								class="layui-input" type="text">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">密码</label>
 						<div class="layui-input-inline">
-							<input name="password" placeholder="请输入密码" autocomplete="off"
+							<input name="password" placeholder="请输入密码" lay-verify="required"
 								class="layui-input" type="password">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">性别</label>
 						<div class="layui-input-block">
-							<input name="sex" value="男" title="男" checked="" type="radio">
-							<input name="sex" value="女" title="女" type="radio">
+							<input name="sex" value="1" title="男" checked="" type="radio">
+							<input name="sex" value="2" title="女" type="radio">
 						</div>
 					</div>
 					<div class="layui-form-item">
@@ -40,7 +40,7 @@
 					</div>
 					<div class="layui-form-item">
 						<div class="layui-input-inline">
-							<button class="layui-btn lay-submit login-btn" lay-filter="*">注册</button>
+							<button class="layui-btn lay-submit login-btn" lay-filter="register_form">注册</button>
 						</div>
 					</div>
 				</form>
@@ -50,22 +50,22 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">邮箱</label>
 						<div class="layui-input-inline">
-							<input name="password" placeholder="邮箱" autocomplete="off"
-								class="layui-input" type="password">
+							<input name="email" placeholder="邮箱" lay-verify="required"
+								class="layui-input" type="text">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">密码</label>
 						<div class="layui-input-inline">
-							<input name="password" placeholder="请输入密码" autocomplete="off"
+							<input name="password" placeholder="请输入密码" lay-verify="required"
 								class="layui-input" type="password">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">性别</label>
 						<div class="layui-input-block">
-							<input name="sex" value="男" title="男" checked="" type="radio">
-							<input name="sex" value="女" title="女" type="radio">
+							<input name="sex" value="1" title="男" checked="" type="radio">
+							<input name="sex" value="2" title="女" type="radio">
 						</div>
 					</div>
 					<div class="layui-form-item">
@@ -78,7 +78,7 @@
 					</div>
 					<div class="layui-form-item">
 						<div class="layui-input-inline">
-							<button class="layui-btn lay-submit login-btn" lay-filter="*">注册</button>
+							<button class="layui-btn lay-submit login-btn" lay-filter="register_form">注册</button>
 						</div>
 					</div>
 				</form>

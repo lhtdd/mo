@@ -14,10 +14,19 @@ $(function() {
 			}
 		});
 
-		// 监听提交
-		form.on('submit(demo1)', function(data) {
+		// 监听登录提交
+		form.on('submit(login_form)', function(data) {
+			layer.alert("a");
 			layer.alert(JSON.stringify(data.field), {
-				title : '最终的提交信息'
+				title : '登录信息'
+			})
+			return false;
+		});
+		// 监听注册提交
+		form.on('submit(register_form)', function(data) {
+			layer.alert("b");
+			layer.alert(JSON.stringify(data.field), {
+				title : '注册信息'
 			})
 			return false;
 		});
