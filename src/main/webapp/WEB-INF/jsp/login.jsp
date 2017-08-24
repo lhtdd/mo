@@ -16,7 +16,7 @@
 		<!-- 网页中部 -->
 		<div class="container">
 			<div class="login-header">
-				<a href="http://10.186.106.131:8081/mo"><img
+				<a href="http://127.0.0.1:8081/mo"><img
 					src="${ctxStatic }/image/logo.png" alt="LOGO 默" title="LOGO MO" /></a>
 				<div class="mo-explain">
 					<span class="fs14 cl99">一种态度，一种沉淀...</span> <span class="fs18 cl99">恭默思道。——《书·说命》</span>

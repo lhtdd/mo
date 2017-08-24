@@ -89,7 +89,7 @@
 <div class="shrink fl">
 	<span class="fs14">已经有账号?</span> <span class="register-a"><a
 		class="fs16 cl99"
-		href="http://10.186.106.131:8081/mo/member/login">立即登录</a></span>
+		href="http://127.0.0.1:8081/mo/member/login">立即登录</a></span>
 	<div>
 		<span class="clD2">暂不支持其它方式登录</span>
 	</div>
