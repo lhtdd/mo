@@ -1,4 +1,4 @@
-package com.lyao.mo.controller;
+package com.lyao.mo.business.leisure.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,22 +9,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class MainController {
+@RequestMapping("/leisure")
+public class LeisureController {
 	
-	private final Logger log = Logger.getLogger(MainController.class);
-	@RequestMapping(value = "/",method = RequestMethod.GET)  
-	public ModelAndView notepadHome(HttpServletResponse response){  
-		ModelAndView md = new ModelAndView();
-		md.setViewName("notepad/notepad");
-		return md;
-	} 
-	@RequestMapping(value = "/leisure",method = RequestMethod.GET)  
+	private final Logger log = Logger.getLogger(LeisureController.class);
+	@RequestMapping(value = "/index",method = RequestMethod.GET)  
 	public ModelAndView leisureHome(HttpServletResponse response){  
 		ModelAndView md = new ModelAndView();
 		md.setViewName("leisure/leisure");
 		return md;
 	} 
-	@RequestMapping(value = "/leisure/happyDetail",method = RequestMethod.GET)  
+	@RequestMapping(value = "/happyDetail",method = RequestMethod.GET)  
 	public ModelAndView leisureHappyDetail(HttpServletResponse response){  
 		ModelAndView md = new ModelAndView();
 		md.setViewName("leisure/leisureDetail");
