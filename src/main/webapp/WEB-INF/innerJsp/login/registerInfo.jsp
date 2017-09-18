@@ -46,7 +46,7 @@
 				</form>
 			</div>
 			<div class="layui-tab-item">
-				<form class="layui-form layui-form-pane" action="">
+				<form class="layui-form layui-form-pane" action="member/doRegister">
 					<div class="layui-form-item">
 						<label class="layui-form-label">邮箱</label>
 						<div class="layui-input-inline">

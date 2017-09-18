@@ -25,5 +25,11 @@ public class SysController {
 		md.setViewName("login");
 		return md;
 	} 
+	@RequestMapping(value = "/member/doRegister",method = RequestMethod.GET)  
+	public ModelAndView doRegister(){ 
+		ModelAndView md = new ModelAndView();
+		md.setViewName("login");
+		return md;
+	} 
 	
 }
