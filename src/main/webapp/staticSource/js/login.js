@@ -1,5 +1,5 @@
 $(function() {
-	layui.use([ 'element', 'form' ], function() {
+	layui.use(['element', 'form'], function() {
 		var form = layui.form, element = layui.element;
 		// 自定义验证规则
 		form.verify({
@@ -16,7 +16,6 @@ $(function() {
 
 		// 监听登录提交
 		form.on('submit(login_form)', function(data) {
-			layer.alert("a");
 			layer.alert(JSON.stringify(data.field), {
 				title : '登录信息'
 			})
@@ -24,7 +23,6 @@ $(function() {
 		});
 		// 监听注册提交
 		form.on('submit(register_form)', function(data) {
-			layer.alert("b");
 			layer.alert(JSON.stringify(data.field), {
 				title : '注册信息'
 			})

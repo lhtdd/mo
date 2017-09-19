@@ -31,14 +31,14 @@
 					</div>
 				</div>
 				<div>
-					<button class="layui-btn lay-submit login-btn" lay-filter="login_form">登录</button>
+					<button class="layui-btn login-btn" lay-submit lay-filter="login_form">登录</button>
 				</div>
 			</form>
 		</div>
 		<div class="shrink fl">
 			<span class="fs14">还没有账号?</span> <span class="register-a"><a
 				class="fs16 cl99"
-				href="http://127.0.0.1:8081/mo/member/register">立即注册</a></span>
+				href="member/register">立即注册</a></span>
 			<div>
 				<span class="clD2">暂不支持其它方式登录</span>
 			</div>

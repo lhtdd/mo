@@ -40,7 +40,7 @@
 					</div>
 					<div class="layui-form-item">
 						<div class="layui-input-inline">
-							<button class="layui-btn lay-submit login-btn" lay-filter="register_form">注册</button>
+							<button class="layui-btn login-btn" lay-submit lay-filter="register_form">注册</button>
 						</div>
 					</div>
 				</form>
@@ -50,7 +50,7 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">邮箱</label>
 						<div class="layui-input-inline">
-							<input name="email" placeholder="邮箱" lay-verify="required"
+							<input name="email" placeholder="邮箱" lay-verify="required" 
 								class="layui-input" type="text">
 						</div>
 					</div>
@@ -78,7 +78,7 @@
 					</div>
 					<div class="layui-form-item">
 						<div class="layui-input-inline">
-							<button class="layui-btn lay-submit login-btn" lay-filter="register_form">注册</button>
+							<button class="layui-btn login-btn" lay-submit lay-filter="register_form">注册</button>
 						</div>
 					</div>
 				</form>
@@ -89,7 +89,7 @@
 <div class="shrink fl">
 	<span class="fs14">已经有账号?</span> <span class="register-a"><a
 		class="fs16 cl99"
-		href="http://127.0.0.1:8081/mo/member/login">立即登录</a></span>
+		href="member/login">立即登录</a></span>
 	<div>
 		<span class="clD2">暂不支持其它方式登录</span>
 	</div>

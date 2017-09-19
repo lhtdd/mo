@@ -59,7 +59,7 @@
 							</div>
 						</div>
 						<div class="comment-content fs16">
-							<p><a href="http://127.0.0.1:8081/mo/leisure/happyDetail?id=1">ddddd</a></p>
+							<p><a href="leisure/happyDetail?id=1">ddddd</a></p>
 						</div>
 					</li>
 					<li class="comment-item">
@@ -78,7 +78,7 @@
 							</div>
 						</div>
 						<div class="comment-content fs16">
-							<p><a href="http://127.0.0.1:8081/mo/leisure/happyDetail?id=1">ddddd</a></p>
+							<p><a href="leisure/happyDetail?id=1">ddddd</a></p>
 						</div>
 					</li>
 					<li class="comment-item">
@@ -97,7 +97,7 @@
 							</div>
 						</div>
 						<div class="comment-content fs16">
-							<p><a href="http://127.0.0.1:8081/mo/leisure/happyDetail?id=1">ddddd</a></p>
+							<p><a href="mo/leisure/happyDetail?id=1">ddddd</a></p>
 						</div>
 					</li>
 				</ul>

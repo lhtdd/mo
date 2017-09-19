@@ -11,7 +11,7 @@
 				</div>
 			</div>
 			<div class="happy-content fs16">
-				<p><a href="http://127.0.0.1:8081/mo/leisure/happyDetail?id=1">今天趴在男朋友身上，摸他的喉结玩，然后心想这东西平时是会动的，会不会是类似开关之类的东西啊，就手贱一下给摁下去了，然后这货脸色一下就变了，到现在还不理我，真小气……</a></p>
+				<p><a href="leisure/happyDetail?id=1">今天趴在男朋友身上，摸他的喉结玩，然后心想这东西平时是会动的，会不会是类似开关之类的东西啊，就手贱一下给摁下去了，然后这货脸色一下就变了，到现在还不理我，真小气……</a></p>
 			</div>
 			<div class="happy-operation fs14">
 				<ul>
