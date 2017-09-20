@@ -12,7 +12,7 @@
 		<setting name="defaultStatementTimeout" value="25000"/>   
     </settings> --> 
     <typeAliases>
-    
+    	<typeAlias alias="RegisterInfo" type="com.lyao.mo.bottom.pojo.RegisterInfo" /> 
     </typeAliases>
  
     

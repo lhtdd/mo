@@ -8,11 +8,11 @@
 		</ul>
 		<div class="layui-tab-content" style="height: 100px;">
 			<div class="layui-tab-item layui-show">
-				<form class="layui-form layui-form-pane" action="">
+				<form class="layui-form layui-form-pane" method="POST" action="member/register">
 					<div class="layui-form-item">
 						<label class="layui-form-label">手机号</label>
 						<div class="layui-input-inline">
-							<input name="mobile" placeholder="手机号" lay-verify="required"
+							<input name="username" placeholder="手机号" lay-verify="required"
 								class="layui-input" type="text">
 						</div>
 					</div>
@@ -46,11 +46,11 @@
 				</form>
 			</div>
 			<div class="layui-tab-item">
-				<form class="layui-form layui-form-pane" action="member/doRegister">
+				<form class="layui-form layui-form-pane" method="POST" action="member/register">
 					<div class="layui-form-item">
 						<label class="layui-form-label">邮箱</label>
 						<div class="layui-input-inline">
-							<input name="email" placeholder="邮箱" lay-verify="required" 
+							<input name="username" placeholder="邮箱" lay-verify="required" 
 								class="layui-input" type="text">
 						</div>
 					</div>

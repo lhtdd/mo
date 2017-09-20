@@ -18,6 +18,15 @@
 		<param-name>webAppRootKey</param-name>
 		<param-value>mo.root</param-value>
 	</context-param>
+	<!-- 为了支持restful风格的访问方式则  浏览器不支持put,delete等method,由该filter将/xxx?_method=delete转换为标准的http delete方法 -->
+     <filter>
+         <filter-name>hiddenHttpMethodFilter</filter-name>
+         <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+     </filter>
+     <filter-mapping>
+         <filter-name>hiddenHttpMethodFilter</filter-name>
+         <url-pattern>/*</url-pattern>
+     </filter-mapping>
 	<!-- Spring字符集过滤器 -->
 	<filter>
 		<filter-name>SpringEncodingFilter</filter-name>

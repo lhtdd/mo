@@ -23,10 +23,7 @@ $(function() {
 		});
 		// 监听注册提交
 		form.on('submit(register_form)', function(data) {
-			layer.alert(JSON.stringify(data.field), {
-				title : '注册信息'
-			})
-			return false;
+			
 		});
 	});
 });
