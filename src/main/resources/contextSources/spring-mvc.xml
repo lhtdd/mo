@@ -56,6 +56,7 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/staticSource/**" />
+			<mvc:exclude-mapping path="/kaptcha.jpg" />
 			<bean class="com.lyao.mo.container.interceptor.CheckLoginStatusInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>

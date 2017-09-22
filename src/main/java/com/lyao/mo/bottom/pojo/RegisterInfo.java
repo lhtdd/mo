@@ -14,7 +14,9 @@ public class RegisterInfo implements Serializable {
 	private String updateTime;
 	private Integer status;
 
-	
+	public RegisterInfo(){
+		this.status = 2;
+	}
 	public String getId() {
 		return id;
 	}

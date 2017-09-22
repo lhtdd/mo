@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>默--登录界面</title>
 <link rel="stylesheet" href="${ctxStatic }/css/login.css">
-<script type="text/javascript" src="${ctxStatic }/js/login.js"></script>
+<script type="text/javascript" src="${ctxStatic }/js/login.js?r=<%=Math.random() %>"></script>
 </head>
 <body>
 	<!-- 调整整个页面的宽高 -->

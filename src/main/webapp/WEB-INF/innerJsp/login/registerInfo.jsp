@@ -8,7 +8,9 @@
 		</ul>
 		<div class="layui-tab-content" style="height: 100px;">
 			<div class="layui-tab-item layui-show">
-				<form class="layui-form layui-form-pane" method="POST" action="member/register">
+				<form class="layui-form layui-form-pane" method="POST"
+					action="member/register">
+					<input type="hidden" name="registerType" value="1" />
 					<div class="layui-form-item">
 						<label class="layui-form-label">手机号</label>
 						<div class="layui-input-inline">
@@ -36,21 +38,25 @@
 							<input name="verifyCode" lay-verify="required"
 								placeholder="请输入右侧验证码" autocomplete="off" class="layui-input"
 								type="text">
+							<img src="kaptcha.jpg" class="verifyImg" title="点击换一张"/>
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<div class="layui-input-inline">
-							<button class="layui-btn login-btn" lay-submit lay-filter="register_form">注册</button>
+							<button class="layui-btn login-btn" lay-submit
+								lay-filter="register_form">注册</button>
 						</div>
 					</div>
 				</form>
 			</div>
 			<div class="layui-tab-item">
-				<form class="layui-form layui-form-pane" method="POST" action="member/register">
+				<form class="layui-form layui-form-pane" method="POST"
+					action="member/register">
+					<input type="hidden" name="registerType" value="2" />
 					<div class="layui-form-item">
 						<label class="layui-form-label">邮箱</label>
 						<div class="layui-input-inline">
-							<input name="username" placeholder="邮箱" lay-verify="required" 
+							<input name="username" placeholder="邮箱" lay-verify="required"
 								class="layui-input" type="text">
 						</div>
 					</div>
@@ -74,11 +80,13 @@
 							<input name="verifyCode" lay-verify="required"
 								placeholder="请输入右侧验证码" autocomplete="off" class="layui-input"
 								type="text">
+							<img src="kaptcha.jpg" class="verifyImg" title="点击换一张"/>
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<div class="layui-input-inline">
-							<button class="layui-btn login-btn" lay-submit lay-filter="register_form">注册</button>
+							<button class="layui-btn login-btn" lay-submit
+								lay-filter="register_form">注册</button>
 						</div>
 					</div>
 				</form>
@@ -88,8 +96,7 @@
 </div>
 <div class="shrink fl">
 	<span class="fs14">已经有账号?</span> <span class="register-a"><a
-		class="fs16 cl99"
-		href="member/login">立即登录</a></span>
+		class="fs16 cl99" href="member/login">立即登录</a></span>
 	<div>
 		<span class="clD2">暂不支持其它方式登录</span>
 	</div>

@@ -8,7 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>首页--随笔记事</title>
 	<link rel="stylesheet" href="${ctxStatic }/css/notepad/notepad.css">	
-	<script type="text/javascript" src="${ctxStatic }/js/notepad/notepad.js"></script>
+	<script type="text/javascript" src="${ctxStatic }/js/notepad/notepad.js?r=<%=Math.random() %>"></script>
 </head>
 <body>
 	<!-- 调整整个页面的宽高 -->

@@ -8,7 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>默--闲暇小憩</title>
 	<link rel="stylesheet" href="${ctxStatic }/css/leisure/leisure.css">	
-	<script type="text/javascript" src="${ctxStatic }/js/leisure/leisure.js"></script>
+	<script type="text/javascript" src="${ctxStatic }/js/leisure/leisure.js?r=<%=Math.random() %>"></script>
 </head>
 <body>
 	<!-- 调整整个页面的宽高 -->

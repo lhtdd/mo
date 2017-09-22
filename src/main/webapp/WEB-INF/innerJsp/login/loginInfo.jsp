@@ -9,7 +9,7 @@
 					<label class="layui-form-label">用户名</label>
 					<div class="layui-input-inline">
 						<input name="userName" lay-verify="required" placeholder="请输入用户名"
-							 class="layui-input" type="text">
+							class="layui-input" type="text">
 					</div>
 				</div>
 				<div class="layui-form-item">
@@ -27,18 +27,18 @@
 					<div class="layui-input-inline">
 						<input name="verifyCode" lay-verify="required"
 							placeholder="请输入右侧验证码" autocomplete="off" class="layui-input"
-							type="text">
+							type="text"> <img src="kaptcha.jpg" />
 					</div>
 				</div>
 				<div>
-					<button class="layui-btn login-btn" lay-submit lay-filter="login_form">登录</button>
+					<button class="layui-btn login-btn" lay-submit
+						lay-filter="login_form">登录</button>
 				</div>
 			</form>
 		</div>
 		<div class="shrink fl">
 			<span class="fs14">还没有账号?</span> <span class="register-a"><a
-				class="fs16 cl99"
-				href="member/register">立即注册</a></span>
+				class="fs16 cl99" href="member/register">立即注册</a></span>
 			<div>
 				<span class="clD2">暂不支持其它方式登录</span>
 			</div>
