@@ -23,13 +23,24 @@ $(function() {
 		});
 		// 监听注册提交
 		form.on('submit(register_form)', function(data) {
-			
+			$.ajax({
+			    url:'member/register',
+			    type:'POST', //GET
+			    async:true,    //或false,是否异步
+			    data:data.field,
+			    timeout:5000,
+			    dataType:'json',
+			    success:function(data){
+			        layer.alert(data.flag);
+			    }
+			});
+			return false;
 		});
 	});
 	
 	// 点击切换验证码
 	$(".verifyImg").click(function(){
-		this.attr("src", "Kaptcha.jpg?" + Math.floor(Math.random() * 100));
+		$(this).attr("src", "kaptcha.jpg?" + Math.floor(Math.random() * 100));
 	})
 	
 });

@@ -25,10 +25,11 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label">验证码</label>
 					<div class="layui-input-inline">
-						<input name="verifyCode" lay-verify="required"
+						<input name="validCode" lay-verify="required"
 							placeholder="请输入右侧验证码" autocomplete="off" class="layui-input"
-							type="text"> <img src="kaptcha.jpg" />
+							type="text"> 
 					</div>
+					<img src="kaptcha.jpg" class="verifyImg" title="点击换一张"/>
 				</div>
 				<div>
 					<button class="layui-btn login-btn" lay-submit

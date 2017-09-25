@@ -8,13 +8,12 @@
 		</ul>
 		<div class="layui-tab-content" style="height: 100px;">
 			<div class="layui-tab-item layui-show">
-				<form class="layui-form layui-form-pane" method="POST"
-					action="member/register">
+				<form class="layui-form layui-form-pane">
 					<input type="hidden" name="registerType" value="1" />
 					<div class="layui-form-item">
 						<label class="layui-form-label">手机号</label>
 						<div class="layui-input-inline">
-							<input name="username" placeholder="手机号" lay-verify="required"
+							<input name="username" placeholder="手机号" lay-verify="required|phone"
 								class="layui-input" type="text">
 						</div>
 					</div>
@@ -35,11 +34,11 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">验证码</label>
 						<div class="layui-input-inline">
-							<input name="verifyCode" lay-verify="required"
+							<input name="validCode" lay-verify="required"
 								placeholder="请输入右侧验证码" autocomplete="off" class="layui-input"
 								type="text">
-							<img src="kaptcha.jpg" class="verifyImg" title="点击换一张"/>
 						</div>
+						<img src="kaptcha.jpg" class="verifyImg" title="点击换一张"/>
 					</div>
 					<div class="layui-form-item">
 						<div class="layui-input-inline">
@@ -56,7 +55,7 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">邮箱</label>
 						<div class="layui-input-inline">
-							<input name="username" placeholder="邮箱" lay-verify="required"
+							<input name="username" placeholder="邮箱" lay-verify="required|email"
 								class="layui-input" type="text">
 						</div>
 					</div>
@@ -77,11 +76,11 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">验证码</label>
 						<div class="layui-input-inline">
-							<input name="verifyCode" lay-verify="required"
+							<input name="validCode" lay-verify="required"
 								placeholder="请输入右侧验证码" autocomplete="off" class="layui-input"
 								type="text">
-							<img src="kaptcha.jpg" class="verifyImg" title="点击换一张"/>
 						</div>
+						<img src="kaptcha.jpg" class="verifyImg" title="点击换一张"/>
 					</div>
 					<div class="layui-form-item">
 						<div class="layui-input-inline">

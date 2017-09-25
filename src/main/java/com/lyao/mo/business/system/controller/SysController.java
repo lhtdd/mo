@@ -90,6 +90,7 @@ public class SysController {
 		} else{
 			log.error("验证码错误");
 			errorMsg = "验证码错误";
+			flag = "no";
 		}
 		if (StringUtils.isNotBlank(errorMsg)){
 			md.put("errorMsg", errorMsg);
