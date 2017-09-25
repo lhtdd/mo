@@ -19,7 +19,8 @@ public class SystemServiceImpl implements SystemService{
 	private CommonBaseDao baseDao;
 	
 	@Override
-	public int insertMemberByMobile(RegisterInfo customer) throws Exception {
+	public boolean insertMemberByMobile(RegisterInfo customer) throws Exception {
+		boolean flag = false;
 		int i = 0;
 		int j = 0;
 		customer.setId(GenerateID.generateCustomerID(customer.getSex()));
@@ -28,11 +29,15 @@ public class SystemServiceImpl implements SystemService{
 		customer.setUpdateTime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
 		i = baseDao.insert("system.insertIntoCustomer", customer);
 		j = baseDao.insert("system.insertIntoCustomerDetail", customer);
-		return i+j;
+		if (i+j == 2){
+			flag = true;
+		}
+		return flag;
 	}
 
 	@Override
-	public int insertMemberByEmail(RegisterInfo customer) throws Exception {
+	public boolean insertMemberByEmail(RegisterInfo customer) throws Exception {
+		boolean flag = false;
 		int i = 0;
 		int j = 0;
 		customer.setId(GenerateID.generateCustomerID(customer.getSex()));
@@ -42,6 +47,8 @@ public class SystemServiceImpl implements SystemService{
 		//生成验证码
 		String validCode = RandomUtils.generateString(8);
 		customer.setValidCode(validCode);
+		//设置用户状态为未激活，默认为正常。
+		customer.setStatus(1);
 		i = baseDao.insert("system.insertIntoCustomer", customer);
 		j = baseDao.insert("system.insertIntoCustomerDetail", customer);
 		//发送激活邮件
@@ -52,8 +59,9 @@ public class SystemServiceImpl implements SystemService{
 			validCodeEmail.setValidURL("http://127.0.0.1:8082/mo/member/activation/"+validCode+"/"+customer.getId());
 			Sendmail sendEmail = new Sendmail(validCodeEmail);
 			sendEmail.start();
+			flag = true;
 		}
-		return i+j;
+		return flag;
 	}
 	
 }

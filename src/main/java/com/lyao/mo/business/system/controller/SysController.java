@@ -2,9 +2,11 @@ package com.lyao.mo.business.system.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.lyao.mo.bottom.pojo.RegisterInfo;
 import com.lyao.mo.bottom.service.SystemService;
-import com.lyao.mo.business.system.vo.T_customer;
 
 @Controller
 public class SysController {
@@ -50,29 +51,50 @@ public class SysController {
 	 */
 	@RequestMapping(value = "/member/register",method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView doRegister(RegisterInfo customer, HttpServletRequest request){ 
-		ModelAndView md = new ModelAndView();
+	public ModelMap doRegister(RegisterInfo customer, HttpServletRequest request){ 
+		ModelMap md = new ModelMap();
+		String errorMsg = null;
+		boolean registerFlag = false;
+		String flag = null;
 		String kaptchaExpected = (String)request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
 		if (kaptchaExpected.equalsIgnoreCase(customer.getValidCode())){
+			// 手机号注册
 			if (customer.getRegisterType().equals("1")){
 				try {
-					systemServiceImpl.insertMemberByMobile(customer);
+					registerFlag = systemServiceImpl.insertMemberByMobile(customer);
+					if(registerFlag){
+						flag = "yes";
+					}else{
+						flag = "no";
+						errorMsg = "注册失败";
+					}
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.error("注册失败", e);
+					errorMsg = "注册失败";
 				}
+				// 邮箱注册
 			}else if (customer.getRegisterType().equals("2")){
 				try {
-					systemServiceImpl.insertMemberByEmail(customer);
+					registerFlag = systemServiceImpl.insertMemberByEmail(customer);
+					if(registerFlag){
+						flag = "yes";
+					}else{
+						flag = "no";
+						errorMsg = "注册失败";
+					}
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.error("注册失败", e);
+					errorMsg = "注册失败";
 				}
 			}
-		}else{
+		} else{
 			log.error("验证码错误");
+			errorMsg = "验证码错误";
 		}
-		md.setViewName("login");
+		if (StringUtils.isNotBlank(errorMsg)){
+			md.put("errorMsg", errorMsg);
+		}
+		md.put("flag", flag);
 		return md;
 	}
 	/**

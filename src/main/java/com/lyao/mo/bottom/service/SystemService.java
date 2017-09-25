@@ -9,12 +9,12 @@ public interface SystemService {
 	 * @return
 	 * @throws Exception
 	 */
-	int insertMemberByMobile(RegisterInfo customer) throws Exception;
+	boolean insertMemberByMobile(RegisterInfo customer) throws Exception;
 	/**
 	 * 注册用户--邮箱
 	 * @param customer
 	 * @return
 	 * @throws Exception
 	 */
-	int insertMemberByEmail(RegisterInfo customer) throws Exception;
+	boolean insertMemberByEmail(RegisterInfo customer) throws Exception;
 }
