@@ -25,8 +25,8 @@ $(function() {
 		form.on('submit(register_form)', function(data) {
 			$.ajax({
 			    url:'member/register',
-			    type:'POST', //GET
-			    async:true,    //或false,是否异步
+			    type:'POST',
+			    async:true,
 			    data:data.field,
 			    timeout:5000,
 			    dataType:'json',

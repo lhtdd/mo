@@ -54,10 +54,8 @@
 	<mvc:interceptors>
 		<!-- 多个拦截器，顺序执行 -->
 		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<mvc:exclude-mapping path="/staticSource/**" />
-			<mvc:exclude-mapping path="/kaptcha.jpg" />
-			<bean class="com.lyao.mo.container.interceptor.CheckLoginStatusInterceptor"></bean>
+			<mvc:mapping path="/**/authc" />
+			<bean class="com.lyao.mo.container.interceptor.AuthenticationInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 

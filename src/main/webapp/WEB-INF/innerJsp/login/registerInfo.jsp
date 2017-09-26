@@ -49,8 +49,7 @@
 				</form>
 			</div>
 			<div class="layui-tab-item">
-				<form class="layui-form layui-form-pane" method="POST"
-					action="member/register">
+				<form class="layui-form layui-form-pane">
 					<input type="hidden" name="registerType" value="2" />
 					<div class="layui-form-item">
 						<label class="layui-form-label">邮箱</label>

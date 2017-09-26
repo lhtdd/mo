@@ -9,6 +9,7 @@ import com.lyao.mo.bottom.pojo.RegisterInfo;
 import com.lyao.mo.bottom.pojo.email.ValidCodeEmail;
 import com.lyao.mo.bottom.service.SystemService;
 import com.lyao.mo.common.utils.GenerateID;
+import com.lyao.mo.common.utils.MD5Utils;
 import com.lyao.mo.common.utils.RandomUtils;
 import com.lyao.mo.common.utils.Sendmail;
 
@@ -27,6 +28,7 @@ public class SystemServiceImpl implements SystemService{
 		DateTime dt1 = new DateTime();
 		customer.setIntime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
 		customer.setUpdateTime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
+		customer.setPassword(MD5Utils.encryptPassword(customer.getPassword(), customer.getId()));
 		i = baseDao.insert("system.insertIntoCustomer", customer);
 		j = baseDao.insert("system.insertIntoCustomerDetail", customer);
 		if (i+j == 2){
@@ -41,6 +43,7 @@ public class SystemServiceImpl implements SystemService{
 		int i = 0;
 		int j = 0;
 		customer.setId(GenerateID.generateCustomerID(customer.getSex()));
+		customer.setPassword(MD5Utils.encryptPassword(customer.getPassword(), customer.getId()));
 		DateTime dt1 = new DateTime();
 		customer.setIntime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
 		customer.setUpdateTime(dt1.toString("yyyy-MM-dd HH:mm:ss"));

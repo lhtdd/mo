@@ -4,7 +4,7 @@
 	<legend class="fs16 clA1">登录</legend>
 	<div class="layui-field-box">
 		<div class="spead fl">
-			<form class="layui-form layui-form-pane" action="">
+			<form class="layui-form layui-form-pane">
 				<div class="layui-form-item">
 					<label class="layui-form-label">用户名</label>
 					<div class="layui-input-inline">

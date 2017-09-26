@@ -64,6 +64,7 @@ public class SysController {
 					registerFlag = systemServiceImpl.insertMemberByMobile(customer);
 					if(registerFlag){
 						flag = "yes";
+						
 					}else{
 						flag = "no";
 						errorMsg = "注册失败";
