@@ -13,17 +13,29 @@ import org.springframework.web.servlet.ModelAndView;
 public class LeisureController {
 	
 	private final Logger log = Logger.getLogger(LeisureController.class);
+	/**
+	 * 跳转至闲暇小憩的主页
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping(value = "/index",method = RequestMethod.GET)  
 	public ModelAndView leisureHome(HttpServletResponse response){  
 		ModelAndView md = new ModelAndView();
 		md.setViewName("leisure/leisure");
 		return md;
-	} 
+	}
+	/**
+	 * 跳转至开心果的详细页面
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping(value = "/happyDetail",method = RequestMethod.GET)  
 	public ModelAndView leisureHappyDetail(HttpServletResponse response){  
 		ModelAndView md = new ModelAndView();
 		md.setViewName("leisure/leisureDetail");
 		return md;
 	} 
+	
+	
 	
 }

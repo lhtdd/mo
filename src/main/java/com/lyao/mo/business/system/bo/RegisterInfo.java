@@ -1,4 +1,4 @@
-package com.lyao.mo.bottom.pojo;
+package com.lyao.mo.business.system.bo;
 
 import java.io.Serializable;
 

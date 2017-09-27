@@ -1,4 +1,4 @@
-package com.lyao.mo.bottom.pojo.email;
+package com.lyao.mo.bottom.bean.pojo;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.lyao.mo.business.system.vo;
+package com.lyao.mo.bottom.bean.po;
 import java.io.Serializable;
 import java.util.Date;
 

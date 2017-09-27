@@ -8,7 +8,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.lyao.mo.bottom.pojo.email.ValidCodeEmail;
+import com.lyao.mo.bottom.bean.pojo.ValidCodeEmail;
 import com.lyao.mo.common.properties.PropertiesFactory;
 import com.lyao.mo.common.properties.QQMailProperties;
 

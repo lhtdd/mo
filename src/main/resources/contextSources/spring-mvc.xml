@@ -57,6 +57,10 @@
 			<mvc:mapping path="/**/authc" />
 			<bean class="com.lyao.mo.container.interceptor.AuthenticationInterceptor"></bean>
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/member/*" />
+			<bean class="com.lyao.mo.container.interceptor.LoginInterceptor"></bean>
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 	<!-- mvc:view-controller可以在不需要Controller处理request的情况，转向到设置的View -->

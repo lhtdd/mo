@@ -1,17 +1,15 @@
-package com.lyao.mo.business.notepad.vo;
+package com.lyao.mo.bottom.bean.po;
 import java.io.Serializable;
 import java.util.Date;
 
-
-public class T_notepad_folder implements Serializable {
+public class T_navigation_folder implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String customerid;
-	private String notepadname;
-	private Integer parentid;
+	private String navigationname;
 	private Integer sort;
 	private Date updatetime;
-	private Integer type;
+	private String type;
 	private String remark;
 
 	public void setId(Integer id){
@@ -26,17 +24,11 @@ public class T_notepad_folder implements Serializable {
 	public String getCustomerid(){
 		return customerid;
 	}
-	public void setNotepadname(String notepadname){
-		this.notepadname=notepadname;
+	public void setNavigationname(String navigationname){
+		this.navigationname=navigationname;
 	}
-	public String getNotepadname(){
-		return notepadname;
-	}
-	public void setParentid(Integer parentid){
-		this.parentid=parentid;
-	}
-	public Integer getParentid(){
-		return parentid;
+	public String getNavigationname(){
+		return navigationname;
 	}
 	public void setSort(Integer sort){
 		this.sort=sort;
@@ -50,10 +42,10 @@ public class T_notepad_folder implements Serializable {
 	public Date getUpdatetime(){
 		return updatetime;
 	}
-	public void setType(Integer type){
+	public void setType(String type){
 		this.type=type;
 	}
-	public Integer getType(){
+	public String getType(){
 		return type;
 	}
 	public void setRemark(String remark){

@@ -1,8 +1,11 @@
 package com.lyao.mo.bottom.service;
 
-import com.lyao.mo.bottom.pojo.RegisterInfo;
+import com.lyao.mo.business.system.bo.RegisterInfo;
+
 
 public interface SystemService {
+	
+	
 	/**
 	 * 注册用户--手机
 	 * @param customer

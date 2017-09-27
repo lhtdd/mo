@@ -33,3 +33,4 @@
 <script src="https://cdn.bootcss.com/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
 <script type="text/javascript" src="${ctxStatic }/js/common.js?r=<%=Math.random() %>"></script>
 <script type="text/javascript" src="${ctxStatic }/js/base.js?r=<%=Math.random() %>"></script>
+<script type="text/javascript" src="${ctxStatic }/js/aside/aside.js?r=<%=Math.random() %>"></script>

@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.lyao.mo.bottom.pojo.RegisterInfo;
 import com.lyao.mo.bottom.service.SystemService;
+import com.lyao.mo.business.system.bo.CurrentUser;
+import com.lyao.mo.business.system.bo.RegisterInfo;
+import com.lyao.mo.common.utils.Constant;
 
 @Controller
 public class SysController {
@@ -42,6 +44,23 @@ public class SysController {
 		ModelAndView md = new ModelAndView();
 		md.addObject("type", type);
 		md.setViewName("login");
+		return md;
+	}
+	
+	@RequestMapping(value = "/member/login",method = RequestMethod.POST)  
+	@ResponseBody
+	public ModelMap doLogin(CurrentUser curuser, HttpServletRequest request){ 
+		ModelMap md = new ModelMap();
+		String errorMsg = null;
+		String flag = null;
+		String go_url = "/" ;
+		Object target_url = request.getSession().getAttribute(Constant.GO_URL);
+		if (target_url != null){
+			go_url = (String) target_url;
+			flag = "yes";
+		}
+		md.put("go_url", go_url);
+		md.put("flag", flag);
 		return md;
 	} 
 	/**

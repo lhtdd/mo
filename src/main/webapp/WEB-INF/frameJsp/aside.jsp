@@ -56,7 +56,7 @@
 			<span>其它</span>
 		</li>
 		<li class="aside-bar-add">
-			<i class="iconfont icon-xinjian2"></i>
+			<i class="iconfont icon-xinjian2 url-add"></i>
 		</li>
 	</ul>
 </div>

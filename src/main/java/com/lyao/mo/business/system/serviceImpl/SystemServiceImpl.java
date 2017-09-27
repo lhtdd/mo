@@ -4,10 +4,10 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lyao.mo.bottom.bean.pojo.ValidCodeEmail;
 import com.lyao.mo.bottom.dao.CommonBaseDao;
-import com.lyao.mo.bottom.pojo.RegisterInfo;
-import com.lyao.mo.bottom.pojo.email.ValidCodeEmail;
 import com.lyao.mo.bottom.service.SystemService;
+import com.lyao.mo.business.system.bo.RegisterInfo;
 import com.lyao.mo.common.utils.GenerateID;
 import com.lyao.mo.common.utils.MD5Utils;
 import com.lyao.mo.common.utils.RandomUtils;

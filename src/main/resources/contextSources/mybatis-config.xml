@@ -12,7 +12,8 @@
 		<setting name="defaultStatementTimeout" value="25000"/>   
     </settings> --> 
     <typeAliases>
-    	<typeAlias alias="RegisterInfo" type="com.lyao.mo.bottom.pojo.RegisterInfo" /> 
+    	<typeAlias alias="RegisterInfo" type="com.lyao.mo.business.system.bo.RegisterInfo" /> 
+    	<typeAlias alias="CurrentUser" type="com.lyao.mo.business.system.bo.CurrentUser" /> 
     </typeAliases>
  
     
