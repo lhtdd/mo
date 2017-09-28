@@ -16,9 +16,21 @@ $(function() {
 
 		// 监听登录提交
 		form.on('submit(login_form)', function(data) {
-			layer.alert(JSON.stringify(data.field), {
-				title : '登录信息'
-			})
+			$.ajax({
+			    url:'member/login',
+			    type:'POST',
+			    async:true,
+			    data:data.field,
+			    timeout:5000,
+			    dataType:'json',
+			    success:function(data){
+			        if (data.flag == 'yes'){
+			        	window.location.href = data.go_url;
+			        }else{
+			        	layer.msg(data.errorMsg);
+			        }
+			    }
+			});
 			return false;
 		});
 		// 监听注册提交

@@ -15,7 +15,7 @@ public class CommonUtils {
 			go_url = (String) target_url;
 		}else{
 			// 如果没有拦截的URL 则跳转至 首页
-			go_url = "/"; 
+			go_url = request.getContextPath()+"/"; 
 		}
 		return go_url;
 	}

@@ -109,7 +109,7 @@ public class SysController {
 		String flag = null;
 		String go_url = null;
 		String kaptchaExpected = (String)request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-		if (!kaptchaExpected.equalsIgnoreCase(customer.getValidCode())){
+		if (kaptchaExpected.equalsIgnoreCase(customer.getValidCode())){
 			try {
 				CurrentUser curuser = systemServiceImpl.selectUserByUsername(customer.getUsername());
 				if (curuser != null){
@@ -123,6 +123,7 @@ public class SysController {
 							flag = "yes";
 							go_url = CommonUtils.getGoURL(request);
 							//保存登录信息
+							curuser = systemServiceImpl.selectUserByUsername(customer.getUsername());
 							request.getSession().setAttribute(Constant.CURRENT_USER, curuser);
 						}else{
 							flag = "no";
@@ -173,7 +174,7 @@ public class SysController {
 		String go_url = null;
 		log.info("用户号:"+customerID+" 申请激活，激活码：" + validCode);
 		try {
-			boolean flag = systemServiceImpl.doActivation(customerID, validCode);
+			boolean flag = systemServiceImpl.updateActivation(customerID, validCode);
 			if (flag){
 				type = "activationSuccess";
 				go_url = CommonUtils.getGoURL(request);

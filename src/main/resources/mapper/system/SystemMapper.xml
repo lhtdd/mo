@@ -8,6 +8,7 @@
 		 c.userImage as userImage,
 		 c.username as username,
 		 c.password as password,
+		 c.status as status,
 		 c.alias as alias,
 		 d.sex as sex,
 		 c.type as type	    
@@ -42,10 +43,13 @@
 		values(#{id},#{sex},#{updateTime})
 	</insert>
 	<!-- 邮箱账户激活 -->
-	<select id="selectValidCode" parameterType="String" resultType="String">
-		select validCode from t_customer where id = #{customerID}
+	<select id="selectValidCode" parameterType="String" resultType="Map">
+		select 
+		 status as status,
+		 validCode as validCode
+		from t_customer where id = #{customerID}
 	</select>
-	<update id="activation">
+	<update id="activation" parameterType="Map">
 		update t_customer set status = 2, activationTime = #{activationTime} where id = #{customerID}
 	</update>
 </mapper>

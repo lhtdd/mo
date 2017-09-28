@@ -49,5 +49,5 @@ public interface SystemService {
 	 * @return
 	 * @throws Exception
 	 */
-	boolean doActivation(String customerID, String validCode) throws Exception;
+	boolean updateActivation(String customerID, String validCode) throws Exception;
 }

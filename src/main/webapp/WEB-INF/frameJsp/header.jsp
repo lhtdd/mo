@@ -14,6 +14,8 @@
 			</ul>
 		</div>
 		<div class="user">
+				${user.username }
+			
 			<a href="member/login">登录</a>&nbsp;|&nbsp;<a href="member/register">注册</a>
 		</div>
 	</div>
