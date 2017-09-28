@@ -31,7 +31,15 @@ $(function() {
 			    timeout:5000,
 			    dataType:'json',
 			    success:function(data){
-			        layer.alert(data.flag);
+			        if (data.flag == 'yes' && data.registerType == '1'){
+			        	// 手机号注册
+			        	window.location.href = "member/systemTips/registerSuccess?go_url="+data.go_url;
+			        }else if (data.flag == 'yes' && data.registerType == '2'){
+			        	// 邮箱注册
+			        	window.location.href = "member/systemTips/activationTips";
+			        }else{
+			        	layer.msg(data.errorMsg);
+			        }
 			    }
 			});
 			return false;

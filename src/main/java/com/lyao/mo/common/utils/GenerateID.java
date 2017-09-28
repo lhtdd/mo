@@ -3,8 +3,6 @@ package com.lyao.mo.common.utils;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import org.joda.time.DateTime;
-
 
 public class GenerateID {
 

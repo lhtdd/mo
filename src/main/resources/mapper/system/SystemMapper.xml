@@ -11,10 +11,24 @@
 		 c.alias as alias,
 		 d.sex as sex,
 		 c.type as type	    
-	    from t_cusomer as c 
+	    from t_customer as c 
 	    left join t_customer_detail as d 
 	    on c.id = d.id 
 	    where c.username = #{username}
+	</select>
+	<select id="selectUserByID" parameterType="String" resultType="CurrentUser">
+	    select 
+		 c.id as id,
+		 c.userImage as userImage,
+		 c.username as username,
+		 c.password as password,
+		 c.alias as alias,
+		 d.sex as sex,
+		 c.type as type	    
+	    from t_customer as c 
+	    left join t_customer_detail as d 
+	    on c.id = d.id 
+	    where c.id = #{customerID}
 	</select>
 	<!-- 新增用户 -->
 	<insert id="insertIntoCustomer" parameterType="RegisterInfo">
@@ -27,4 +41,11 @@
 		t_customer_detail(id,sex,updateTime)
 		values(#{id},#{sex},#{updateTime})
 	</insert>
+	<!-- 邮箱账户激活 -->
+	<select id="selectValidCode" parameterType="String" resultType="String">
+		select validCode from t_customer where id = #{customerID}
+	</select>
+	<update id="activation">
+		update t_customer set status = 2, activationTime = #{activationTime} where id = #{customerID}
+	</update>
 </mapper>
