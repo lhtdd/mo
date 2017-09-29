@@ -136,7 +136,7 @@ public class SystemServiceImpl implements SystemService{
 		status = MapUtils.getInteger(resultMap, "status");
 		selVaildCode = MapUtils.getString(resultMap, "validCode");
 		// 判断当前用户状态，待激活状态则激活，否则不予激活，也可以再加上激活时间，超出时间不予激活
-		if (status == 1){
+		if (status != null && status == 1){
 			if (StringUtils.isNotBlank(selVaildCode)){
 				if (selVaildCode.equals(validCode)){
 					int i = 0;

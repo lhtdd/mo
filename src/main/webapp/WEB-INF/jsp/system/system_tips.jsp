@@ -6,7 +6,7 @@
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>默--登录界面</title>
+<title>默--注意</title>
 <link rel="stylesheet" href="${ctxStatic }/css/login.css">
 <script type="text/javascript" src="${ctxStatic }/js/login.js?r=<%=Math.random() %>"></script>
 </head>
@@ -24,13 +24,21 @@
 			</div>
 			<!--  -->
 			<div class="submit-wrapper">
-			<c:if test="${type == 'register' }">
-		    	<!--  注册   --> 
-		    	<%@ include file="../innerJsp/login/register_info.jsp" %> 
+			<c:if test="${type == 'registerSuccess' }">
+				<!-- 手机号注册成功提示 -->
+		    	<%@ include file="../../innerJsp/system/register_success.jsp" %> 
 			</c:if>
-			<c:if test="${type != 'register' }">
-				<!-- 登录 -->
-		    	<%@ include file="../innerJsp/login/login_info.jsp" %> 
+			<c:if test="${type == 'activationTips' }">
+		    	<!--  邮箱注册后提示激活   --> 
+		    	<%@ include file="../../innerJsp/system/activation_tips.jsp" %> 
+			</c:if>
+			<c:if test="${type == 'activationSuccess' }">
+				<!-- 激活成功 -->
+		    	<%@ include file="../../innerJsp/system/activation_success.jsp" %> 
+			</c:if>
+			<c:if test="${type == 'activationFailed' }">
+		    	<!--  激活失败   --> 
+		    	<%@ include file="../../innerJsp/system/activation_failed.jsp" %> 
 			</c:if>
 			</div>
 		</div>

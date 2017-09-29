@@ -6,9 +6,9 @@
 <head>
 	<base href="<%=basePath %>">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>首页--随笔记事</title>
-	<link rel="stylesheet" href="${ctxStatic }/css/notepad/notepad.css">	
-	<script type="text/javascript" src="${ctxStatic }/js/notepad/notepad.js?r=<%=Math.random() %>"></script>
+	<title>默--闲暇小憩</title>
+	<link rel="stylesheet" href="${ctxStatic }/css/leisure/leisure.css">	
+	<script type="text/javascript" src="${ctxStatic }/js/leisure/leisure.js?r=<%=Math.random() %>"></script>
 </head>
 <body>
 	<!-- 调整整个页面的宽高 -->
@@ -19,15 +19,16 @@
 		<%@ include file="../../frameJsp/aside.jsp" %> 
 		<!-- 网页中部 -->
 		<div class="container">
-	    	<!-- 左侧菜单栏 -->
-	    	<%@ include file="../../innerJsp/notepad/left_menu.jsp" %> 
-	    	<!-- 右侧主页面 -->    
-	    	<%@ include file="../../innerJsp/notepad/editor.jsp" %> 
+	    	<!-- 左侧开心果内容-->
+	    	<%@ include file="../../innerJsp/leisure/happy_detail.jsp" %> 
+	    	<!-- 右侧收藏提示-->    
+	    	<%@ include file="../../innerJsp/leisure/happy_mine.jsp" %> 
 		</div>
-		<div class="clear"></div>
+    	<div class="clear"></div>
 		<!-- 网页底部 -->
 		<%@ include file="../../frameJsp/footer.jsp" %> 
 	</div>
-	<!-- 弹出层部分 -->
+	<!-- 弹出层部分  返回顶部等-->
+	<%@ include file="../../frameJsp/fix_top.jsp" %> 
 </body>
 </html>

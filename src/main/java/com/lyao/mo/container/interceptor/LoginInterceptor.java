@@ -23,9 +23,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		if (request.getSession().getAttribute(Constant.GO_URL) != null){
 			return true;
 		}
-		log.warn("请求来自：" + request.getHeader("Referer"));
+		String go_url = request.getHeader("Referer");
+		log.warn("请求来自：" + go_url);
+		//从浏览器直接访问可能为NULL
+		if (go_url == null){
+			return true;
+		}
 		// 记录来时的URL
-		request.getSession().setAttribute(Constant.GO_URL, request.getHeader("Referer"));
+		request.getSession().setAttribute(Constant.GO_URL, go_url);
 		return true;
 	}
 	

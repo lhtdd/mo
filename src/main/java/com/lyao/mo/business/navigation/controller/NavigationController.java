@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class NavigationController {
 	private final Logger log = Logger.getLogger(NavigationController.class);
 	/**
-	 * 
+	 * 导航
 	 * @return
 	 */
 	@RequestMapping(value = "/url/authc",method = RequestMethod.GET)  

@@ -2,7 +2,18 @@ package com.lyao.mo.common.utils;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.lyao.mo.business.system.bo.CurrentUser;
+
 public class CommonUtils {
+	
+	public static CurrentUser getCurrentUser(HttpServletRequest request){
+		Object curuser = request.getSession().getAttribute(Constant.CURRENT_USER);
+		CurrentUser currentUser = null;
+		if (curuser != null){
+			currentUser = (CurrentUser) curuser;
+		}
+		return currentUser;
+	}
 	/**
 	 * 获取跳转的URL
 	 * @param request

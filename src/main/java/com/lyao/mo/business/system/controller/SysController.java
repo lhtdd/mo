@@ -66,7 +66,7 @@ public class SysController {
 		String flag = null;
 		String go_url = null;
 		String kaptchaExpected = (String)request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-		if (kaptchaExpected.equalsIgnoreCase(validCode)){
+		if (!kaptchaExpected.equalsIgnoreCase(validCode)){
 			try {
 				HashMap<String, Object> resultMap = systemServiceImpl.doLogin(username, password);
 				String resultFlag = MapUtils.getString(resultMap,"flag");
@@ -109,7 +109,7 @@ public class SysController {
 		String flag = null;
 		String go_url = null;
 		String kaptchaExpected = (String)request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-		if (kaptchaExpected.equalsIgnoreCase(customer.getValidCode())){
+		if (!kaptchaExpected.equalsIgnoreCase(customer.getValidCode())){
 			try {
 				CurrentUser curuser = systemServiceImpl.selectUserByUsername(customer.getUsername());
 				if (curuser != null){
@@ -193,17 +193,39 @@ public class SysController {
 		}
 		md.addObject("type", type);
 		md.addObject("warnMsg", warnMsg);
-		md.setViewName("system/systemTips");
+		md.setViewName("system/system_tips");
 		return md;
 	}
-	
+	/**
+	 * 系统内部信息提示。根据Type跳转不同的页面，展示不同的信息。
+	 * @param type
+	 * @param go_url
+	 * @return
+	 */
 	@RequestMapping(value = "/member/systemTips/{type}",method = RequestMethod.GET)  
 	public ModelAndView doRegisterTips(@PathVariable("type") String type, @RequestParam(value="go_url",required=false) String go_url){ 
 		ModelAndView md = new ModelAndView();
 		md.addObject("type", type);
 		md.addObject("go_url", go_url);
-		md.setViewName("system/systemTips");
+		md.setViewName("system/system_tips");
 		return md;
+	}
+	/**
+	 * 判断用户是否已经登录
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/member/system/check", method = RequestMethod.GET) 
+	@ResponseBody
+	public ModelMap checkLoginStatus(HttpServletRequest request){ 
+		ModelMap returnMap = new ModelMap(); 
+		if (CommonUtils.getCurrentUser(request) != null){
+			returnMap.put("flag", "yes");
+		}else {
+			returnMap.put("flag", "no");
+			returnMap.put("go_url", request.getHeader("Referer"));
+		}
+		return returnMap;
 	}
 	
 }

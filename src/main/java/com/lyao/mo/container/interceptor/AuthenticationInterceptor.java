@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.lyao.mo.business.system.bo.CurrentUser;
+import com.lyao.mo.common.utils.CommonUtils;
 import com.lyao.mo.common.utils.Constant;
 
 
@@ -17,15 +18,27 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		log.warn("拦截请求:" + request.getServletPath() + " 进行登录校验");
+		String go_url = request.getServletPath().substring(1);
+		log.warn("拦截请求:" + go_url + " 进行登录校验");
 		CurrentUser curUser = null;
-		curUser = (CurrentUser) request.getSession().getAttribute(Constant.CURRENT_USER);
+		curUser = CommonUtils.getCurrentUser(request);
 		if (curUser == null){
-			response.getWriter().write("no");
 			log.warn("访问被拒绝,登录失效或未登录");
+			// 如果请求方法是POST 则不保存该url。
+			if (!request.getMethod().equals("POST")){
+				request.getSession().setAttribute(Constant.GO_URL, go_url);
+			}
+			String requestType = request.getHeader("X-Requested-With");
+			//判断是否是AJAX请求
+			if("XMLHttpRequest".equals(requestType)){
+				log.warn("AJAX请求..");
+			    response.getWriter().write("no");
+			}else{
+				log.warn("非AJAX请求..");
+				//非ajax请求，例如从浏览器直接输入则跳转至整个登录页面
+				request.getRequestDispatcher("/member/login").forward(request, response);
+			}
 			return false;
-		}else{
-			
 		}
 		return true;
 	}

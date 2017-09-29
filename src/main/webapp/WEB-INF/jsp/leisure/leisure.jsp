@@ -22,16 +22,14 @@
 	    	<!-- 左侧开心果内容-->
 	    	<%@ include file="../../innerJsp/leisure/happy.jsp" %> 
 	    	<!-- 右侧收藏提示-->    
-	    	<%@ include file="../../innerJsp/leisure/happyMine.jsp" %> 
+	    	<%@ include file="../../innerJsp/leisure/happy_mine.jsp" %> 
 		</div>
     	<div class="clear"></div>
 		<!-- 网页底部 -->
 		<%@ include file="../../frameJsp/footer.jsp" %> 
 	</div>
 	<!-- 弹出层部分  返回顶部等-->
-	<ul class="fix-tip leisure-fix-tip">
-		<li class="fix-tip-item feedback"><i class="iconfont icon-fankui"></i></li>
-		<li class="fix-tip-item rolling-top" id="rolling-top"><i class="iconfont icon-huidingbu"></i></li>
-	</ul>
+	<%@ include file="../../frameJsp/fix_top.jsp" %> 
+	<%@ include file="../../frameJsp/login_or_register.jsp" %> 
 </body>
 </html>

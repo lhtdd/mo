@@ -13,11 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 public class NotepadController {
 	
 	private final Logger log = Logger.getLogger(NotepadController.class);
+	/**
+	 * 记事本主页
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping(value = "/index",method = RequestMethod.GET)  
 	public ModelAndView notepadHome(HttpServletResponse response){  
 		ModelAndView md = new ModelAndView();
 		md.setViewName("notepad/notepad");
 		return md;
-	} 
-	
+	}   
 }

@@ -1,6 +1,6 @@
 package com.lyao.mo.business.leisure.controller;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ public class LeisureController {
 	 * @return
 	 */
 	@RequestMapping(value = "/index",method = RequestMethod.GET)  
-	public ModelAndView leisureHome(HttpServletResponse response){  
+	public ModelAndView leisureHome(HttpServletRequest request){  
 		ModelAndView md = new ModelAndView();
 		md.setViewName("leisure/leisure");
 		return md;
@@ -30,12 +30,22 @@ public class LeisureController {
 	 * @return
 	 */
 	@RequestMapping(value = "/happyDetail",method = RequestMethod.GET)  
-	public ModelAndView leisureHappyDetail(HttpServletResponse response){  
+	public ModelAndView leisureHappyDetail(HttpServletRequest request){  
 		ModelAndView md = new ModelAndView();
-		md.setViewName("leisure/leisureDetail");
+		md.setViewName("leisure/leisure_detail");
 		return md;
 	} 
-	
+	/**
+	 * 跳转至发表趣事的主页面
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/myHappyDetail/authc",method = RequestMethod.GET)  
+	public ModelAndView writeHappyDetail(HttpServletRequest request){
+		ModelAndView md = new ModelAndView();
+		md.setViewName("leisure/leisure_home");
+		return md;
+	} 
 	
 	
 }
