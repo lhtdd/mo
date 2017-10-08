@@ -30,6 +30,6 @@
 	</div>
 	<!-- 弹出层部分  返回顶部等-->
 	<%@ include file="../../frameJsp/fix_top.jsp" %> 
-	<%@ include file="../../frameJsp/login_or_register.jsp" %> 
+	<%@ include file="../../frameJsp/login_pop.jsp" %> 
 </body>
 </html>

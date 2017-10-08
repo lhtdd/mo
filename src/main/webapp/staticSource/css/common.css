@@ -104,3 +104,8 @@ body, html {
 .fix-tip .rolling-top{
 	display: none;
 }
+
+/* µ¯³öµÇÂ½Ò³Ãæ  */
+#login_pop{
+	display: none;
+}

@@ -223,7 +223,7 @@ public class SysController {
 			returnMap.put("flag", "yes");
 		}else {
 			returnMap.put("flag", "no");
-			returnMap.put("go_url", request.getHeader("Referer"));
+			request.getSession().setAttribute(Constant.GO_URL,request.getHeader("Referer"));
 		}
 		return returnMap;
 	}

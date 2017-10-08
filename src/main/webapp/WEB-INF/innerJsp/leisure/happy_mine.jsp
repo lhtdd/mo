@@ -3,7 +3,7 @@
 <div class="happy-right-wrapper fr">
 	<div id="happy-mine-operation">
 		<div class="happy-edit">
-			<i class="iconfont icon-bi1"></i><span>你的趣事</span>
+			<i class="iconfont icon-bi1 btn-write-happy"></i><span>你的趣事</span>
 		</div>
 		<div class="happy-mine-info">
 			<ul>
