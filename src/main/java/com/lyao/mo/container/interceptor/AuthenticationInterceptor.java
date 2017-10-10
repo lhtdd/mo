@@ -25,10 +25,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 		curUser = CommonUtils.getCurrentUser(request);
 		if (curUser == null){
 			log.warn("访问被拒绝,登录失效或未登录");
-			// 如果请求方法是POST 则不保存该url。
-			if (!request.getMethod().equals("POST")){
-				request.getSession().setAttribute(Constant.GO_URL, go_url);
-			}
+			request.getSession().setAttribute(Constant.GO_URL, go_url);
 			//判断是否是AJAX请求
 			if("XMLHttpRequest".equals(requestType)){
 				log.warn("AJAX请求..");
@@ -39,16 +36,8 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 				request.getRequestDispatcher("/member/login").forward(request, response);
 			}
 			return false;
-		}else {
-			if("XMLHttpRequest".equals(requestType)){
-				log.warn("AJAX请求..");
-				response.getWriter().write("yes");
-			}else{
-				log.warn("非AJAX请求..");
-				return true;
-			}
-			return false;
 		}
+		return true;
 	}
 	
 	@Override

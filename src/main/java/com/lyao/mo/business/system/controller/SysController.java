@@ -203,29 +203,12 @@ public class SysController {
 	 * @return
 	 */
 	@RequestMapping(value = "/member/systemTips/{type}",method = RequestMethod.GET)  
-	public ModelAndView doRegisterTips(@PathVariable("type") String type, @RequestParam(value="go_url",required=false) String go_url){ 
+	public ModelAndView doSystemTips(@PathVariable("type") String type, @RequestParam(value="go_url",required=false) String go_url){ 
 		ModelAndView md = new ModelAndView();
 		md.addObject("type", type);
 		md.addObject("go_url", go_url);
 		md.setViewName("system/system_tips");
 		return md;
-	}
-	/**
-	 * 判断用户是否已经登录
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping(value = "/member/system/check", method = RequestMethod.GET) 
-	@ResponseBody
-	public ModelMap checkLoginStatus(HttpServletRequest request){ 
-		ModelMap returnMap = new ModelMap(); 
-		if (CommonUtils.getCurrentUser(request) != null){
-			returnMap.put("flag", "yes");
-		}else {
-			returnMap.put("flag", "no");
-			request.getSession().setAttribute(Constant.GO_URL,request.getHeader("Referer"));
-		}
-		return returnMap;
 	}
 	
 }

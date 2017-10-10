@@ -1,6 +1,6 @@
 $(function() {
-	layui.use(['element', 'form'], function() {
-		var form = layui.form, element = layui.element;
+	layui.use(['form'], function() {
+		var form = layui.form;
 		// 自定义验证规则
 		form.verify({
 			title : function(value) {
