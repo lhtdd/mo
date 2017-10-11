@@ -70,11 +70,19 @@ public class SystemServiceImpl implements SystemService{
 		seluser = baseDao.selectOne("system.selectUserByName", username);
 		return seluser;
 	}
+	
 	@Override
 	public CurrentUser selectUserByID(String customerID) throws Exception {
 		CurrentUser seluser = null;
 		seluser = baseDao.selectOne("system.selectUserByID", customerID);
 		return seluser;
+	}
+	
+	@Override
+	public String selectAlias(String alias) throws Exception {
+		String id = null;
+		id = baseDao.selectOne("system.selectAlias", alias);
+		return id;
 	}
 	
 	@Override

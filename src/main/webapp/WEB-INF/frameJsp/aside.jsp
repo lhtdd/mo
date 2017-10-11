@@ -32,31 +32,60 @@
 		<li class="aside-bar-item">
 			<i class="iconfont icon-gongzuo"></i>
 			<span>工作</span>
-			<div class="aside-bar-content scrollbar">工作</div>
+			<div class="aside-bar-content scrollbar-aside">
+				<div class="scrollbar-wrap">
+					<ul>
+						
+					</ul>
+				</div>
+			</div>
 		</li>
 		<li class="aside-bar-item">
 			<i class="iconfont icon-yule"></i>
 			<span>娱乐</span>
-			<div class="aside-bar-content scrollbar">
-				
+			<div class="aside-bar-content scrollbar-aside">
+				<div class="scrollbar-wrap">
+					<ul>
+						
+					</ul>
+				</div>
 			</div>
 		</li>
 		<li class="aside-bar-item">
 			<i class="iconfont icon-wenjian-copy"></i>
 			<span>知识</span>
-			<div class="aside-bar-content scrollbar">知识</div>
+			<div class="aside-bar-content scrollbar-aside">
+				<div class="scrollbar-wrap">
+					<ul>
+						
+					</ul>
+				</div>
+			</div>
 		</li>
 		<li class="aside-bar-item">
 			<i class="iconfont icon-shenghuo2"></i>
 			<span>生活</span>
-			<div class="aside-bar-content scrollbar">生活</div>
+			<div class="aside-bar-content scrollbar-aside">
+				<div class="scrollbar-wrap">
+					<ul>
+						
+					</ul>
+				</div>
+			</div>
 		</li>
 		<li class="aside-bar-item">
 			<i class="iconfont icon-qita1"></i>
 			<span>其它</span>
+			<div class="aside-bar-content scrollbar-aside">
+				<div class="scrollbar-wrap">
+					<ul>
+						
+					</ul>
+				</div>
+			</div>
 		</li>
 		<li class="aside-bar-add">
-			<i class="iconfont icon-xinjian2 url-add"></i>
+			<i class="iconfont icon-xinjian2 btn-url-add"></i>
 		</li>
 	</ul>
 </div>

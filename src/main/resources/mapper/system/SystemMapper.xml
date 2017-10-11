@@ -32,10 +32,16 @@
 	    where c.id = #{customerID}
 	</select>
 	<!-- 新增用户 -->
+	<select id="selectAlias" parameterType="String" resultType="String">
+	    select 
+	     id
+	    from t_customer 
+	    where alias = #{alias}
+	</select>
 	<insert id="insertIntoCustomer" parameterType="RegisterInfo">
 		insert into
-		t_customer(id,username,password,registerType,status,validCode,intime)
-		values(#{id},#{username},#{password},#{registerType},#{status},#{validCode},#{intime})
+		t_customer(id,username,alias,password,registerType,status,validCode,intime)
+		values(#{id},#{username},#{alias},#{password},#{registerType},#{status},#{validCode},#{intime})
 	</insert>
 	<insert id="insertIntoCustomerDetail" parameterType="RegisterInfo">
 		insert into

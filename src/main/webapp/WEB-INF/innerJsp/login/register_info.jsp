@@ -9,14 +9,21 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label">邮箱</label>
 					<div class="layui-input-inline">
-						<input name="username" placeholder="邮箱"
+						<input name="username" placeholder="请输入常用邮箱"
 							lay-verify="required|email" class="layui-input" type="text">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">昵称</label>
+					<div class="layui-input-inline">
+						<input name="alias" placeholder="起个昵称吧"
+							lay-verify="required" class="layui-input" type="text">
 					</div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">密码</label>
 					<div class="layui-input-inline">
-						<input name="password" placeholder="请输入密码" lay-verify="required"
+						<input name="password" placeholder="请设置密码" lay-verify="required"
 							class="layui-input" type="password">
 					</div>
 				</div>

@@ -29,6 +29,13 @@ public interface SystemService {
 	 */
 	CurrentUser selectUserByID(String customerID) throws Exception;
 	/**
+	 * 根据昵称查询ID,以判断该昵称是否存在，用户注册时使用
+	 * @param alias
+	 * @return
+	 * @throws Exception
+	 */
+	String selectAlias(String alias) throws Exception;
+	/**
 	 * 注册用户--手机
 	 * @param customer
 	 * @return

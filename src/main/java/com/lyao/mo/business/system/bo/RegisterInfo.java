@@ -6,6 +6,7 @@ public class RegisterInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private String username;
+	private String alias;
 	private String password;
 	private String sex;
 	private String registerType;
@@ -33,6 +34,12 @@ public class RegisterInfo implements Serializable {
 		this.username = username;
 	}
 
+	public String getAlias() {
+		return alias;
+	}
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
 	public String getPassword() {
 		return password;
 	}

@@ -54,6 +54,12 @@
 	<mvc:interceptors>
 		<!-- 多个拦截器，顺序执行 -->
 		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/favicon.ico"/>
+			<mvc:exclude-mapping path="/staticSource/**"/>
+			<bean class="com.lyao.mo.container.interceptor.AutoLoginInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
 			<mvc:mapping path="/**/authc" />
 			<bean class="com.lyao.mo.container.interceptor.AuthenticationInterceptor"></bean>
 		</mvc:interceptor>

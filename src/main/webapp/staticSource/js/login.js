@@ -3,7 +3,7 @@ $(function() {
 		var form = layui.form;
 		// 自定义验证规则
 		form.verify({
-			title : function(value) {
+			title : function(value,item) {
 				if (value.length < 5) {
 					return '标题至少得5个字符啊';
 				}

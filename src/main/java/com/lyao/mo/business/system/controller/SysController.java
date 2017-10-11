@@ -3,6 +3,7 @@ package com.lyao.mo.business.system.controller;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -60,7 +61,7 @@ public class SysController {
 	@RequestMapping(value = "/member/login",method = RequestMethod.POST)  
 	@ResponseBody
 	public ModelMap doLogin(@RequestParam String username, @RequestParam String password, 
-			@RequestParam String validCode, HttpServletRequest request){ 
+			@RequestParam String validCode,@RequestParam String rememberMe, HttpServletRequest request, HttpServletResponse response){ 
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
 		String flag = null;
@@ -74,6 +75,10 @@ public class SysController {
 				if (resultFlag.equals("1")){
 					flag = "yes";
 					go_url = CommonUtils.getGoURL(request);
+					//记录密码等
+					if (rememberMe.equals("1")){
+						CommonUtils.saveLoginCookies(response, username, password);
+					}
 					//保存登录信息
 					request.getSession().setAttribute(Constant.CURRENT_USER, MapUtils.getObject(resultMap,"seluser"));
 				//认证失败	
@@ -160,6 +165,39 @@ public class SysController {
 		md.put("registerType", customer.getRegisterType());
 		return md;
 	}
+	
+	/**
+	 * 查询该用户的昵称是否已存在
+	 * @param alias
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/member/userInfo/alias",method = RequestMethod.GET)
+	@ResponseBody
+	public ModelMap checkAlias(String alias, HttpServletRequest request){ 
+		ModelMap md = new ModelMap();
+		String id = null;
+		String flag = null;
+		String message = null;
+		try {
+			id = systemServiceImpl.selectAlias(alias);
+			if (StringUtils.isNotBlank(id)){
+				flag = "no";  
+				log.warn("昵称:" + alias + "已经存在");
+				message = "该昵称已存在";
+			}else{
+				flag = "yes";
+			}
+		} catch (Exception e) {
+			flag = "no";  
+			message = "查询异常,请稍后再试";
+			log.warn("查询异常");
+		}
+		md.put("flag", flag);
+		md.put("message", message);
+		return md;
+	}
+	
 	/**
 	 * 
 	 * @param validCode

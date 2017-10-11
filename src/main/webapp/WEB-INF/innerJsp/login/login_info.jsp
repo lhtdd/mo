@@ -8,7 +8,7 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label">用户名</label>
 					<div class="layui-input-inline">
-						<input name="username" lay-verify="required" placeholder="请输入用户名"
+						<input name="username" lay-verify="required" placeholder="昵称/邮箱"
 							class="layui-input" type="text">
 					</div>
 				</div>
