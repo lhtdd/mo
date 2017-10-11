@@ -53,9 +53,9 @@ public class CommonUtils {
 	 */
 	public static void saveLoginCookies(HttpServletResponse response,
 			String username, String password) throws UnsupportedEncodingException {
-		Cookie cookie1 = new Cookie("USERACCOUNT", URLEncoder.encode(
+		Cookie cookie1 = new Cookie(Constant.COOKIE_USERNAME, URLEncoder.encode(
 				username, "UTF-8"));
-		Cookie cookie2 = new Cookie("USERPWD", URLEncoder.encode(
+		Cookie cookie2 = new Cookie(Constant.COOKIE_PASSWORD, URLEncoder.encode(
 				password, "UTF-8"));
 		cookie1.setMaxAge(24 * 60 * 60);
 		cookie2.setMaxAge(24 * 60 * 60);
