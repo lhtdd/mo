@@ -13,6 +13,7 @@
 .aside-bar > li:hover{
 	color: #FF6600;
 	background-color: #FFFFFF;
+	cursor: default;
 }
 .aside-bar > li:hover .aside-bar-content{
 	display: block;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script type="text/javascript" src="${ctxStatic }/js/aside/aside.js?r=<%=Math.random() %>"></script>
 <div class="aside">
 	<ul class="aside-bar">
 		<li class="aside-bar-collect">
@@ -84,8 +85,8 @@
 				</div>
 			</div>
 		</li>
-		<li class="aside-bar-add">
-			<i class="iconfont icon-xinjian2 btn-url-add"></i>
+		<li class="aside-bar-add btn-url-add">
+			<i class="iconfont icon-xinjian2"></i>
 		</li>
 	</ul>
 </div>

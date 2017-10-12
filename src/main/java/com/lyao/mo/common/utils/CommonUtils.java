@@ -44,22 +44,4 @@ public class CommonUtils {
 		}
 		return go_url;
 	}
-	/**
-	 * 保存登录名，密码用以自动登录，有效期1天
-	 * @param response
-	 * @param userName
-	 * @param password
-	 * @throws UnsupportedEncodingException
-	 */
-	public static void saveLoginCookies(HttpServletResponse response,
-			String username, String password) throws UnsupportedEncodingException {
-		Cookie cookie1 = new Cookie(Constant.COOKIE_USERNAME, URLEncoder.encode(
-				username, "UTF-8"));
-		Cookie cookie2 = new Cookie(Constant.COOKIE_PASSWORD, URLEncoder.encode(
-				password, "UTF-8"));
-		cookie1.setMaxAge(24 * 60 * 60);
-		cookie2.setMaxAge(24 * 60 * 60);
-		response.addCookie(cookie1);
-		response.addCookie(cookie2);
-	}
 }
