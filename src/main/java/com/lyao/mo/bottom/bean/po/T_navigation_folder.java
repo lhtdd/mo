@@ -7,6 +7,7 @@ public class T_navigation_folder implements Serializable {
 	private Integer id;
 	private String customerid;
 	private String navigationname;
+	private String navigationicon;
 	private Integer sort;
 	private Date updatetime;
 	private String type;
@@ -29,6 +30,12 @@ public class T_navigation_folder implements Serializable {
 	}
 	public String getNavigationname(){
 		return navigationname;
+	}
+	public String getNavigationicon() {
+		return navigationicon;
+	}
+	public void setNavigationicon(String navigationicon) {
+		this.navigationicon = navigationicon;
 	}
 	public void setSort(Integer sort){
 		this.sort=sort;

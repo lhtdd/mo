@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration> 
-    <!-- <settings>   
-		<setting name="cacheEnabled" value="true"/>   
-		<setting name="lazyLoadingEnabled" value="true"/>   
-		<setting name="multipleResultSetsEnabled" value="true"/>   
+    <settings>   
+    	<!-- // 懒加载 
+    	// resultMap中的association和collection标签具有延迟加载的功能。
+		// 延迟加载的意思是说，在关联查询时，利用延迟加载，先加载主信息。使用关联信息时再去加载关联信息。
+		<setting name="lazyLoadingEnabled" value="true"/>   // 默认是false
+		<setting name="aggressiveLazyLoading" value="false"/> // 积极的懒加载，false的话按需加载，默认是true -->
+		// 二级缓存
+		<setting name="cacheEnabled" value="true"/>   // 默认是false
+		<!-- <setting name="multipleResultSetsEnabled" value="true"/>   
 		<setting name="useColumnLabel" value="true"/>   
 		<setting name="useGeneratedKeys" value="false"/>   
 		<setting name="enhancementEnabled" value="false"/>   
 		<setting name="defaultExecutorType" value="SIMPLE"/>   
-		<setting name="defaultStatementTimeout" value="25000"/>   
-    </settings> --> 
+		<setting name="defaultStatementTimeout" value="25000"/> -->   
+    </settings> 
     <typeAliases>
     	<typeAlias alias="RegisterInfo" type="com.lyao.mo.business.system.bo.RegisterInfo" /> 
     	<typeAlias alias="CurrentUser" type="com.lyao.mo.business.system.bo.CurrentUser" /> 
+    	<typeAlias alias="t_navigation_folder" type="com.lyao.mo.bottom.bean.po.T_navigation_folder" /> 
+    	<typeAlias alias="t_navigation_url" type="com.lyao.mo.bottom.bean.po.T_navigation_url" /> 
     </typeAliases>
  
     

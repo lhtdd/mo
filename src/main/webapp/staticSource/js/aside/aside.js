@@ -1,6 +1,6 @@
 $(function() {
 	// aside.jsp 加载完成后，自动请求所登录用户的数据
-	$.ajax({
+	/*$.ajax({
 	    url:'member/login',
 	    type:'POST',
 	    async:true,
@@ -14,8 +14,8 @@ $(function() {
 	        	layer.msg(data.errorMsg);
 	        }
 	    }
-	});
+	});*/
 	$(".btn-url-add").click(function(){
-		
+		layer.msg("1");
 	})
 });

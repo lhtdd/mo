@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="navigation">
+	<!-- 开启二级缓存 各属性默认-->
+	<cache></cache>
+	<!-- 查询系统预设的导航夹 -->
+	<select id="selectNavigationFolder" resultType="t_navigation_folder">
+		select * from t_navigation_folder where type = 1 order by sort asc
+	</select>
+	
+	<select id="selectURLByCUSIDANDNAVID" parameterType="map" resultType="t_navigation_url">
+		select * from t_navigation_url where customerid = #{customerID} and navigationid = #{navigationID} order by intime desc
+	</select>
+	
+	<select id="selectURLByHits" parameterType="map" resultType="t_navigation_url">
+		select * from t_navigation_url where customerid = #{customerID} order by hits desc limit 0,#{amount}
+	</select>
+	
+	<insert id="saveURL" parameterType="t_navigation_url">
+		insert into t_navigation_url(customerid,navigationid,urlimage,urlname,url,intime,updatetime,accesstime,remark)
+		values(
+		#{customerid},
+		#{navigationid},
+		#{urlimage},
+		#{urlname},
+		#{url},
+		#{intime},
+		#{updatetime},
+		#{accesstime},
+		#{remark})
+	</insert>
+	
+	<update id="updateURL" parameterType="t_navigation_url">
+		update t_navigation_url
+		<set>
+			<if test="navigationid != null">
+				navigationid = #{navigationid},
+			</if>
+			<if test="urlname != null">
+				urlname = #{urlname},
+			</if>
+			<if test="url != null">
+				url = #{url},
+			</if>
+			<if test="updatetime != null">
+				updatetime = #{updatetime},
+			</if>
+			<if test="accesstime != null">
+				accesstime = #{accesstime},
+			</if>
+			<if test="hits != null">
+				hits = #{hits},
+			</if>
+			<if test="remark != null">
+				remark = #{remark},
+			</if>
+		</set>
+		<where>
+			id = #{id}
+		</where>
+	</update>
+	
+	<delete id="deleteURL" parameterType="String">
+		delete from t_navigation_url 
+		<where>
+		 	id = #{id}
+		</where>
+	</delete>
+	
+</mapper>
