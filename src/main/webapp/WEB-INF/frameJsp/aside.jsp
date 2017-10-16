@@ -13,7 +13,7 @@
 				<div class="scrollbar-wrap">
 					<ul>
 						<li class="url-item">
-							<div class="url-content" style="background:url(../image/taobao.ico) no-repeat left center;">
+							<div class="url-content" style="background:url(${ctxStatic }/image/taobao.ico) no-repeat left center;">
 								<a class="url-info" href="https://www.taobao.com" target="_blank"><em title="淘宝网">淘宝网</em></a>
 								<div class="url-edit">
 									<i class='iconfont icon-xiugai fs12'></i>

@@ -11,6 +11,7 @@ public class T_navigation_url implements Serializable {
 	private String urlimage;
 	private String urlname;
 	private String url;
+	private Integer type;
 	private Integer sort;
 	private Date intime;
 	private Date updatetime;
@@ -53,6 +54,12 @@ public class T_navigation_url implements Serializable {
 	}
 	public String getUrl(){
 		return url;
+	}
+	public Integer getType() {
+		return type;
+	}
+	public void setType(Integer type) {
+		this.type = type;
 	}
 	public void setSort(Integer sort){
 		this.sort=sort;

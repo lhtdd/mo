@@ -13,17 +13,22 @@
 	</select>
 	
 	<select id="selectURLByHits" parameterType="map" resultType="t_navigation_url">
-		select * from t_navigation_url where customerid = #{customerID} order by hits desc limit 0,#{amount}
+		select * from t_navigation_url where customerid = #{customerID} and type = 2 order by hits desc limit 0,#{amount}
+	</select>
+	
+	<select id="selectURLByNAVIDForSys" parameterType="map" resultType="t_navigation_url">
+		select * from t_navigation_url where navigationid = #{navigationID} and type = 1 order by sort asc
 	</select>
 	
 	<insert id="saveURL" parameterType="t_navigation_url">
-		insert into t_navigation_url(customerid,navigationid,urlimage,urlname,url,intime,updatetime,accesstime,remark)
+		insert into t_navigation_url(customerid,navigationid,urlimage,urlname,url,type,intime,updatetime,accesstime,remark)
 		values(
 		#{customerid},
 		#{navigationid},
 		#{urlimage},
 		#{urlname},
 		#{url},
+		#{type},
 		#{intime},
 		#{updatetime},
 		#{accesstime},
@@ -58,6 +63,10 @@
 		<where>
 			id = #{id}
 		</where>
+	</update>
+	<!-- 访问URL则更新其点击次数及访问时间 -->
+	<update id="updateURLForHits" parameterType="map">
+		update t_navigation_url set hits = hits + 1 , accesstime = #{accesstime} where id = #{id}
 	</update>
 	
 	<delete id="deleteURL" parameterType="String">

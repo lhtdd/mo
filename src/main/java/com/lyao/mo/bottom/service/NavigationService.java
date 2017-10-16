@@ -42,6 +42,15 @@ public interface NavigationService {
 	boolean updateURLByURLID(T_navigation_url navURL) throws Exception;
 	
 	/**
+	 * 更新某条记录的访问时间及点击次数
+	 * @param accesstime
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	boolean updateURLForHits(String accesstime, Integer id) throws Exception;
+	
+	/**
 	 * 删除一个URL
 	 * @param urlid
 	 * @return
