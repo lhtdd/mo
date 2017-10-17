@@ -21,6 +21,7 @@ public class NotepadController {
 	@RequestMapping(value = "/index",method = RequestMethod.GET)  
 	public ModelAndView notepadHome(HttpServletResponse response){  
 		ModelAndView md = new ModelAndView();
+		
 		md.setViewName("notepad/notepad");
 		return md;
 	}   
