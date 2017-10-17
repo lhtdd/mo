@@ -16,18 +16,21 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		// POST请求直接放过
-		if (request.getMethod().equalsIgnoreCase("POST")){
-			return true;
-		}
-		if (request.getSession().getAttribute(Constant.GO_URL) != null){
-			return true;
-		}
 		String go_url = request.getHeader("Referer");
 		log.warn("请求来自：" + go_url);
 		//从浏览器直接访问可能为NULL
 		if (go_url == null){
 			return true;
+		}
+		// POST请求直接放过
+		if (request.getMethod().equalsIgnoreCase("POST")){
+			return true;
+		}
+		String historyURL = (String) request.getSession().getAttribute(Constant.GO_URL);
+		if ( historyURL != null){
+			if (go_url.endsWith("/member/login") || go_url.endsWith("/member/register") || historyURL.equals(go_url)){
+				return true;
+			}
 		}
 		// 记录来时的URL
 		request.getSession().setAttribute(Constant.GO_URL, go_url);
