@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -291,5 +292,21 @@ public class SysController {
 		md.setViewName("system/system_tips");
 		return md;
 	}
-
+	
+	/**
+	 * 退出操作
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value = "/loginOut", method = RequestMethod.GET)
+	public ModelAndView doLoginOut(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView md = new ModelAndView();
+		String go_url = request.getHeader("Referer");
+		HttpSession session = request.getSession();
+        session.invalidate();
+        CookiesUtil.delectCookieByName(request, response, Constant.COOKIE_USERNAME);
+		md.setViewName("redirect:" + go_url);
+		return md;
+	}
 }

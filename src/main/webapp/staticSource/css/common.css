@@ -33,8 +33,19 @@ body, html {
 	text-align: center;
 }
 
+.pr{
+	right: 0px;
+}
+
 .wdfull {
 	width: 100%;
+}
+
+.wd40 {
+	width: 40px;
+}
+.wd100 {
+	width: 100px;
 }
 /* ³£ÓÃ×ÖÌå */
 .fs18{

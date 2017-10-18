@@ -12,6 +12,9 @@
 	width: 1000px;
 	position: relative;
 }
+.current-module{
+	border-bottom: 3px solid #99CC33;
+}
 /* LOGO图片 */
 .logo{
 	position: absolute;
@@ -25,15 +28,15 @@
 .nav-ul .nav-ul-item{
 	float: left;
 	position: relative;
+	z-index: 1
 }
-.nav-ul .nav-ul-item >a{
+.nav-ul .nav-ul-item .item-title{
 	display: inline-block;
 	line-height: 50px;
 	color: #99CC33;
-	width: 100px;
 	text-align: center;
 }
-.nav-ul .nav-ul-item:hover >a{
+.nav-ul .nav-ul-item:hover .item-title{
 	background-color: #99CC33;
 	color: #ffffff;
 	text-decoration: none;
@@ -53,9 +56,11 @@
 /* 列表分项 */
 .subnav{
 	position: absolute;
-	width: 200px;
 	background-color: #99CC33;
 	display: none;
+}
+.subnav-notepad{
+	width: 200px;
 }
 /* 登录注册等，个人信息 */
 .user{
@@ -65,6 +70,19 @@
 	color: #99CC33;
 	font-size: 14px;
 }
-.user a{
-	color: #99CC33;
+.subnav-userInfo{
+	right: 0px;
+	width: 100px;
+}
+.subnav-userInfo >a{
+	display: block;
+	text-align: center;
+	color: #FFFFFF;
+	height: 30px;
+	line-height: 30px;
+}
+.subnav-userInfo >a:hover{
+	background-color: #98d233;
+	font-weight: bold;
+	
 }

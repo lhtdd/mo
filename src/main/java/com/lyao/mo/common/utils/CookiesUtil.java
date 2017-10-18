@@ -83,8 +83,7 @@ public class CookiesUtil {
 	 * @param response
 	 * @param list
 	 */
-	@SuppressWarnings("unused")
-	private void delectCookieByName(HttpServletRequest request,
+	public static void delectCookieByName(HttpServletRequest request,
 			HttpServletResponse response, String deleteKey)
 			throws NullPointerException {
 		Map<String, Cookie> cookieMap = ReadCookieMap(request);

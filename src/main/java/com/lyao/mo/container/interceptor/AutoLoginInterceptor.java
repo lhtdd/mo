@@ -50,8 +50,13 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
-		super.postHandle(request, response, handler, modelAndView);
+		if (modelAndView != null){
+			String go_module = modelAndView.getViewName();
+			log.info("返回地址:"+ go_module);
+			if (StringUtils.isNotBlank(go_module)){
+				request.setAttribute(Constant.CURRENT_MODULE, go_module.split("/")[0]);
+			}
+		}
 	}
 
 	@Override
