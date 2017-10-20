@@ -29,5 +29,7 @@
 		<%@ include file="../../frameJsp/footer.jsp" %> --%> 
 	</div>
 	<!-- 弹出层部分 -->
+	<%@ include file="../../frameJsp/login_pop.jsp" %> 
+	<%@ include file="../../frameJsp/hidden_info.jsp" %> 
 </body>
 </html>

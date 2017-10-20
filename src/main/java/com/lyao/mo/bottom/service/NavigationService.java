@@ -14,7 +14,7 @@ public interface NavigationService {
 	 * @return
 	 * @throws Exception
 	 */
-	Map<String,List<T_navigation_url>> selectURLByCusID(String customerID) throws Exception;
+	Map<String, Map<String, Object>> selectURLByCusID(String customerID) throws Exception;
 	
 	/**
 	 * 更具用户ID及某个导航夹ID查询其下的URL

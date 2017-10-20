@@ -3,9 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <% String path = request.getContextPath();     
-   String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; %>
+   String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+   String  url = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath()+request.getServletPath().substring(0,request.getServletPath().lastIndexOf("/")+1);  
+   if (request.getQueryString()!=null){   
+	   url+="?"+request.getQueryString();           
+	} 
+%>
 <c:set var="ctx" value="${pageContext.request.contextPath }"></c:set>
 <c:set var="ctxStatic" value="${pageContext.request.contextPath }/staticSource"></c:set>
+<c:set var="currentURL" value="<%=url %>"></c:set>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

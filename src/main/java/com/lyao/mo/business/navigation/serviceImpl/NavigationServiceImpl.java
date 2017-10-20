@@ -6,14 +6,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.lyao.mo.bottom.bean.po.T_navigation_folder;
 import com.lyao.mo.bottom.bean.po.T_navigation_url;
 import com.lyao.mo.bottom.dao.CommonBaseDao;
 import com.lyao.mo.bottom.service.NavigationService;
-
+@Service
 public class NavigationServiceImpl implements NavigationService {
 
 	private final Logger log = Logger.getLogger(NavigationServiceImpl.class);
@@ -21,35 +23,42 @@ public class NavigationServiceImpl implements NavigationService {
 	private CommonBaseDao baseDao;
 
 	@Override
-	public Map<String, List<T_navigation_url>> selectURLByCusID(
+	public Map<String, Map<String, Object>> selectURLByCusID(
 			String customerID) throws Exception {
-		Map<String, List<T_navigation_url>> urlMap = new LinkedHashMap<String, List<T_navigation_url>>();
+		Map<String, Map<String, Object>> returnMap = new LinkedHashMap<String, Map<String, Object>>();
 		List<T_navigation_folder> navFolders = null;
 		navFolders = (ArrayList<T_navigation_folder>) baseDao
 				.selectList("navigation.selectNavigationFolder");
 		for (T_navigation_folder navFolder : navFolders) {
-			List<T_navigation_url> navURLS = null;
+			Map<String, Object> urlMap = new LinkedHashMap<String,  Object>();
+			urlMap.put("folderID", navFolder.getId());
+			urlMap.put("folderIcon", navFolder.getNavigationicon());
+			urlMap.put("folderName", navFolder.getNavigationname());
+			List<T_navigation_url> navURLS = new ArrayList<T_navigation_url>();
 			HashMap<String, Object> paramMap = new HashMap<String, Object>();
-			paramMap.put("customerID", customerID);
 			paramMap.put("navigationID", navFolder.getId());
-			if (navFolder.getId().equals("1")) {
-				paramMap.put("amount", "10");
-				navURLS = baseDao.selectList("navigation.selectURLByHits",
-						paramMap);
-			} else {
-				navURLS = baseDao.selectList(
-						"navigation.selectURLByCUSIDANDNAVID", paramMap);
+			if (StringUtils.isNotBlank(customerID)){
+				paramMap.put("customerID", customerID);
+				if (navFolder.getId() == 1 ) {
+					paramMap.put("amount", 10);
+					navURLS = baseDao.selectList("navigation.selectURLByHits",
+							paramMap);
+				} else {
+					navURLS = baseDao.selectList(
+							"navigation.selectURLByCUSIDANDNAVID", paramMap);
+				}
 			}
 			// 如果为空，则查询系统预设的地址
-			if (navURLS == null) {
+			if (navURLS == null || navURLS.size() == 0) {
 				navURLS = baseDao.selectList(
 						"navigation.selectURLByNAVIDForSys", paramMap);
 			}
 			if (navURLS != null && navURLS.size() > 0) {
-				urlMap.put(String.valueOf(navFolder.getId()), navURLS);
+				urlMap.put("URLS", navURLS);
 			}
+			returnMap.put(navFolder.getNavigationname(), urlMap);
 		}
-		return urlMap;
+		return returnMap;
 	}
 
 	@Override

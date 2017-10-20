@@ -3,7 +3,6 @@
 <script type="text/javascript" src="${ctxStatic }/js/header/header.js?r=<%=Math.random() %>"></script>
 <script type="text/javascript">
 	$(function() {
-		
 		$(".nav .nav-ul-item >a").each(function() {
 			$this = $(this);
 			if ($this.hasClass("${current_module}")) {
@@ -34,7 +33,6 @@
 				<ul class="nav-ul">
 					<li class="nav-ul-item">
 						<span>你好，${user.alias }</span>
-						<input id = "current_userID" type="hidden" value="${user.id }">
 					</li>
 					<li class="nav-ul-item">
 						<span class="item-title wd40"><i class="layui-icon">&#xe614;</i></span> 
