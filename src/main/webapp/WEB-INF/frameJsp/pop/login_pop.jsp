@@ -10,7 +10,7 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label">用户名</label>
 				<div class="layui-input-inline">
-					<input name="username" lay-verify="required" placeholder="邮箱"
+					<input name="username" lay-verify="required|email" placeholder="邮箱"
 						class="layui-input" type="text">
 				</div>
 			</div>
@@ -35,6 +35,7 @@
 			</div>
 			<div class="layui-form-item login-btn-div">
 				<input type="checkbox"  name="rememberMe" title="自动登录" value="1">
+				<input type="hidden"  name="from_url" value="${currentURL }">
 				<button class="layui-btn login-btn" lay-submit lay-filter="login_form">登录</button>
 			</div>
 		</form>

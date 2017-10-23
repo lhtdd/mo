@@ -1,5 +1,6 @@
 package com.lyao.mo.business.navigation.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.lyao.mo.bottom.bean.po.T_navigation_folder;
 import com.lyao.mo.bottom.service.NavigationService;
 import com.lyao.mo.business.system.bo.CurrentUser;
 import com.lyao.mo.common.utils.Constant;
@@ -66,6 +68,27 @@ public class NavigationController {
 		md.put("flag", flag);
 		md.put("errorMsg", errorMsg);
 		md.put("navFolder",returnMap);
+		return md;
+	}
+	
+	@RequestMapping(value = "/folderName",method = RequestMethod.GET)
+	@ResponseBody
+	public ModelMap selectNavigationFolder(){
+		ModelMap md = new ModelMap();
+		String errorMsg = null;
+		String flag = null;
+		List<T_navigation_folder> navFolders = null;
+		try {
+			navFolders = navigationServiceImpl.selectNavigationFolder();
+			flag = "yes";
+		} catch (Exception e) {
+			log.error("获取分类文件夹失败");
+			flag = "no";
+			errorMsg = "获取分类位置失败";
+		}
+		md.put("flag", flag);
+		md.put("errorMsg", errorMsg);
+		md.put("navFolders",navFolders);
 		return md;
 	}
 }

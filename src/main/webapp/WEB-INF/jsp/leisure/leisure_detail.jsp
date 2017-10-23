@@ -29,6 +29,8 @@
 		<%@ include file="../../frameJsp/footer.jsp" %> 
 	</div>
 	<!-- 弹出层部分  返回顶部等-->
-	<%@ include file="../../frameJsp/fix_top.jsp" %> 
+	<%@ include file="../../frameJsp/pop/fix_top.jsp" %> 
+	<%@ include file="../../frameJsp/pop/login_pop.jsp" %>
+	<%@ include file="../../frameJsp/hidden_info.jsp" %>
 </body>
 </html>

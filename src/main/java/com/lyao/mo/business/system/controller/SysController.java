@@ -73,6 +73,7 @@ public class SysController {
 			@RequestParam String password,
 			@RequestParam String validCode,
 			@RequestParam(value = "rememberMe", required = false) String rememberMe,
+			@RequestParam(value = "from_url", required = false) String from_url,
 			HttpServletRequest request, HttpServletResponse response) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
@@ -88,7 +89,12 @@ public class SysController {
 				// 认证成功
 				if (resultFlag.equals("1")) {
 					flag = "yes";
-					go_url = CommonUtils.getGoURL(request);
+					//页面弹出层登录
+					if (StringUtils.isNotBlank(from_url)){
+						go_url = from_url;
+					}else {
+						go_url = CommonUtils.getGoURL(request);
+					}
 					// 记录密码等
 					if (StringUtils.isNotBlank(rememberMe) && rememberMe.equals("1")) {
 						CookiesUtil.setCookie(response,

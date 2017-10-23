@@ -77,7 +77,15 @@ public class NavigationServiceImpl implements NavigationService {
 		}
 		return navURLS;
 	}
-
+	
+	@Override
+	public List<T_navigation_folder> selectNavigationFolder() throws Exception {
+		List<T_navigation_folder> navFolders = null;
+		navFolders = (ArrayList<T_navigation_folder>) baseDao
+				.selectList("navigation.selectNavigationFolder");
+		return navFolders;
+	}
+	
 	@Override
 	public boolean saveURL(T_navigation_url navURL) throws Exception {
 		boolean flag = false;

@@ -27,7 +27,7 @@ $(function() {
 	})
 	// 编辑器
 	var notepadHeight = document.body.clientHeight*0.8*0.94;
-	layui.use('layedit', function() {
+	layui.use(['layedit'], function() {
 		var layedit = layui.layedit, $ = layui.jquery;
 		// 构建一个默认的编辑器
 		var index = layedit.build('notepad', {

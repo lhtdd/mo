@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <% String path = request.getContextPath();     
    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-   String  url = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath()+request.getServletPath().substring(0,request.getServletPath().lastIndexOf("/")+1);  
+   String  url = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getAttribute("javax.servlet.forward.request_uri").toString();  
    if (request.getQueryString()!=null){   
 	   url+="?"+request.getQueryString();           
 	} 

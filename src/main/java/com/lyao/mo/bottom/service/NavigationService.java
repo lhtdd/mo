@@ -3,6 +3,7 @@ package com.lyao.mo.bottom.service;
 import java.util.List;
 import java.util.Map;
 
+import com.lyao.mo.bottom.bean.po.T_navigation_folder;
 import com.lyao.mo.bottom.bean.po.T_navigation_url;
 
 
@@ -24,6 +25,13 @@ public interface NavigationService {
 	 * @throws Exception
 	 */
 	List<T_navigation_url> selectURLForNormal(String customerID, String navigationID) throws Exception;
+	
+	/**
+	 * 查询系统预设的几个导航夹
+	 * @return
+	 * @throws Exception
+	 */
+	List<T_navigation_folder> selectNavigationFolder() throws Exception;
 	
 	/**
 	 * 新增一个URL
