@@ -73,14 +73,18 @@ $(function() {
 			        		var option = "<option value='"+values.id+"'>"+values.navigationname+"</option>"
 			        		$("#navigation-add-pop select[name='targetFolder']").append(option);
 			        	})
-			        	form.render('select', 'navigation_add_form'); 
-			        	/*var index = layer.open({
+			        	
+			        	layui.use('form', function() {
+			        		var form = layui.form;
+			        		form.render('select', 'navigation_add_form'); 
+			        	})
+			        	var index = layer.open({
 			        		type : 1,
 			        		content : $('#navigation-add-pop'),
 			        		title:'收藏地址',
-			        		area: ['600px', '300px'],
+			        		area: ['600px', '350px'],
 			        		shadeClose : true,
-			        	});*/
+			        	});
 			        }else{
 			        	layer.msg(data.errorMsg);
 			        }
