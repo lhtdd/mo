@@ -1,6 +1,5 @@
 package com.lyao.mo.bottom.bean.po;
 import java.io.Serializable;
-import java.util.Date;
 
 
 public class T_navigation_url implements Serializable {
@@ -13,11 +12,27 @@ public class T_navigation_url implements Serializable {
 	private String url;
 	private Integer type;
 	private Integer sort;
-	private Date intime;
-	private Date updatetime;
-	private Date accesstime;
+	private String intime;
+	private String updatetime;
+	private String accesstime;
 	private Integer hits;
 	private String remark;
+	
+	public T_navigation_url(){
+		this.id = 0;
+		this.customerid = null;
+		this.navigationid = 0;
+		this.urlimage = null;
+		this.urlname = null;
+		this.url = null;
+		this.type = 2;
+		this.sort = 0;
+		this.intime = null;
+		this.updatetime = null;
+		this.accesstime = null;
+		this.hits = 0;
+		this.remark = null;
+	}
 
 	public void setId(Integer id){
 		this.id=id;
@@ -67,22 +82,22 @@ public class T_navigation_url implements Serializable {
 	public Integer getSort(){
 		return sort;
 	}
-	public void setIntime(Date intime){
+	public void setIntime(String intime){
 		this.intime=intime;
 	}
-	public Date getIntime(){
+	public String getIntime(){
 		return intime;
 	}
-	public void setUpdatetime(Date updatetime){
+	public void setUpdatetime(String updatetime){
 		this.updatetime=updatetime;
 	}
-	public Date getUpdatetime(){
+	public String getUpdatetime(){
 		return updatetime;
 	}
-	public void setAccesstime(Date accesstime){
+	public void setAccesstime(String accesstime){
 		this.accesstime=accesstime;
 	}
-	public Date getAccesstime(){
+	public String getAccesstime(){
 		return accesstime;
 	}
 	public void setHits(Integer hits){

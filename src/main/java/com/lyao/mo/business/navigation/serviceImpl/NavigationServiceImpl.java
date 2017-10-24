@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -87,8 +88,18 @@ public class NavigationServiceImpl implements NavigationService {
 	}
 	
 	@Override
-	public boolean saveURL(T_navigation_url navURL) throws Exception {
+	public boolean insertURL(String urlname, String url, String navid, String customerid) throws Exception {
 		boolean flag = false;
+		T_navigation_url navURL = new T_navigation_url();
+		navURL.setCustomerid(customerid);
+		navURL.setNavigationid(Integer.valueOf(navid));
+		navURL.setUrlimage("");
+		navURL.setUrlname(urlname);
+		navURL.setUrl(url);
+		navURL.setType(2);
+		navURL.setRemark("");
+		DateTime dt1 = new DateTime();
+		navURL.setIntime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
 		int saveFlag = baseDao.insert("navigation.saveURL", navURL);
 		if (saveFlag == 1){
 			flag = true;
@@ -97,8 +108,15 @@ public class NavigationServiceImpl implements NavigationService {
 	}
 
 	@Override
-	public boolean updateURLByURLID(T_navigation_url navURL) throws Exception {
+	public boolean updateURLByURLID(String urlname, String url, String navid, Integer urlid) throws Exception {
 		boolean flag = false;
+		T_navigation_url navURL = new T_navigation_url();
+		navURL.setId(urlid);
+		navURL.setNavigationid(Integer.valueOf(navid));
+		navURL.setUrlname(urlname);
+		navURL.setUrl(url);
+		DateTime dt1 = new DateTime();
+		navURL.setUpdatetime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
 		int updateFlag = baseDao.update("navigation.updateURL", navURL);
 		if (updateFlag == 1){
 			flag = true;

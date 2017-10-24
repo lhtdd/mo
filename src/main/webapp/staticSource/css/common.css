@@ -153,28 +153,3 @@ body, html {
 	background-color: #EE6600;
 	width: 160px;
 }
-/* ÃÌº”URLµÿ÷∑  */
-#navigation-add-pop{
-	display: none;
-}
-.navigation-add-title{
-	margin: 10px 0 20px 30px;
-}
-.navigation-add-title i{
-	color: #99CC33;
-	font-size: 28px;
-}
-.navigation-add-title span{
-	margin-left: 20px;
-	font-size: 16px;
-	color: #333333;
-}
-.navigation-add-form .url-input{
-	width: 470px;
-}
-.navigation-add-form .folder-select{
-	width: 100px;
-	height: 30px;
-	vertical-align: middle;
-	
-}

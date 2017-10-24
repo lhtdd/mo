@@ -18,7 +18,7 @@ public interface NavigationService {
 	Map<String, Map<String, Object>> selectURLByCusID(String customerID) throws Exception;
 	
 	/**
-	 * 更具用户ID及某个导航夹ID查询其下的URL
+	 * 根据用户ID及某个导航夹ID查询其下的URL
 	 * @param customerID
 	 * @param navigationID
 	 * @return
@@ -39,7 +39,7 @@ public interface NavigationService {
 	 * @return
 	 * @throws Exception
 	 */
-	boolean saveURL(T_navigation_url navURL) throws Exception;
+	boolean insertURL(String urlname, String url, String navid, String customerid) throws Exception;
 	
 	/**
 	 * 修改一个URL信息
@@ -47,7 +47,7 @@ public interface NavigationService {
 	 * @return
 	 * @throws Exception
 	 */
-	boolean updateURLByURLID(T_navigation_url navURL) throws Exception;
+	boolean updateURLByURLID(String urlname, String url, String navid, Integer urlid) throws Exception;
 	
 	/**
 	 * 更新某条记录的访问时间及点击次数

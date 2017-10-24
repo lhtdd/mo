@@ -1,7 +1,7 @@
 $(function() {
+	// aside.jsp 加载完成后，自动请求所登录用户的数据
 	loadurl();
 	function loadurl(){
-		// aside.jsp 加载完成后，自动请求所登录用户的数据
 		var cusID = $("#moci").val();
 		var url = 'navigation/url';
 		if (cusID){
@@ -57,7 +57,7 @@ $(function() {
 		    }
 		});
 	}
-	//点击收藏按钮--登录
+	//添加url
 	$(".btn-url-add").click(function(){
 		var cusID = $("#moci").val();
 		if (cusID){
@@ -69,28 +69,53 @@ $(function() {
 			    dataType:'json',
 			    success:function(data){
 			    	if (data.flag == 'yes'){
+			    		//查询收藏夹
+			    		var $select_folder = $("#navigation-add-pop select[name='targetFolder']");
+			    		$select_folder.empty();
+			    		$select_folder.append("<option value='' class='cl75' selected = 'selected'>请选择分类收藏夹</option>");
 			        	$.each(data.navFolders,function(key,values){ 
 			        		var option = "<option value='"+values.id+"'>"+values.navigationname+"</option>"
-			        		$("#navigation-add-pop select[name='targetFolder']").append(option);
+			        		$select_folder.append(option);
 			        	})
-			        	
-			        	layui.use('form', function() {
-			        		var form = layui.form;
-			        		form.render('select', 'navigation_add_form'); 
-			        	})
-			        	var index = layer.open({
+			        	//打开添加窗口
+			        	var collect_pop_index = layer.open({
 			        		type : 1,
 			        		content : $('#navigation-add-pop'),
 			        		title:'收藏地址',
-			        		area: ['600px', '350px'],
+			        		area: ['600px', '330px'],
 			        		shadeClose : true,
 			        	});
+			        	
+			        	// 点击添加按钮
+			        	layui.use('form', function() {
+			        		var form = layui.form;
+			        		form.on('submit(navigation_add_form)', function(data) {
+			        			$.ajax({
+			        			    url:'navigation/urloperation/authc',
+			        			    type:'POST',
+			        			    async:true,
+			        			    data:data.field,
+			        			    timeout:5000,
+			        			    dataType:'json',
+			        			    success:function(data){
+			        			        if (data.flag == 'yes'){
+			        			        	layer.close(collect_pop_index);
+			        			        	layer.msg("添加完成");
+			        			        }else{
+			        			        	layer.msg(data.errorMsg);
+			        			        }
+			        			    }
+			        			});
+			        			return false;
+			        		});
+			        	})
 			        }else{
 			        	layer.msg(data.errorMsg);
 			        }
 			    }
 			})
 		}else {
+			// 要求登录先
 			var index = layer.open({
 				type : 1,
 				content : $('#login-pop'),
@@ -98,7 +123,7 @@ $(function() {
 				area: ['500px', '340px'],
 				shadeClose : true,
 			});
-
 		}
 	})
+	
 });

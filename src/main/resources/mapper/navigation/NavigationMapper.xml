@@ -21,7 +21,7 @@
 	</select>
 	
 	<insert id="saveURL" parameterType="t_navigation_url">
-		insert into t_navigation_url(customerid,navigationid,urlimage,urlname,url,type,intime,updatetime,accesstime,remark)
+		insert into t_navigation_url(customerid,navigationid,urlimage,urlname,url,type,intime,remark)
 		values(
 		#{customerid},
 		#{navigationid},
@@ -30,8 +30,6 @@
 		#{url},
 		#{type},
 		#{intime},
-		#{updatetime},
-		#{accesstime},
 		#{remark})
 	</insert>
 	

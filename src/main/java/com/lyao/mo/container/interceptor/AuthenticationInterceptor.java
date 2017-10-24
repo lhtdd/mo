@@ -29,7 +29,9 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 			//判断是否是AJAX请求
 			if("XMLHttpRequest".equals(requestType)){
 				log.warn("AJAX请求..");
-			    response.getWriter().write("no");
+				String returnMsg = "{\"flag\":\"no\",\"errorMsg\":\"登录超时,请重新登录后操作\"}";
+			    response.getWriter().write(returnMsg);
+			    response.getWriter().flush();
 			}else{
 				log.warn("非AJAX请求..");
 				//非ajax请求，例如从浏览器直接输入则跳转至整个登录页面

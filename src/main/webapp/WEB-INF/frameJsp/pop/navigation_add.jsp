@@ -24,15 +24,14 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label">归类位置</label>
 				<div class="layui-input-inline">
-					<select class="folder-select" lay-ignore name="targetFolder" lay-verify="required" >
-						<option value="" class="clD2">请选择分类</option>
+					<select class="folder-select" lay-ignore name="targetFolder" lay-verify="required">
 					</select>
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<div class="layui-input-block">
-					<button class="layui-btn" lay-submit lay-filter="navigation_add_form">添加</button>
-					<button class="layui-btn" type="reset">取消</button>
+				<div class="layui-input-block navigation_add_btn">
+					<button class="layui-btn bgEE" lay-submit lay-filter="navigation_add_form">添加</button>
+					<button class="layui-btn bgEE" type="reset">重置</button>
 				</div>
 			</div>
 		</form>

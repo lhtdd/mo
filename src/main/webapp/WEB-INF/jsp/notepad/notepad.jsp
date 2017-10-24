@@ -18,7 +18,7 @@
 		<!-- 左侧导航栏 -->
 		<%@ include file="../../frameJsp/aside.jsp" %> 
 		<!-- 网页中部 -->
-		<div class="container">
+		<%-- <div class="container">
 	    	<!-- 左侧菜单栏 -->
 	    	<%@ include file="../../innerJsp/notepad/left_menu.jsp" %> 
 	    	<!-- 右侧主页面 -->    
@@ -26,7 +26,7 @@
 		</div>
 		<div class="clear"></div>
 		<!-- 网页底部 -->
-		<%@ include file="../../frameJsp/footer.jsp" %> 
+		<%@ include file="../../frameJsp/footer.jsp" %> --%> 
 	</div>
 	<!-- 弹出层部分 -->
 	<%@ include file="../../frameJsp/hidden_info.jsp" %> 
