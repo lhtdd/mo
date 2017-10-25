@@ -24,7 +24,7 @@ public interface NavigationService {
 	 * @return
 	 * @throws Exception
 	 */
-	List<T_navigation_url> selectURLForNormal(String customerID, String navigationID) throws Exception;
+	Map<String, List<T_navigation_url>> selectURLForNormal(String customerID, String navigationID) throws Exception;
 	
 	/**
 	 * 查询系统预设的几个导航夹

@@ -23,7 +23,7 @@ $(function() {
 									if (values.URLS != null){
 										str += "<div class='aside-bar-content scrollbar-aside'>";
 											str += "<div class='scrollbar-wrap'>";
-												str += "<ul>";
+												str += "<ul class='ul"+values.folderID+"'>";
 												$.each(values.URLS,function(index,url){
 													str += "<li class='url-item'>";
 														str += "<div class='url-content' style='background:url(/mo/staticSource/image/"+url.urlimage+") no-repeat left center;'>";
@@ -74,8 +74,11 @@ $(function() {
 			    		$select_folder.empty();
 			    		$select_folder.append("<option value='' class='cl75' selected = 'selected'>请选择分类收藏夹</option>");
 			        	$.each(data.navFolders,function(key,values){ 
-			        		var option = "<option value='"+values.id+"'>"+values.navigationname+"</option>"
-			        		$select_folder.append(option);
+			        		//过滤掉常用导航夹
+			        		if (values.id != '1'){
+			        			var option = "<option value='"+values.id+"'>"+values.navigationname+"</option>"
+			        			$select_folder.append(option);
+			        		}
 			        	})
 			        	//打开添加窗口
 			        	var collect_pop_index = layer.open({
@@ -90,6 +93,7 @@ $(function() {
 			        	layui.use('form', function() {
 			        		var form = layui.form;
 			        		form.on('submit(navigation_add_form)', function(data) {
+			        			var targent_Folder_id = data.field.targetFolder;
 			        			$.ajax({
 			        			    url:'navigation/urloperation/authc',
 			        			    type:'POST',
@@ -100,6 +104,7 @@ $(function() {
 			        			    success:function(data){
 			        			        if (data.flag == 'yes'){
 			        			        	layer.close(collect_pop_index);
+			        			        	refreshURL(targent_Folder_id);
 			        			        	layer.msg("添加完成");
 			        			        }else{
 			        			        	layer.msg(data.errorMsg);
@@ -126,49 +131,47 @@ $(function() {
 		}
 	})
 	//刷新用户下的某个收藏夹
-	function refreshURL(cusid,navid){
+	function refreshURL(navid){
 		$.ajax({
-		    url:'',
+		    url:"navigation/commonurl/"+navid+"/authc",
 		    type:'GET',
 		    async:true,
 		    timeout:5000,
 		    dataType:'json',
 		    success:function(data){
 		        if (data.flag == 'yes'){
-		        	$.each(data.navFolder,function(key,values){ 
-			        		var str = "<li class='aside-bar-item'>";
-					        		str += "<input type='hidden' name='cur_folder_id' value="+values.folderID+">";
-									str += "<i class='iconfont "+values.folderIcon+"'></i>";
-									str += "<span>"+values.folderName+"</span>";
-									if (values.URLS != null){
-										str += "<div class='aside-bar-content scrollbar-aside'>";
-											str += "<div class='scrollbar-wrap'>";
-												str += "<ul>";
-												$.each(values.URLS,function(index,url){
-													str += "<li class='url-item'>";
-														str += "<div class='url-content' style='background:url(/mo/staticSource/image/"+url.urlimage+") no-repeat left center;'>";
-															str += "<a class='url-info' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
-															str += "<input type='hidden' name='cur_url_id' value="+url.id+">";
-															str += "<div class='url-edit'>";
-																	str += "<i class='iconfont icon-xiugai fs12'></i>";
-																	str += "<div class='url-edit-tip'>";
-																		str += "<ul>";
-																			str += "<li>编辑</li>";
-																			str += "<li>删除</li>";
-																		str += "</ul>";
-																	str += "</div>";
-															str += "</div>";
-														str += "</div>";
-													str += "</li>";
-												})
-												str += "</ul>";
-											str += "</div>";
-										str += "</div>";
-									}
-									
-								str += "</li>";
-						$(".aside-bar-other").before(str);
-		        	})
+		        	if (data.newURLS.commonURLs != null){
+		        		$.each(data.newURLS,function(key,values){ 
+		        			if (values != null){
+		        				var $current_ul = null;
+		        				if (key == 'commonURLs'){
+		        					$current_ul = $(".aside-bar-item .ul1");
+		        				}else {
+		        					$current_ul = $(".aside-bar-item .ul"+navid);
+		        				}
+		        				$current_ul.empty();	
+		        				$.each(values,function(key,url){ 
+		        					var str = "";
+		        					str += "<li class='url-item'>";
+		        					str += "<div class='url-content' style='background:url(/mo/staticSource/image/"+url.urlimage+") no-repeat left center;'>";
+		        					str += "<a class='url-info' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
+		        					str += "<input type='hidden' name='cur_url_id' value="+url.id+">";
+		        					str += "<div class='url-edit'>";
+		        					str += "<i class='iconfont icon-xiugai fs12'></i>";
+		        					str += "<div class='url-edit-tip'>";
+		        					str += "<ul>";
+		        					str += "<li>编辑</li>";
+		        					str += "<li>删除</li>";
+		        					str += "</ul>";
+		        					str += "</div>";
+		        					str += "</div>";
+		        					str += "</div>";
+		        					str += "</li>";
+		        					$current_ul.append(str);
+		        				})
+		        			}
+		        		})
+		        	}
 		        	//重新绘制滚动条
 		        	$('.scrollbar-aside').niceScroll(".scrollbar-wrap", {cursorcolor : "#FF6600"}).resize();
 		        }else{

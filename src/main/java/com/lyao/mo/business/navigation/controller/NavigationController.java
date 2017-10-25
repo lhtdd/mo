@@ -11,6 +11,7 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -91,16 +92,16 @@ public class NavigationController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "/commonurl",method = RequestMethod.GET)
+	@RequestMapping(value = "/commonurl/{navid}/authc",method = RequestMethod.GET)
 	@ResponseBody
-	public ModelMap selectCommonUrl(@RequestParam String navid, HttpServletRequest request){
+	public ModelMap selectCommonUrl(@PathVariable String navid, HttpServletRequest request){
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
 		String flag = null;
 		CurrentUser curuser = (CurrentUser)request.getSession().getAttribute(Constant.CURRENT_USER);
-		List<T_navigation_url> commonURLs = null;
+		Map<String, List<T_navigation_url>> newURLS = null;
 		try {
-			commonURLs = navigationServiceImpl.selectURLForNormal(curuser.getId(), navid);
+			newURLS = navigationServiceImpl.selectURLForNormal(curuser.getId(), navid);
 			flag = "yes";
 		} catch (Exception e) {
 			log.error("刷新常用url失败", e);
@@ -109,7 +110,7 @@ public class NavigationController {
 		}
 		md.put("flag", flag);
 		md.put("errorMsg", errorMsg);
-		md.put("commonURLs",commonURLs);
+		md.put("newURLS",newURLS);
 		return md;
 	}
 	/**

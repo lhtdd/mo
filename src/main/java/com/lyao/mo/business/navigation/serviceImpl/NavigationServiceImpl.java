@@ -63,20 +63,38 @@ public class NavigationServiceImpl implements NavigationService {
 	}
 
 	@Override
-	public List<T_navigation_url> selectURLForNormal(String customerID,
+	public Map<String, List<T_navigation_url>> selectURLForNormal(String customerID,
 			String navigationID) throws Exception {
-		List<T_navigation_url> navURLS = null;
+		Map<String, List<T_navigation_url>> returnMap = new HashMap<String, List<T_navigation_url>>();
+		List<T_navigation_url> commonURLs = null;
+		List<T_navigation_url> targetNavURLs = null;
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("customerID", customerID);
 		paramMap.put("navigationID", navigationID);
-		navURLS = baseDao.selectList("navigation.selectURLByCUSIDANDNAVID",
+		paramMap.put("amount", 10);
+		commonURLs = baseDao.selectList("navigation.selectURLByHits",
 				paramMap);
-		// 如果为空，则查询系统预设的地址
-		if (navURLS == null) {
-			navURLS = baseDao.selectList("navigation.selectURLByNAVIDForSys",
+		if (commonURLs == null || commonURLs.size() == 0) {
+			commonURLs = baseDao.selectList("navigation.selectURLByNAVIDForSys",
 					paramMap);
 		}
-		return navURLS;
+		if (!navigationID.equals("1")){
+			targetNavURLs = baseDao.selectList("navigation.selectURLByCUSIDANDNAVID",
+					paramMap);
+			if (targetNavURLs == null || targetNavURLs.size() == 0) {
+				targetNavURLs = baseDao.selectList("navigation.selectURLByNAVIDForSys",
+						paramMap);
+			}
+		}
+		
+		if (commonURLs != null && commonURLs.size() > 0){
+			returnMap.put("commonURLs", commonURLs);
+		}
+		if (targetNavURLs != null && targetNavURLs.size() > 0){
+			returnMap.put("targetNavURLs", targetNavURLs);
+		}
+		// 如果为空，则查询系统预设的地址
+		return returnMap;
 	}
 	
 	@Override
