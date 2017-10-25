@@ -28,13 +28,12 @@ $(function() {
 													str += "<li class='url-item'>";
 														str += "<div class='url-content' style='background:url(/mo/staticSource/image/"+url.urlimage+") no-repeat left center;'>";
 															str += "<a class='url-info' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
-															str += "<input type='hidden' name='cur_url_id' value="+url.id+">";
 															str += "<div class='url-edit'>";
 																	str += "<i class='iconfont icon-xiugai fs12'></i>";
 																	str += "<div class='url-edit-tip'>";
 																		str += "<ul>";
 																			str += "<li>编辑</li>";
-																			str += "<li>删除</li>";
+																			str += "<li onclick='deleteURL("+url.id+","+url.navigationid+")'>删除</li>";
 																		str += "</ul>";
 																	str += "</div>";
 															str += "</div>";
@@ -179,5 +178,28 @@ $(function() {
 		        }
 		    }
 		});
+	}
+	// 删除url
+	function deleteURL(urlid, navid){
+		layer.alert("asd");
+		/*$.ajax({
+		    url:'navigation/urloperation/authc',
+		    type:'POST',
+		    async:true,
+		    data:{
+		    	_method:'DELETE',
+		    	'urlid':urlid
+		    },
+		    timeout:5000,
+		    dataType:'json',
+		    success:function(data){
+		        if (data.flag == 'yes'){
+		        	refreshURL(navid);
+		        	layer.msg("已删除");
+		        }else{
+		        	layer.msg(data.errorMsg);
+		        }
+		    }
+		});*/
 	}
 });
