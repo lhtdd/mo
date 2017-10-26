@@ -70,15 +70,18 @@ public class NavigationServiceImpl implements NavigationService {
 		List<T_navigation_url> targetNavURLs = null;
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("customerID", customerID);
-		paramMap.put("navigationID", navigationID);
 		paramMap.put("amount", 10);
 		commonURLs = baseDao.selectList("navigation.selectURLByHits",
 				paramMap);
 		if (commonURLs == null || commonURLs.size() == 0) {
+			//查常用导航夹下的系统预设URL
+			paramMap.put("navigationID", "1");
 			commonURLs = baseDao.selectList("navigation.selectURLByNAVIDForSys",
 					paramMap);
 		}
-		if (!navigationID.equals("1")){
+		//如果当前要查询的不是常用文件夹则需要再查询一下该文件夹
+		if (!"1".equals(navigationID)){
+			paramMap.put("navigationID", navigationID);
 			targetNavURLs = baseDao.selectList("navigation.selectURLByCUSIDANDNAVID",
 					paramMap);
 			if (targetNavURLs == null || targetNavURLs.size() == 0) {

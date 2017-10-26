@@ -18,7 +18,7 @@ public interface NavigationService {
 	Map<String, Map<String, Object>> selectURLByCusID(String customerID) throws Exception;
 	
 	/**
-	 * 根据用户ID及某个导航夹ID查询其下的URL
+	 * 根据用户ID及某个导航夹ID查询其下的URL,同时查询常用导航夹下的URL
 	 * @param customerID
 	 * @param navigationID
 	 * @return

@@ -20,31 +20,32 @@ $(function() {
 					        		str += "<input type='hidden' name='cur_folder_id' value="+values.folderID+">";
 									str += "<i class='iconfont "+values.folderIcon+"'></i>";
 									str += "<span>"+values.folderName+"</span>";
-									if (values.URLS != null){
-										str += "<div class='aside-bar-content scrollbar-aside'>";
-											str += "<div class='scrollbar-wrap'>";
-												str += "<ul class='ul"+values.folderID+"'>";
-												$.each(values.URLS,function(index,url){
-													str += "<li class='url-item'>";
-														str += "<div class='url-content' style='background:url(/mo/staticSource/image/"+url.urlimage+") no-repeat left center;'>";
-															str += "<a class='url-info' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
-															str += "<div class='url-edit'>";
-																	str += "<i class='iconfont icon-xiugai fs12'></i>";
-																	str += "<div class='url-edit-tip'>";
-																		str += "<ul>";
-																			str += "<li>编辑</li>";
-																			str += "<li onclick='deleteURL("+url.id+","+url.navigationid+")'>删除</li>";
-																		str += "</ul>";
-																	str += "</div>";
-															str += "</div>";
-														str += "</div>";
-													str += "</li>";
-												})
-												str += "</ul>";
-											str += "</div>";
+									str += "<div class='aside-bar-content scrollbar-aside'>";
+										str += "<div class='scrollbar-wrap'>";
+											str += "<ul class='ul"+values.folderID+"'>";
+											if (values.URLS != null){
+														$.each(values.URLS,function(index,url){
+															str += "<li class='url-item'>";
+																str += "<div class='url-content' style='background:url(/mo/staticSource/image/"+url.urlimage+") no-repeat left center;'>";
+																	str += "<a class='url-info' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
+																	if (url.type == '2'){
+																		str += "<div class='url-edit'>";
+																			str += "<i class='iconfont icon-xiugai fs12'></i>";
+																			str += "<div class='url-edit-tip'>";
+																				str += "<ul>";
+																					str += "<li>编辑</li>";
+																					str += "<li onclick='deleteURL("+url.id+","+url.navigationid+");'>删除</li>";
+																				str += "</ul>";
+																			str += "</div>";
+																		str += "</div>";
+																	}
+																str += "</div>";
+															str += "</li>";
+														})
+											}
+											str += "</ul>";
 										str += "</div>";
-									}
-									
+									str += "</div>";
 								str += "</li>";
 						$(".aside-bar-other").before(str);
 		        	})
@@ -129,60 +130,70 @@ $(function() {
 			});
 		}
 	})
-	//刷新用户下的某个收藏夹
-	function refreshURL(navid){
-		$.ajax({
-		    url:"navigation/commonurl/"+navid+"/authc",
-		    type:'GET',
-		    async:true,
-		    timeout:5000,
-		    dataType:'json',
-		    success:function(data){
-		        if (data.flag == 'yes'){
-		        	if (data.newURLS.commonURLs != null){
-		        		$.each(data.newURLS,function(key,values){ 
-		        			if (values != null){
-		        				var $current_ul = null;
-		        				if (key == 'commonURLs'){
-		        					$current_ul = $(".aside-bar-item .ul1");
-		        				}else {
-		        					$current_ul = $(".aside-bar-item .ul"+navid);
-		        				}
-		        				$current_ul.empty();	
-		        				$.each(values,function(key,url){ 
-		        					var str = "";
-		        					str += "<li class='url-item'>";
-		        					str += "<div class='url-content' style='background:url(/mo/staticSource/image/"+url.urlimage+") no-repeat left center;'>";
-		        					str += "<a class='url-info' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
-		        					str += "<input type='hidden' name='cur_url_id' value="+url.id+">";
-		        					str += "<div class='url-edit'>";
-		        					str += "<i class='iconfont icon-xiugai fs12'></i>";
-		        					str += "<div class='url-edit-tip'>";
-		        					str += "<ul>";
-		        					str += "<li>编辑</li>";
-		        					str += "<li>删除</li>";
-		        					str += "</ul>";
-		        					str += "</div>";
-		        					str += "</div>";
-		        					str += "</div>";
-		        					str += "</li>";
-		        					$current_ul.append(str);
-		        				})
-		        			}
-		        		})
-		        	}
-		        	//重新绘制滚动条
-		        	$('.scrollbar-aside').niceScroll(".scrollbar-wrap", {cursorcolor : "#FF6600"}).resize();
-		        }else{
-		        	layer.msg(data.errorMsg);
-		        }
-		    }
-		});
-	}
-	// 删除url
-	function deleteURL(urlid, navid){
-		layer.alert("asd");
-		/*$.ajax({
+});
+
+//刷新用户下的某个收藏夹
+function refreshURL(navid){
+	$.ajax({
+		url:"navigation/commonurl/"+navid+"/authc",
+		type:'GET',
+		async:true,
+		timeout:5000,
+		dataType:'json',
+		success:function(data){
+			if (data.flag == 'yes'){
+				if (data.newURLS.commonURLs != null){
+					$.each(data.newURLS,function(key,values){ 
+						if (values != null){
+							var $current_ul = null;
+							if (key == 'commonURLs'){
+								$current_ul = $(".aside-bar-item .ul1");
+							}else {
+								$current_ul = $(".aside-bar-item .ul"+navid);
+							}
+							$current_ul.empty();	
+							$.each(values,function(key,url){ 
+								var str = "";
+								str += "<li class='url-item'>";
+									str += "<div class='url-content' style='background:url(/mo/staticSource/image/"+url.urlimage+") no-repeat left center;'>";
+									str += "<a class='url-info' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
+									if (url.type == '2'){
+										str += "<div class='url-edit'>";
+											str += "<i class='iconfont icon-xiugai fs12'></i>";
+											str += "<div class='url-edit-tip'>";
+												str += "<ul>";
+													str += "<li>编辑</li>";
+													str += "<li onclick='deleteURL("+url.id+","+url.navigationid+");'>删除</li>";
+												str += "</ul>";
+											str += "</div>";
+										str += "</div>";
+									}
+									str += "</div>";
+								str += "</li>";
+								$current_ul.append(str);
+							})
+						}
+					})
+					// 如果目标导航夹为空则需要清空
+					if (data.newURLS.targetNavURLs == null){
+						$current_ul = $(".aside-bar-item .ul"+navid).empty();
+					}
+				}else {
+					$(".aside-bar-item .ul1").empty();
+					$current_ul = $(".aside-bar-item .ul"+navid).empty();
+				}
+				//重新绘制滚动条
+				$('.scrollbar-aside').niceScroll(".scrollbar-wrap", {cursorcolor : "#FF6600"}).resize();
+			}else{
+				layer.msg(data.errorMsg);
+			}
+		}
+	});
+}
+
+//删除url
+function deleteURL(urlid,navid){
+	$.ajax({
 		    url:'navigation/urloperation/authc',
 		    type:'POST',
 		    async:true,
@@ -200,6 +211,5 @@ $(function() {
 		        	layer.msg(data.errorMsg);
 		        }
 		    }
-		});*/
-	}
-});
+		});
+}
