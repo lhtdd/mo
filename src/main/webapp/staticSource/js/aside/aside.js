@@ -105,6 +105,7 @@ $(function() {
 			        			        if (data.flag == 'yes'){
 			        			        	layer.close(collect_pop_index);
 			        			        	refreshURL(targent_Folder_id);
+			        			        	clearNavigationAddForm();
 			        			        	layer.msg("添加完成");
 			        			        }else{
 			        			        	layer.msg(data.errorMsg);
@@ -131,6 +132,12 @@ $(function() {
 		}
 	})
 });
+
+//清空form的值
+function clearNavigationAddForm(){
+	$(".navigation-add-form").find("input[name='urlName']").val("");
+	$(".navigation-add-form").find("input[name='webLocation']").val("");
+}
 
 //刷新用户下的某个收藏夹
 function refreshURL(navid){
