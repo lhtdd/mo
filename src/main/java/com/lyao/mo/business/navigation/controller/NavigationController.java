@@ -217,9 +217,9 @@ public class NavigationController {
 	 * @param urlid
 	 * @return
 	 */
-	@RequestMapping(value = "/urloperation/authc",method = RequestMethod.GET) 
+	@RequestMapping(value = "/visiturl/{urlid}/authc",method = RequestMethod.GET) 
 	@ResponseBody
-	public ModelMap updateURLForHits(@RequestParam String urlid){ 
+	public ModelMap updateURLForHits(@PathVariable String urlid){ 
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
 		String flag = null;
@@ -243,4 +243,5 @@ public class NavigationController {
 		md.put("errorMsg", errorMsg);
 		return md;
 	}
+	
 }
