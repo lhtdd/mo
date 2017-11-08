@@ -7,7 +7,7 @@ public class T_navigation_url implements Serializable {
 	private Integer id;
 	private String customerid;
 	private Integer navigationid;
-	private String urlimage;
+	private byte[] urlimage;
 	private String urlname;
 	private String url;
 	private Integer type;
@@ -52,10 +52,10 @@ public class T_navigation_url implements Serializable {
 	public Integer getNavigationid(){
 		return navigationid;
 	}
-	public void setUrlimage(String urlimage){
+	public void setUrlimage(byte[] urlimage){
 		this.urlimage=urlimage;
 	}
-	public String getUrlimage(){
+	public byte[] getUrlimage(){
 		return urlimage;
 	}
 	public void setUrlname(String urlname){

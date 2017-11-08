@@ -34,6 +34,14 @@ public interface NavigationService {
 	List<T_navigation_folder> selectNavigationFolder() throws Exception;
 	
 	/**
+	 * 根据urlid获取其icon
+	 * @param urlID
+	 * @return
+	 * @throws Exception
+	 */
+	byte[] selectIcon(String urlID) throws Exception;
+	
+	/**
 	 * 新增一个URL
 	 * @param navURL
 	 * @return

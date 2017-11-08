@@ -5,8 +5,10 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class HttpConUtils {
+import java.util.logging.Logger;
 
+public class HttpConUtils {
+	private final static Logger log = Logger.getLogger(HttpConUtils.class.getName());
 	/**
 	 * 根据地址获得数据的字节流
 	 * 
@@ -15,18 +17,19 @@ public class HttpConUtils {
 	 * @return
 	 */
 	public static byte[] getImageFromNetByUrl(String strUrl) {
+		byte[] btImg = null;
 		try {
 			URL url = new URL(strUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setConnectTimeout(5 * 1000);
 			InputStream inStream = conn.getInputStream();// 通过输入流获取图片数据
-			byte[] btImg = readInputStream(inStream);// 得到图片的二进制数据
-			return btImg;
+			btImg = readInputStream(inStream);// 得到图片的二进制数据
 		} catch (Exception e) {
+			log.info("获取URL失败");
 			e.printStackTrace();
 		}
-		return null;
+		return btImg;
 	}
 
 	/**
@@ -50,7 +53,7 @@ public class HttpConUtils {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String dd = new String(HttpConUtils.getImageFromNetByUrl("http://webmagic.io/favicon.ico"));
+		String dd = new String(HttpConUtils.getImageFromNetByUrl("http://webmagic.io/favic.ico"));
 		System.out.println(dd);
 	}
 

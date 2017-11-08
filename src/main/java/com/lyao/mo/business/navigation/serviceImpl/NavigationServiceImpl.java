@@ -1,10 +1,16 @@
 package com.lyao.mo.business.navigation.serviceImpl;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.imageio.ImageIO;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -16,6 +22,7 @@ import com.lyao.mo.bottom.bean.po.T_navigation_folder;
 import com.lyao.mo.bottom.bean.po.T_navigation_url;
 import com.lyao.mo.bottom.dao.CommonBaseDao;
 import com.lyao.mo.bottom.service.NavigationService;
+import com.lyao.mo.common.utils.HttpConUtils;
 @Service
 public class NavigationServiceImpl implements NavigationService {
 
@@ -114,7 +121,13 @@ public class NavigationServiceImpl implements NavigationService {
 		T_navigation_url navURL = new T_navigation_url();
 		navURL.setCustomerid(customerid);
 		navURL.setNavigationid(Integer.valueOf(navid));
-		navURL.setUrlimage("");
+		byte[] urlImage = HttpConUtils.getImageFromNetByUrl("https://www.taobao.com/favicon.ico");
+		BufferedImage image = new BufferedImage(16, 16,BufferedImage.TYPE_INT_RGB );   
+		InputStream fis = new ByteArrayInputStream(urlImage);
+        image.getGraphics().drawImage(ImageIO.read(fis), 0, 0, 16, 16, null);
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ImageIO.write(image, "jpg", bos);
+		navURL.setUrlimage(bos.toByteArray());
 		navURL.setUrlname(urlname);
 		navURL.setUrl(url);
 		navURL.setType(2);
@@ -167,6 +180,14 @@ public class NavigationServiceImpl implements NavigationService {
 			flag = true;
 		}
 		return flag;
+	}
+
+	@Override
+	public byte[] selectIcon(String urlID) throws Exception {
+		byte[] urlIcon = null;
+		Map<String, Object> returnMap = baseDao.selectOne("navigation.selectURLIconByID", Integer.valueOf(urlID));
+		urlIcon = (byte[]) returnMap.get("imgBytes");
+		return urlIcon;
 	}
 
 }

@@ -26,7 +26,11 @@ $(function() {
 											if (values.URLS != null){
 														$.each(values.URLS,function(index,url){
 															str += "<li class='url-item'>";
-																str += "<div class='url-content' style='background:url(/mo/staticSource/image/"+url.urlimage+") no-repeat left center;'>";
+															if (url.urlimage == null || url.urlimage == ''){
+																str += "<div class='url-content' style='background:url(/mo/defaulticon.ico) no-repeat left center;'>";
+															}else {
+																str += "<div class='url-content' style='background:url(navigation/urlIcon/"+url.id+") no-repeat left center;'>";
+															}
 																	str += "<a class='url-info' onclick='visitURL("+url.id+")' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
 																	if (url.type == '2'){
 																		str += "<div class='url-edit'>";

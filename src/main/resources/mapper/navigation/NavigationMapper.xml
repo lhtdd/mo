@@ -20,6 +20,13 @@
 		select * from t_navigation_url where navigationid = #{navigationID} and type = 1 order by sort asc
 	</select>
 	
+	<resultMap type="java.util.Map" id="imgResultMap" >  
+		<result property="imgBytes" column="URLImage" jdbcType="BLOB"  typeHandler="org.apache.ibatis.type.BlobTypeHandler"/>  
+	</resultMap>
+	<select id="selectURLIconByID" parameterType="Integer" resultMap="imgResultMap">
+		select URLImage from t_navigation_url where id = #{urlID}
+	</select>
+	
 	<insert id="saveURL" parameterType="t_navigation_url">
 		insert into t_navigation_url(customerid,navigationid,urlimage,urlname,url,type,intime,remark)
 		values(

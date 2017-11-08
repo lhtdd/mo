@@ -80,7 +80,7 @@ public class HttpClientUtils {
 	}
 	
 	public static void main(String[] args) {
-		String html = HttpClientUtils.crawlingTargetHtml("http://webmagic.io");
+		String html = HttpClientUtils.crawlingTargetHtml("http://webmagic.io/favicon.ico");
 		System.out.println(html);
 	}
 }

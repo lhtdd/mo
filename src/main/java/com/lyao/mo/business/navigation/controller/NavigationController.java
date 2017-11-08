@@ -1,9 +1,14 @@
 package com.lyao.mo.business.navigation.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -112,6 +117,39 @@ public class NavigationController {
 		md.put("errorMsg", errorMsg);
 		md.put("newURLS",newURLS);
 		return md;
+	}
+	@RequestMapping("/urlIcon/{urlID}")
+	public String selectIcon(@PathVariable String urlID, HttpServletResponse response){
+		response.setContentType("text/html; charset=UTF-8");
+		response.setContentType("image/jpeg");
+		try {
+			byte[] urlIcon = navigationServiceImpl.selectIcon(urlID);
+            InputStream fis = new ByteArrayInputStream(urlIcon);
+            OutputStream os = response.getOutputStream();
+            try
+            {
+                int count = 0;
+                byte[] buffer = new byte[1024 * 1024];
+                while ((count = fis.read(buffer)) != -1)
+                    os.write(buffer, 0, count);
+                os.flush();
+            }
+            catch (IOException e)
+            {
+                log.error("将图片信息输出到客户端页面", e);
+            }
+            finally
+            {
+                if (os != null)
+                    os.close();
+                if (fis != null)
+                    fis.close();
+            }
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	/**
 	 * 新增url
