@@ -1,16 +1,10 @@
 package com.lyao.mo.business.navigation.serviceImpl;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.imageio.ImageIO;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -23,6 +17,11 @@ import com.lyao.mo.bottom.bean.po.T_navigation_url;
 import com.lyao.mo.bottom.dao.CommonBaseDao;
 import com.lyao.mo.bottom.service.NavigationService;
 import com.lyao.mo.common.utils.HttpConUtils;
+/**
+ * 
+ * @author lyao
+ *
+ */
 @Service
 public class NavigationServiceImpl implements NavigationService {
 
@@ -38,12 +37,12 @@ public class NavigationServiceImpl implements NavigationService {
 		navFolders = (ArrayList<T_navigation_folder>) baseDao
 				.selectList("navigation.selectNavigationFolder");
 		for (T_navigation_folder navFolder : navFolders) {
-			Map<String, Object> urlMap = new LinkedHashMap<String,  Object>();
+			Map<String, Object> urlMap = new LinkedHashMap<String,  Object>(6);
 			urlMap.put("folderID", navFolder.getId());
 			urlMap.put("folderIcon", navFolder.getNavigationicon());
 			urlMap.put("folderName", navFolder.getNavigationname());
 			List<T_navigation_url> navURLS = new ArrayList<T_navigation_url>();
-			HashMap<String, Object> paramMap = new HashMap<String, Object>();
+			HashMap<String, Object> paramMap = new HashMap<String, Object>(4);
 			paramMap.put("navigationID", navFolder.getId());
 			if (StringUtils.isNotBlank(customerID)){
 				paramMap.put("customerID", customerID);
@@ -72,10 +71,10 @@ public class NavigationServiceImpl implements NavigationService {
 	@Override
 	public Map<String, List<T_navigation_url>> selectURLForNormal(String customerID,
 			String navigationID) throws Exception {
-		Map<String, List<T_navigation_url>> returnMap = new HashMap<String, List<T_navigation_url>>();
+		Map<String, List<T_navigation_url>> returnMap = new HashMap<String, List<T_navigation_url>>(3);
 		List<T_navigation_url> commonURLs = null;
 		List<T_navigation_url> targetNavURLs = null;
-		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		HashMap<String, Object> paramMap = new HashMap<String, Object>(4);
 		paramMap.put("customerID", customerID);
 		paramMap.put("amount", 10);
 		commonURLs = baseDao.selectList("navigation.selectURLByHits",
@@ -121,13 +120,8 @@ public class NavigationServiceImpl implements NavigationService {
 		T_navigation_url navURL = new T_navigation_url();
 		navURL.setCustomerid(customerid);
 		navURL.setNavigationid(Integer.valueOf(navid));
-		byte[] urlImage = HttpConUtils.getImageFromNetByUrl("https://www.taobao.com/favicon.ico");
-		BufferedImage image = new BufferedImage(16, 16,BufferedImage.TYPE_INT_RGB );   
-		InputStream fis = new ByteArrayInputStream(urlImage);
-        image.getGraphics().drawImage(ImageIO.read(fis), 0, 0, 16, 16, null);
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ImageIO.write(image, "jpg", bos);
-		navURL.setUrlimage(bos.toByteArray());
+		byte[] urlImage = HttpConUtils.getImageFromNetByUrl("");
+		navURL.setUrlimage(urlImage);
 		navURL.setUrlname(urlname);
 		navURL.setUrl(url);
 		navURL.setType(2);
@@ -172,7 +166,7 @@ public class NavigationServiceImpl implements NavigationService {
 	public boolean updateURLForHits(String accesstime, Integer id)
 			throws Exception {
 		boolean flag = false;
-		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		HashMap<String, Object> paramMap = new HashMap<String, Object>(3);
 		paramMap.put("accesstime", accesstime);
 		paramMap.put("id", id);
 		int updateFlag = baseDao.delete("navigation.updateURLForHits", paramMap);

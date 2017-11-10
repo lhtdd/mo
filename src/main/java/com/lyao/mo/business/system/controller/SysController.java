@@ -25,7 +25,11 @@ import com.lyao.mo.business.system.bo.RegisterInfo;
 import com.lyao.mo.common.utils.CommonUtils;
 import com.lyao.mo.common.utils.Constant;
 import com.lyao.mo.common.utils.CookiesUtil;
-
+/**
+ * 
+ * @author lyao
+ *
+ */
 @Controller
 public class SysController {
 
@@ -87,7 +91,7 @@ public class SysController {
 						username, password);
 				String resultFlag = MapUtils.getString(resultMap, "flag");
 				// 认证成功
-				if (resultFlag.equals("1")) {
+				if ("1".equals(resultFlag)) {
 					flag = "yes";
 					//页面弹出层登录
 					if (StringUtils.isNotBlank(from_url)){
@@ -96,7 +100,7 @@ public class SysController {
 						go_url = CommonUtils.getGoURL(request);
 					}
 					// 记录密码等
-					if (StringUtils.isNotBlank(rememberMe) && rememberMe.equals("1")) {
+					if (StringUtils.isNotBlank(rememberMe) && "1".equals(rememberMe)) {
 						CookiesUtil.setCookie(response,
 								Constant.COOKIE_USERNAME, username, 60);
 					}
@@ -156,7 +160,7 @@ public class SysController {
 						errorMsg = "昵称已存在";
 					} else {
 						// 手机号注册
-						if (customer.getRegisterType().equals("1")) {
+						if ("1".equals(customer.getRegisterType())) {
 							registerFlag = systemServiceImpl
 									.insertMemberByMobile(customer);
 							if (registerFlag) {

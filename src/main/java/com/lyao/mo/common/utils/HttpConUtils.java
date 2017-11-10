@@ -53,7 +53,7 @@ public class HttpConUtils {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String dd = new String(HttpConUtils.getImageFromNetByUrl("http://webmagic.io/favic.ico"));
+		String dd = new String(HttpConUtils.getImageFromNetByUrl("http://webmagic.io/favicon.ico"));
 		System.out.println(dd);
 	}
 

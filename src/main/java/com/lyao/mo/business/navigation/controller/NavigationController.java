@@ -27,32 +27,43 @@ import com.lyao.mo.bottom.bean.po.T_navigation_url;
 import com.lyao.mo.bottom.service.NavigationService;
 import com.lyao.mo.business.system.bo.CurrentUser;
 import com.lyao.mo.common.utils.Constant;
+
+/**
+ * 页面导航功能
+ * @author lyao
+ *
+ */
 @Controller
 @RequestMapping("/navigation")
 public class NavigationController {
 	private final Logger log = Logger.getLogger(NavigationController.class);
 	@Autowired
 	private NavigationService navigationServiceImpl;
+
 	/**
 	 * 页面加载后，自动查询收藏的记录
+	 * 
 	 * @param customerID
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "/url",method = RequestMethod.GET)
+	@RequestMapping(value = "/url", method = RequestMethod.GET)
 	@ResponseBody
-	public ModelMap selectURL(@RequestParam(value = "cus", required = false) String customerID,HttpServletRequest request){
+	public ModelMap selectURL(
+			@RequestParam(value = "cus", required = false) String customerID,
+			HttpServletRequest request) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
 		String flag = null;
 		// 获取当前客户ID
-		if (StringUtils.isBlank(customerID)){
-			CurrentUser curuser = (CurrentUser)request.getSession().getAttribute(Constant.CURRENT_USER);
-			if(curuser != null){
+		if (StringUtils.isBlank(customerID)) {
+			CurrentUser curuser = (CurrentUser) request.getSession()
+					.getAttribute(Constant.CURRENT_USER);
+			if (curuser != null) {
 				customerID = curuser.getId();
 			}
 		}
-		//获取URL
+		// 获取URL
 		Map<String, Map<String, Object>> returnMap = null;
 		try {
 			returnMap = navigationServiceImpl.selectURLByCusID(customerID);
@@ -64,16 +75,18 @@ public class NavigationController {
 		}
 		md.put("flag", flag);
 		md.put("errorMsg", errorMsg);
-		md.put("navFolder",returnMap);
+		md.put("navFolder", returnMap);
 		return md;
 	}
+
 	/**
 	 * 获取系统预设的导航收藏夹
+	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/folderName",method = RequestMethod.GET)
+	@RequestMapping(value = "/folderName", method = RequestMethod.GET)
 	@ResponseBody
-	public ModelMap selectNavigationFolder(){
+	public ModelMap selectNavigationFolder() {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
 		String flag = null;
@@ -88,25 +101,30 @@ public class NavigationController {
 		}
 		md.put("flag", flag);
 		md.put("errorMsg", errorMsg);
-		md.put("navFolders",navFolders);
+		md.put("navFolders", navFolders);
 		return md;
 	}
+
 	/**
 	 * 刷新常用url
+	 * 
 	 * @param navid
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "/commonurl/{navid}/authc",method = RequestMethod.GET)
+	@RequestMapping(value = "/commonurl/{navid}/authc", method = RequestMethod.GET)
 	@ResponseBody
-	public ModelMap selectCommonUrl(@PathVariable String navid, HttpServletRequest request){
+	public ModelMap selectCommonUrl(@PathVariable String navid,
+			HttpServletRequest request) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
 		String flag = null;
-		CurrentUser curuser = (CurrentUser)request.getSession().getAttribute(Constant.CURRENT_USER);
+		CurrentUser curuser = (CurrentUser) request.getSession().getAttribute(
+				Constant.CURRENT_USER);
 		Map<String, List<T_navigation_url>> newURLS = null;
 		try {
-			newURLS = navigationServiceImpl.selectURLForNormal(curuser.getId(), navid);
+			newURLS = navigationServiceImpl.selectURLForNormal(curuser.getId(),
+					navid);
 			flag = "yes";
 		} catch (Exception e) {
 			log.error("刷新常用url失败", e);
@@ -115,62 +133,65 @@ public class NavigationController {
 		}
 		md.put("flag", flag);
 		md.put("errorMsg", errorMsg);
-		md.put("newURLS",newURLS);
+		md.put("newURLS", newURLS);
 		return md;
 	}
+
 	@RequestMapping("/urlIcon/{urlID}")
-	public String selectIcon(@PathVariable String urlID, HttpServletResponse response){
+	public String selectIcon(@PathVariable String urlID,
+			HttpServletResponse response) {
 		response.setContentType("text/html; charset=UTF-8");
 		response.setContentType("image/jpeg");
 		try {
 			byte[] urlIcon = navigationServiceImpl.selectIcon(urlID);
-            InputStream fis = new ByteArrayInputStream(urlIcon);
-            OutputStream os = response.getOutputStream();
-            try
-            {
-                int count = 0;
-                byte[] buffer = new byte[1024 * 1024];
-                while ((count = fis.read(buffer)) != -1)
-                    os.write(buffer, 0, count);
-                os.flush();
-            }
-            catch (IOException e)
-            {
-                log.error("将图片信息输出到客户端页面", e);
-            }
-            finally
-            {
-                if (os != null)
-                    os.close();
-                if (fis != null)
-                    fis.close();
-            }
+			InputStream fis = new ByteArrayInputStream(urlIcon);
+			OutputStream os = response.getOutputStream();
+			try {
+				int count = 0;
+				byte[] buffer = new byte[1024 * 1024];
+				while ((count = fis.read(buffer)) != -1) {
+					os.write(buffer, 0, count);
+				}
+				os.flush();
+			} catch (IOException e) {
+				log.error("将图片信息输出到客户端页面", e);
+			} finally {
+				if (os != null) {
+					os.close();
+				}
+				if (fis != null){
+					fis.close();
+				}
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
+
 	/**
 	 * 新增url
+	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/urloperation/authc",method = RequestMethod.POST) 
+	@RequestMapping(value = "/urloperation/authc", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelMap urlOperation(@RequestParam String urlName,
 			@RequestParam String webLocation,
-			@RequestParam String targetFolder,
-			HttpServletRequest request){ 
+			@RequestParam String targetFolder, HttpServletRequest request) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
 		String flag = null;
-		CurrentUser curuser = (CurrentUser)request.getSession().getAttribute(Constant.CURRENT_USER);
+		CurrentUser curuser = (CurrentUser) request.getSession().getAttribute(
+				Constant.CURRENT_USER);
 		boolean addFlag = false;
 		try {
-			addFlag = navigationServiceImpl.insertURL(urlName, webLocation, targetFolder, curuser.getId());
-			if (addFlag){
+			addFlag = navigationServiceImpl.insertURL(urlName, webLocation,
+					targetFolder, curuser.getId());
+			if (addFlag) {
 				flag = "yes";
-			}else {
+			} else {
 				log.error("新增URL失败");
 				flag = "no";
 				errorMsg = "新增URL失败";
@@ -184,29 +205,31 @@ public class NavigationController {
 		md.put("errorMsg", errorMsg);
 		return md;
 	}
+
 	/**
 	 * 修改url
+	 * 
 	 * @param urlName
 	 * @param webLocation
 	 * @param targetFolder
 	 * @param urlid
 	 * @return
 	 */
-	@RequestMapping(value = "/urloperation/authc",method = RequestMethod.PUT) 
+	@RequestMapping(value = "/urloperation/authc", method = RequestMethod.PUT)
 	@ResponseBody
 	public ModelMap urlOperation(@RequestParam String urlName,
 			@RequestParam String webLocation,
-			@RequestParam String targetFolder,
-			@RequestParam String urlid){ 
+			@RequestParam String targetFolder, @RequestParam String urlid) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
 		String flag = null;
 		boolean addFlag = false;
 		try {
-			addFlag = navigationServiceImpl.updateURLByURLID(urlName, webLocation, targetFolder, Integer.valueOf(urlid));
-			if (addFlag){
+			addFlag = navigationServiceImpl.updateURLByURLID(urlName,
+					webLocation, targetFolder, Integer.valueOf(urlid));
+			if (addFlag) {
 				flag = "yes";
-			}else {
+			} else {
 				log.error("更新URL失败");
 				flag = "no";
 				errorMsg = "更新URL失败";
@@ -220,23 +243,25 @@ public class NavigationController {
 		md.put("errorMsg", errorMsg);
 		return md;
 	}
+
 	/**
 	 * 删除URL
+	 * 
 	 * @param urlid
 	 * @return
 	 */
-	@RequestMapping(value = "/urloperation/authc",method = RequestMethod.DELETE) 
+	@RequestMapping(value = "/urloperation/authc", method = RequestMethod.DELETE)
 	@ResponseBody
-	public ModelMap urlOperation(@RequestParam String urlid){ 
+	public ModelMap urlOperation(@RequestParam String urlid) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
 		String flag = null;
 		boolean deleteFlag = false;
 		try {
 			deleteFlag = navigationServiceImpl.deleteURLByURLID(urlid);
-			if (deleteFlag){
+			if (deleteFlag) {
 				flag = "yes";
-			}else {
+			} else {
 				log.error("删除URL失败");
 				flag = "no";
 				errorMsg = "删除URL失败";
@@ -250,24 +275,28 @@ public class NavigationController {
 		md.put("errorMsg", errorMsg);
 		return md;
 	}
+
 	/**
 	 * 更新点击次数及访问时间
+	 * 
 	 * @param urlid
 	 * @return
 	 */
-	@RequestMapping(value = "/visiturl/{urlid}/authc",method = RequestMethod.GET) 
+	@RequestMapping(value = "/visiturl/{urlid}", method = RequestMethod.GET)
 	@ResponseBody
-	public ModelMap updateURLForHits(@PathVariable String urlid){ 
+	public ModelMap updateURLForHits(@PathVariable String urlid) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
 		String flag = null;
 		boolean updateFlag = false;
 		try {
 			DateTime dt1 = new DateTime();
-			updateFlag = navigationServiceImpl.updateURLForHits(dt1.toString("yyyy-MM-dd HH:mm:ss"), Integer.valueOf(urlid));
-			if (updateFlag){
+			updateFlag = navigationServiceImpl
+					.updateURLForHits(dt1.toString("yyyy-MM-dd HH:mm:ss"),
+							Integer.valueOf(urlid));
+			if (updateFlag) {
 				flag = "yes";
-			}else {
+			} else {
 				log.error("更新URL点击次数失败");
 				flag = "no";
 				errorMsg = "更新URL点击次数失败";
@@ -281,5 +310,5 @@ public class NavigationController {
 		md.put("errorMsg", errorMsg);
 		return md;
 	}
-	
+
 }

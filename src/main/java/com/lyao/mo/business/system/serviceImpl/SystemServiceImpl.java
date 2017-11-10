@@ -29,7 +29,7 @@ public class SystemServiceImpl implements SystemService{
 	@Override
 	public HashMap<String, Object> doLogin(String username, String password)
 			throws Exception {
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		HashMap<String, Object> resultMap = new HashMap<String, Object>(4);
 		String flag = null;
 		String errorMsg = null;
 		CurrentUser seluser = null;
@@ -148,7 +148,7 @@ public class SystemServiceImpl implements SystemService{
 			if (StringUtils.isNotBlank(selVaildCode)){
 				if (selVaildCode.equals(validCode)){
 					int i = 0;
-					HashMap<String, String> paramMap = new HashMap<String, String>();
+					HashMap<String, String> paramMap = new HashMap<String, String>(3);
 					paramMap.put("customerID", customerID);
 					DateTime dt1 = new DateTime();
 					paramMap.put("activationTime", dt1.toString("yyyy-MM-dd HH:mm:ss"));

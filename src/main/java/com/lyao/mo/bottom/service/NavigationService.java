@@ -7,7 +7,11 @@ import com.lyao.mo.bottom.bean.po.T_navigation_folder;
 import com.lyao.mo.bottom.bean.po.T_navigation_url;
 
 
-
+/**
+ * 
+ * @author lyao
+ *
+ */
 public interface NavigationService {
 	/**
 	 * 通过当前用户的ID查询其下的所有URL
@@ -43,7 +47,10 @@ public interface NavigationService {
 	
 	/**
 	 * 新增一个URL
-	 * @param navURL
+	 * @param urlname
+	 * @param url
+	 * @param navid
+	 * @param customerid
 	 * @return
 	 * @throws Exception
 	 */
@@ -51,7 +58,10 @@ public interface NavigationService {
 	
 	/**
 	 * 修改一个URL信息
-	 * @param navURL
+	 * @param urlname
+	 * @param url
+	 * @param navid
+	 * @param urlid
 	 * @return
 	 * @throws Exception
 	 */

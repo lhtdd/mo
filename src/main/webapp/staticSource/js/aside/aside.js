@@ -26,12 +26,18 @@ $(function() {
 											if (values.URLS != null){
 														$.each(values.URLS,function(index,url){
 															str += "<li class='url-item'>";
+															// 如果url前端图片为空则展示系统默认的icon
 															if (url.urlimage == null || url.urlimage == ''){
-																str += "<div class='url-content' style='background:url(/mo/defaulticon.ico) no-repeat left center;'>";
+																str += "<div class='url-content' style='background:url(/mo/staticSource/image/defaulticon.ico) no-repeat left center;'>";
 															}else {
 																str += "<div class='url-content' style='background:url(navigation/urlIcon/"+url.id+") no-repeat left center;'>";
 															}
-																	str += "<a class='url-info' onclick='visitURL("+url.id+")' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
+															// 如果是不是系统预设的url的在点击量统计及功能编辑上有所区分
+															if (url.type == '2') {
+																str += "<a class='url-info' onclick='visitURL("+url.id+")' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
+															} else {
+																str += "<a class='url-info' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
+															}
 																	if (url.type == '2'){
 																		str += "<div class='url-edit'>";
 																			str += "<i class='iconfont icon-xiugai fs12'></i>";
@@ -267,7 +273,7 @@ function deleteURL(urlid,navid){
 
 function visitURL(urlid){
 	$.ajax({
-	    url:"navigation/visiturl/" + urlid + "/authc",
+	    url:"navigation/visiturl/" + urlid,
 	    type:'GET',
 	    async:true,
 	    timeout:5000,
