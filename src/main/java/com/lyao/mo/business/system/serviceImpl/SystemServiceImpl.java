@@ -9,7 +9,7 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lyao.mo.bottom.bean.pojo.ValidCodeEmail;
+import com.lyao.mo.bottom.bean.bo.ValidCodeEmail;
 import com.lyao.mo.bottom.dao.CommonBaseDao;
 import com.lyao.mo.bottom.service.SystemService;
 import com.lyao.mo.business.system.bo.CurrentUser;
