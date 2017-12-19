@@ -5,11 +5,15 @@ import java.util.HashMap;
 import com.lyao.mo.business.system.bo.CurrentUser;
 import com.lyao.mo.business.system.bo.RegisterInfo;
 
-
+/**
+ * @author lyao
+ * @date
+ */
 public interface SystemService {
 	/**
 	 * 执行登录流程
-	 * @param curuser
+	 * @param username
+	 * @param password
 	 * @return
 	 * @throws Exception
 	 */

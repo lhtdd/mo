@@ -2,6 +2,10 @@ package com.lyao.mo.business.system.bo;
 
 import java.io.Serializable;
 
+/**
+ * @author lyao
+ * @date
+ */
 public class CurrentUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String id;

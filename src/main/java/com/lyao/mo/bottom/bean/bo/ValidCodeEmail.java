@@ -1,7 +1,10 @@
 package com.lyao.mo.bottom.bean.bo;
 
 import java.io.Serializable;
-
+/**
+ * @author lyao
+ * @date
+ */
 public class ValidCodeEmail implements Serializable {
 
     /**
