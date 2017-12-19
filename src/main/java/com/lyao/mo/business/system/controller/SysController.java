@@ -65,9 +65,6 @@ public class SysController {
 
 	/**
 	 * 登录
-	 * 
-	 * @param curuser
-	 * @param request
 	 * @return
 	 */
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
