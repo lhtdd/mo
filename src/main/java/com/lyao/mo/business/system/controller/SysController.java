@@ -177,7 +177,7 @@ public class SysController {
 								errorMsg = "注册失败";
 							}
 							// 邮箱注册
-						} else if (customer.getRegisterType().equals("2")) {
+						} else if ("2".equals(customer.getRegisterType())) {
 							registerFlag = systemServiceImpl
 									.insertMemberByEmail(customer);
 							if (registerFlag) {
