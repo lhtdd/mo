@@ -17,6 +17,9 @@ import com.lyao.mo.business.system.bo.CurrentUser;
 import com.lyao.mo.common.utils.Constant;
 import com.lyao.mo.common.utils.CookiesUtil;
 
+/**
+ * @author lyao
+ */
 public class AutoLoginInterceptor extends HandlerInterceptorAdapter {
 
 	private final Logger log = Logger.getLogger(AutoLoginInterceptor.class);

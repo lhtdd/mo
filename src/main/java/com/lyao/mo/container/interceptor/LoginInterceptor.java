@@ -10,6 +10,9 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import com.lyao.mo.common.utils.Constant;
 
 
+/**
+ * @author lyao
+ */
 public class LoginInterceptor extends HandlerInterceptorAdapter{
 	
 	private final Logger log = Logger.getLogger(LoginInterceptor.class);

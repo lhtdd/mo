@@ -12,6 +12,9 @@ import com.lyao.mo.common.utils.CommonUtils;
 import com.lyao.mo.common.utils.Constant;
 
 
+/**
+ * @author lyao
+ */
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 	
 	private final Logger log = Logger.getLogger(AuthenticationInterceptor.class);
