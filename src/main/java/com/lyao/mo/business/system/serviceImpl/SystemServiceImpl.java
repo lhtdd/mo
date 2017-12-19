@@ -39,7 +39,7 @@ public class SystemServiceImpl implements SystemService{
 			errorMsg = "用户名或密码错误";
 			log.warn("用户名:" + username + " 不存在");
 		}else{
-			if (seluser.getStatus() == 2){
+			if (2 == seluser.getStatus()){
 				String curPassword = MD5Utils.encryptPassword(password, username);
 				if (!seluser.getPassword().equals(curPassword)){
 					flag = "0";
@@ -49,7 +49,7 @@ public class SystemServiceImpl implements SystemService{
 					flag = "1";
 					resultMap.put("seluser", seluser);
 				}
-			}else if (seluser.getStatus() == 3){
+			}else if (3 == seluser.getStatus()){
 				flag = "0";
 				errorMsg = "该用户被禁止登陆";
 				log.warn("用户名:" + username + " 被禁止登陆");
@@ -97,7 +97,7 @@ public class SystemServiceImpl implements SystemService{
 		customer.setPassword(MD5Utils.encryptPassword(customer.getPassword(), customer.getUsername()));
 		i = baseDao.insert("system.insertIntoCustomer", customer);
 		j = baseDao.insert("system.insertIntoCustomerDetail", customer);
-		if (i+j == 2){
+		if (2 == i+j){
 			flag = true;
 		}
 		return flag;
@@ -121,7 +121,7 @@ public class SystemServiceImpl implements SystemService{
 		i = baseDao.insert("system.insertIntoCustomer", customer);
 		j = baseDao.insert("system.insertIntoCustomerDetail", customer);
 		//发送激活邮件
-		if(i+j == 2){
+		if(2 == i+j){
 			ValidCodeEmail validCodeEmail = new ValidCodeEmail();
 			validCodeEmail.setUserName(customer.getUsername());
 			validCodeEmail.setReceiver(customer.getUsername());
