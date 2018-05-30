@@ -1,15 +1,14 @@
 package com.lyao.mo.container.interceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.lyao.mo.business.system.bo.CurrentUser;
+import com.lyao.mo.common.utils.CommonUtils;
+import com.lyao.mo.common.utils.Constant;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.lyao.mo.business.system.bo.CurrentUser;
-import com.lyao.mo.common.utils.CommonUtils;
-import com.lyao.mo.common.utils.Constant;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 /**

@@ -25,7 +25,7 @@
 	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
 
-	<!-- 处理器设配器HandlerAdapter -->
+	<!-- 处理器适配器HandlerAdapter -->
 	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="messageConverters">
