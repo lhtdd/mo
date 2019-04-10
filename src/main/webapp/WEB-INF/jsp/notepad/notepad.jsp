@@ -9,6 +9,7 @@
 	<title>首页--随笔记事</title>
 	<link rel="stylesheet" href="${ctxStatic }/css/notepad/notepad.css">	
 	<script type="text/javascript" src="${ctxStatic }/js/notepad/notepad.js?r=<%=Math.random() %>"></script>
+	<script src="//cdn.ckeditor.com/4.11.3/full/ckeditor.js"></script>
 </head>
 <body>
 	<!-- 调整整个页面的宽高 -->
