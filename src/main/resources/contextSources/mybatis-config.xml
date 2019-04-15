@@ -17,8 +17,8 @@
 		<setting name="logImpl" value="LOG4J" />
     </settings> 
     <typeAliases>
-    	<typeAlias alias="RegisterInfo" type="com.lyao.mo.business.system.bo.RegisterInfo" /> 
-    	<typeAlias alias="CurrentUser" type="com.lyao.mo.business.system.bo.CurrentUser" /> 
+    	<typeAlias alias="RegisterInfo" type="com.lyao.mo.business.system.bean.RegisterInfo" />
+    	<typeAlias alias="CurrentUser" type="com.lyao.mo.business.system.bean.CurrentUser" />
     	<typeAlias alias="t_navigation_folder" type="com.lyao.mo.bottom.bean.po.T_navigation_folder" /> 
     	<typeAlias alias="t_navigation_url" type="com.lyao.mo.bottom.bean.po.T_navigation_url" /> 
     </typeAliases>

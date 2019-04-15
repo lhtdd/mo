@@ -1,30 +1,24 @@
 package com.lyao.mo.business.system.controller;
 
-import java.util.HashMap;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import com.lyao.mo.bottom.service.SystemService;
+import com.lyao.mo.business.system.bean.CurrentUser;
+import com.lyao.mo.business.system.bean.RegisterInfo;
+import com.lyao.mo.common.utils.CommonUtils;
+import com.lyao.mo.common.utils.Constant;
+import com.lyao.mo.common.utils.CookiesUtil;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.lyao.mo.bottom.service.SystemService;
-import com.lyao.mo.business.system.bo.CurrentUser;
-import com.lyao.mo.business.system.bo.RegisterInfo;
-import com.lyao.mo.common.utils.CommonUtils;
-import com.lyao.mo.common.utils.Constant;
-import com.lyao.mo.common.utils.CookiesUtil;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 /**
  * 
  * @author lyao

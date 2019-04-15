@@ -1,9 +1,9 @@
 package com.lyao.mo.bottom.service;
 
-import java.util.HashMap;
+import com.lyao.mo.business.system.bean.CurrentUser;
+import com.lyao.mo.business.system.bean.RegisterInfo;
 
-import com.lyao.mo.business.system.bo.CurrentUser;
-import com.lyao.mo.business.system.bo.RegisterInfo;
+import java.util.HashMap;
 
 /**
  * @author lyao

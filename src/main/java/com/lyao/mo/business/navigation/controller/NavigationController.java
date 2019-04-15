@@ -1,32 +1,26 @@
 package com.lyao.mo.business.navigation.controller;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.lyao.mo.bottom.bean.po.T_navigation_folder;
+import com.lyao.mo.bottom.bean.po.T_navigation_url;
+import com.lyao.mo.bottom.service.NavigationService;
+import com.lyao.mo.business.system.bean.CurrentUser;
+import com.lyao.mo.common.utils.Constant;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import com.lyao.mo.bottom.bean.po.T_navigation_folder;
-import com.lyao.mo.bottom.bean.po.T_navigation_url;
-import com.lyao.mo.bottom.service.NavigationService;
-import com.lyao.mo.business.system.bo.CurrentUser;
-import com.lyao.mo.common.utils.Constant;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 页面导航功能
@@ -54,7 +48,7 @@ public class NavigationController {
 			HttpServletRequest request) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
-		String flag = null;
+		String flag;
 		// 获取当前客户ID
 		if (StringUtils.isBlank(customerID)) {
 			CurrentUser curuser = (CurrentUser) request.getSession()
@@ -89,7 +83,7 @@ public class NavigationController {
 	public ModelMap selectNavigationFolder() {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
-		String flag = null;
+		String flag;
 		List<T_navigation_folder> navFolders = null;
 		try {
 			navFolders = navigationServiceImpl.selectNavigationFolder();
@@ -118,7 +112,7 @@ public class NavigationController {
 			HttpServletRequest request) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
-		String flag = null;
+		String flag;
 		CurrentUser curuser = (CurrentUser) request.getSession().getAttribute(
 				Constant.CURRENT_USER);
 		Map<String, List<T_navigation_url>> newURLS = null;
@@ -182,10 +176,10 @@ public class NavigationController {
 			@RequestParam String targetFolder, HttpServletRequest request) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
-		String flag = null;
+		String flag;
 		CurrentUser curuser = (CurrentUser) request.getSession().getAttribute(
 				Constant.CURRENT_USER);
-		boolean addFlag = false;
+		boolean addFlag;
 		try {
 			addFlag = navigationServiceImpl.insertURL(urlName, webLocation,
 					targetFolder, curuser.getId());
@@ -222,8 +216,8 @@ public class NavigationController {
 			@RequestParam String targetFolder, @RequestParam String urlid) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
-		String flag = null;
-		boolean addFlag = false;
+		String flag;
+		boolean addFlag;
 		try {
 			addFlag = navigationServiceImpl.updateURLByURLID(urlName,
 					webLocation, targetFolder, Integer.valueOf(urlid));
@@ -255,8 +249,8 @@ public class NavigationController {
 	public ModelMap urlOperation(@RequestParam String urlid) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
-		String flag = null;
-		boolean deleteFlag = false;
+		String flag;
+		boolean deleteFlag;
 		try {
 			deleteFlag = navigationServiceImpl.deleteURLByURLID(urlid);
 			if (deleteFlag) {
@@ -287,8 +281,8 @@ public class NavigationController {
 	public ModelMap updateURLForHits(@PathVariable String urlid) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
-		String flag = null;
-		boolean updateFlag = false;
+		String flag;
+		boolean updateFlag;
 		try {
 			DateTime dt1 = new DateTime();
 			updateFlag = navigationServiceImpl

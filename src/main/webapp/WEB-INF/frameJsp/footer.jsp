@@ -8,8 +8,8 @@
 			<li><a href="http://www.toutiao.com/" target="_blank">|今日头条</a></li>
 			<li><a href="http://weibo.com/" target="_blank">|微博</a></li>
 			<li><a href="https://www.qiushibaike.com/" target="_blank">|糗事百科</a></li>
-			<li><a href="http://www.58.com/changecity.html" target="_blank">|58同城</a></li>
-			<li><a href="http://www.meituan.com/index/changecity/initiative" target="_blank">|美团</a></li>
+			<li><a href="http://www.58.com/" target="_blank">|58同城</a></li>
+			<li><a href="http://www.meituan.com/" target="_blank">|美团</a></li>
 			<li><a href="http://www.cyzone.cn/" target="_blank">|创业邦</a></li>
 			<li><a href="http://note.youdao.com/" target="_blank">|有道云笔记</a></li>
 			<li><a href="https://www.taobao.com/" target="_blank">|淘宝</a></li>

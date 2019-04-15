@@ -86,7 +86,7 @@
 		<!-- 干扰线的颜色 -->
 		<init-param>
 			<param-name>kaptcha.noise.color</param-name>
-			<param-value>white</param-value>
+			<param-value>190,190,190</param-value>
 		</init-param>
 		<!-- 背景渐变开始颜色 -->
 		<init-param>

@@ -1,13 +1,8 @@
 package com.lyao.mo.common.utils;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import com.lyao.mo.business.system.bean.CurrentUser;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.lyao.mo.business.system.bo.CurrentUser;
 
 public class CommonUtils {
 
@@ -34,7 +29,7 @@ public class CommonUtils {
 	 * @return
 	 */
 	public static String getGoURL(HttpServletRequest request) {
-		String go_url = null;
+		String go_url;
 		Object target_url = request.getSession().getAttribute(Constant.GO_URL);
 		if (target_url != null) {
 			go_url = (String) target_url;

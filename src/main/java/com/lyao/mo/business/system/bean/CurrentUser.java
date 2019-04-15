@@ -1,4 +1,4 @@
-package com.lyao.mo.business.system.bo;
+package com.lyao.mo.business.system.bean;
 
 import java.io.Serializable;
 

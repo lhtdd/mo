@@ -3,51 +3,24 @@
 <div class="menu-fileList fl">
 	<div class="menu-title">
 		<ul>
-			<li class="menu-title-return"><i class="iconfont icon-fanhui5"></i></li>
-			<li class="menu-title-fileName"><span>我的文件夹</span></li>
+			<li class="menu-title-return"><i class="iconfont icon-wenjian-copy1"></i></li>
+			<li class="menu-title-fileName"><span>便签</span></li>
 			<li class="menu-title-settings">
-				<i class="iconfont icon-expand"></i>
-				<div class="settings-tip">
+				<i class="iconfont icon-xiugai"></i>
+				<%--<div class="settings-tip">
 					<ul>
-						<li>新建文件夹</li>
-						<li>新建文件</li>
+						<li>新建便签</li>
 					</ul>
-				</div>
+				</div>--%>
 			</li>
 		</ul>
 	</div>
 	<div class="menu-content scrollbar-leftMenu">
 		<ul>
-			<li class="menu-content-item folder">
-				<div class="folder-title">
-					<i class="iconfont icon-wenjian2"></i>
-					<span class="folder-name"><em title="便签">便签</em></span>
-				</div>
-				<ul>
-					<li class="menu-content-item file">
-						<i class="iconfont icon-wenjian6"></i>
-						<span class="file-name"><em title="密码">密码</em></span>
-						<span class="menu-date fr">08-02</span>
-					</li>
-				</ul>
-			</li>
-			<li class="menu-content-item folder">
-				<div class="folder-title">
-					<i class="iconfont icon-wenjian2"></i>
-					<span class="folder-name"><em title="Delphi">Delphi</em></span>
-				</div>
-				<ul>
-					<li class="menu-content-item file">
-						<i class="iconfont icon-wenjian6"></i>
-						<span class="file-name"><em title="学习">学习</em></span>
-						<span class="menu-date fr">08-02</span>
-					</li>
-					<li class="menu-content-item file">
-						<i class="iconfont icon-wenjian5"></i>
-						<span class="file-name"><em title="再学习">再学习</em></span>
-						<span class="menu-date fr">08-02</span>
-					</li>
-				</ul>
+			<li class="menu-content-item file">
+				<i class="iconfont icon-wenjian6"></i>
+				<span class="file-name"><em title="便签1">便签1</em></span>
+				<span class="menu-date fr">19-08-02</span>
 			</li>
 		</ul>
 	</div>

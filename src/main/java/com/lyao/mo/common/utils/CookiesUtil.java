@@ -18,9 +18,9 @@ public class CookiesUtil {
 	 * @return
 	 */
 	public static Cookie getCookieByName(HttpServletRequest request, String name) {
-		Map<String, Cookie> cookieMap = ReadCookieMap(request);
+		Map<String, Cookie> cookieMap = readCookieMap(request);
 		if (cookieMap.containsKey(name)) {
-			Cookie cookie = (Cookie) cookieMap.get(name);
+			Cookie cookie = cookieMap.get(name);
 			return cookie;
 		} else {
 			return null;
@@ -33,7 +33,7 @@ public class CookiesUtil {
 	 * @param request
 	 * @return
 	 */
-	private static Map<String, Cookie> ReadCookieMap(HttpServletRequest request) {
+	private static Map<String, Cookie> readCookieMap(HttpServletRequest request) {
 		Map<String, Cookie> cookieMap = new HashMap<String, Cookie>();
 		Cookie[] cookies = request.getCookies();
 		if (null != cookies) {
@@ -84,7 +84,7 @@ public class CookiesUtil {
 	public static void delectCookieByName(HttpServletRequest request,
 			HttpServletResponse response, String deleteKey)
 			throws NullPointerException {
-		Map<String, Cookie> cookieMap = ReadCookieMap(request);
+		Map<String, Cookie> cookieMap = readCookieMap(request);
 		for (String key : cookieMap.keySet()) {
 			if (key == deleteKey && key.equals(deleteKey)) {
 				Cookie cookie = cookieMap.get(key);

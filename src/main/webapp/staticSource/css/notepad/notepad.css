@@ -25,9 +25,6 @@
 	line-height: 40px;
 	text-align: center;
 }
-.menu-title >ul >li:hover{
-	color: #FF6600;
-}
 .menu-title-return,.menu-title-settings{
 	width: 49px;
 }
@@ -37,9 +34,13 @@
 .menu-title .menu-title-fileName{
 	width: 150px;
 }
+.menu-title-settings:hover{
+	color: #FF6600;
+}
 /* 新建文件工具提示层 */
 .menu-title-settings{
 	position: relative;
+	color: #FF6600;
 }
 .menu-title-settings:hover .settings-tip{
 	display: block;
@@ -66,34 +67,23 @@
 /* 菜单下部 ，展示菜单列表*/
 .menu-content{
 	padding-right: 5px;
-	height: 468px;
+	height: 459px;
 	overflow-y: auto;
 	overflow-x: hidden;
 }
 .menu-content-item{
-	padding: 0 0 0 10px;
-}
-.folder-title{
-	height: 40px;
-	line-height: 40px;
-	border-bottom: 1px solid #EAEAEA;
-	font-size: 14px;
-}
-.folder-title *{
-	vertical-align: middle;
-}
-.file{
+	padding: 0 0 0 8px;
 	height: 30px;
 	line-height: 30px;
 }
-.file:hover{
+.menu-content .menu-content-item:hover{
 	background-color: #fbfff2;
 }
-.file *{
+.notepad *{
 	vertical-align: middle;
 	font-size: 12px;
 }
-.folder-name,.file-name{
+.notepad-name{
 	display: inline-block;
 	width: 70%;
 	overflow: hidden;
@@ -106,7 +96,7 @@
 	width: 735px;
 }
 .address-file{
-	height: 30px;
+	height: 41px;
 	line-height: 30px;
 	color: #a1a1a1;
 }
@@ -116,5 +106,9 @@
 .content-notepad{
 	background-color: #ffffff;
 	height: 94%;
+}
+/*ckeditor 超出上级容器的范围。此处调整一下*/
+.content-notepad .cke_contents{
+	height: 94% !important;
 }
 /* other */
