@@ -13,7 +13,7 @@
 	width: 250px;
 	border: 1px solid #D2D2D2;
 }
-/* 列表上部，展示返回按钮，当前文件夹，及设置 */
+/* 列表上部，当前文件夹，及设置 */
 .menu-title{
 	height: 41px;
 	border-bottom: 1px solid #99CC33;
@@ -37,33 +37,6 @@
 .menu-title-settings:hover{
 	color: #FF6600;
 }
-/* 新建文件工具提示层 */
-.menu-title-settings{
-	position: relative;
-	color: #FF6600;
-}
-.menu-title-settings:hover .settings-tip{
-	display: block;
-	color: #4d4d4d;
-}
-.settings-tip{
-	display: none;
-	position: absolute;
-	top: 40px;
-	width: 100px;
-	z-index: 20;
-	background-color: #FFFFFF;
-	border: 1px solid #ffd1b2;
-}
-.settings-tip li{
-	height: 30px;
-	line-height: 30px;
-	font-size: 12px;
-	cursor: default;
-}
-.settings-tip li:hover{
-	background-color: #fff0e5;
-}
 /* 菜单下部 ，展示菜单列表*/
 .menu-content{
 	padding-right: 5px;
@@ -71,7 +44,8 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 }
-.menu-content-item{
+.menu-content .menu-content-item{
+	position: relative;
 	padding: 0 0 0 8px;
 	height: 30px;
 	line-height: 30px;
@@ -79,16 +53,49 @@
 .menu-content .menu-content-item:hover{
 	background-color: #fbfff2;
 }
-.notepad *{
+.file-notepad *{
 	vertical-align: middle;
 	font-size: 12px;
 }
-.notepad-name{
+.file-notepad .notepad-name{
 	display: inline-block;
 	width: 70%;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+}
+.file-notepad:hover .notepad-date{
+	display: none;
+}
+.file-notepad:hover .notepad-edit{
+	display: block;
+}
+.file-notepad .notepad-edit:hover .notepad-edit-tip{
+	display: block;
+}
+.file-notepad .notepad-edit:hover i{
+	color: #FF6600;
+}
+/* 新建文件工具提示层 */
+.file-notepad .notepad-edit .notepad-edit-tip{
+	display: none;
+	position: absolute;
+	top: 30px;
+	right: 0px;
+	width: 100px;
+	z-index: 20;
+	background-color: #FFFFFF;
+	border: 1px solid #ffd1b2;
+}
+.file-notepad .notepad-edit .notepad-edit-tip li{
+	height: 30px;
+	line-height: 30px;
+	font-size: 12px;
+	text-align: center;
+	cursor: default;
+}
+.file-notepad .notepad-edit .notepad-edit-tip li:hover{
+	background-color: #fff0e5;
 }
 /* 主体编辑框 */
 .main-notepad{

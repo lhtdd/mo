@@ -1,22 +1,17 @@
 package com.lyao.mo.business.navigation.implement;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.lyao.mo.bottom.bean.po.T_navigation_folder;
+import com.lyao.mo.bottom.bean.po.T_navigation_url;
+import com.lyao.mo.bottom.dao.CommonBaseDao;
+import com.lyao.mo.bottom.service.NavigationService;
+import com.lyao.mo.common.utils.HttpConUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lyao.mo.bottom.bean.po.T_navigation_folder;
-import com.lyao.mo.bottom.bean.po.T_navigation_url;
-import com.lyao.mo.bottom.dao.CommonBaseDao;
-import com.lyao.mo.bottom.service.NavigationService;
-import com.lyao.mo.common.utils.HttpConUtils;
+import java.util.*;
 /**
  * 
  * @author lyao
@@ -33,8 +28,7 @@ public class NavigationServiceImpl implements NavigationService {
 	public Map<String, Map<String, Object>> selectURLByCusID(
 			String customerID) throws Exception {
 		Map<String, Map<String, Object>> returnMap = new LinkedHashMap<String, Map<String, Object>>();
-		List<T_navigation_folder> navFolders = null;
-		navFolders = (ArrayList<T_navigation_folder>) baseDao
+		List<T_navigation_folder> navFolders = (ArrayList<T_navigation_folder>) baseDao
 				.selectList("navigation.selectNavigationFolder");
 		for (T_navigation_folder navFolder : navFolders) {
 			Map<String, Object> urlMap = new LinkedHashMap<String,  Object>(6);

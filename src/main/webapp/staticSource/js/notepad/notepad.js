@@ -5,21 +5,13 @@ $(function() {
 		cursorcolor : "#999999"
 	});
 	// 文件列表点击事件
-	$(".file").click(function(e) {
-		$(".file").each(function () {
-			if($(this).hasClass("file-selected")){
-				$(this).removeClass("file-selected");
+	$(".file-notepad").click(function(e) {
+		$(".file-notepad").each(function () {
+			if($(this).hasClass("notepad-selected")){
+				$(this).removeClass("notepad-selected");
 			}
 		});
-		$(this).addClass("file-selected");
-	})
-	//显示文件的删除按钮
-	$(".file").hover(function() {
-		$(this).find(".menu-date").hide();
-		$(this).append("<a href='#' class='file-delete fr' title='删除便签'><i class='iconfont icon-shanchu fs16'></i></a>");
-	}, function() {
-		$(this).find(".file-delete").remove();
-		$(this).find(".menu-date").show();
+		$(this).addClass("notepad-selected");
 	})
 	/* 编辑器提交事件 */
     layui.use([ 'layer'], function() {

@@ -32,7 +32,7 @@ $(function() {
 															}else {
 																str += "<div class='url-content' style='background:url(navigation/urlIcon/"+url.id+") no-repeat left center;'>";
 															}
-															// 如果是不是系统预设的url的在点击量统计及功能编辑上有所区分
+															// 如果不是系统预设的url的在点击量统计及功能编辑上有所区分
 															if (url.type == '2') {
 																str += "<a class='url-info' onclick='visitURL("+url.id+")' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
 															} else {
@@ -41,12 +41,10 @@ $(function() {
 																	if (url.type == '2'){
 																		str += "<div class='url-edit'>";
 																			str += "<i class='iconfont icon-xiugai fs12'></i>";
-																			str += "<div class='url-edit-tip'>";
-																				str += "<ul>";
-																					str += "<li onclick='updateURL("+url.id+",\""+url.url+"\",\""+url.urlname+"\","+url.navigationid+")'>编辑</li>";
-																					str += "<li onclick='deleteURL("+url.id+","+url.navigationid+");'>删除</li>";
-																				str += "</ul>";
-																			str += "</div>";
+																			str += "<ul class='url-edit-tip'>";
+																				str += "<li onclick='updateURL("+url.id+",\""+url.url+"\",\""+url.urlname+"\","+url.navigationid+")'>编辑</li>";
+																				str += "<li onclick='deleteURL("+url.id+","+url.navigationid+");'>删除</li>";
+																			str += "</ul>";
 																		str += "</div>";
 																	}
 																str += "</div>";

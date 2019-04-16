@@ -16,6 +16,10 @@ body, html {
 	margin: 10px auto 0px;
 	position: relative;
 }
+/* 隐藏 */
+.hdn{
+	display: none;
+}
 /* 浮动与居中对齐 */
 .fl {
 	float: left;
@@ -61,7 +65,7 @@ body, html {
 	font-size: 12px !important;
 }
 /* 常用颜色 */
-.file-selected{
+.notepad-selected{
 	background-color: #EEFFCC !important;
 }
 .cl99{
@@ -100,7 +104,7 @@ body, html {
 	position: fixed;
 	right: 200px;
 	bottom: 150px;
-	z-index: 20px;
+	z-index: 20;
 }
 .fix-tip-item{
 	width: 35px;
