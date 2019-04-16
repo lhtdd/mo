@@ -1,7 +1,8 @@
 package com.lyao.mo.container.interceptor;
 
-import com.lyao.mo.bottom.service.SystemService;
+import com.lyao.mo.business.system.service.SystemService;
 import com.lyao.mo.business.system.bean.CurrentUser;
+import com.lyao.mo.common.utils.CommonUtils;
 import com.lyao.mo.common.utils.Constant;
 import com.lyao.mo.common.utils.CookiesUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -27,7 +28,7 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		// 1.只有未登录的用户才能自动登陆
-		if (request.getSession().getAttribute(Constant.CURRENT_USER) == null) {
+		if (CommonUtils.isOnline(request)) {
 			//2 获取cookie
 			String cookie_username;
 			Cookie cookie = CookiesUtil.getCookieByName(request, Constant.COOKIE_USERNAME);
@@ -38,7 +39,7 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter {
 				if (StringUtils.isNoneBlank(cookie_username)){
 					CurrentUser curuser = systemServiceImpl.selectUserByUsername(cookie_username);
 					if (curuser != null){
-						request.getSession().setAttribute(Constant.CURRENT_USER, curuser);
+						CommonUtils.addLoginUserToSession(request, curuser);
 					}
 				}
 			}

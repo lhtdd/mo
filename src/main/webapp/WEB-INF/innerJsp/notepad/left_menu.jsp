@@ -7,7 +7,6 @@
 			<li class="menu-title-fileName"><span>便签</span></li>
 			<li class="menu-title-settings">
 				<i class="iconfont icon-xinjian5"></i>
-				<%----%>
 			</li>
 		</ul>
 	</div>

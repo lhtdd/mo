@@ -1,6 +1,6 @@
 package com.lyao.mo.business.system.controller;
 
-import com.lyao.mo.bottom.service.SystemService;
+import com.lyao.mo.business.system.service.SystemService;
 import com.lyao.mo.business.system.bean.CurrentUser;
 import com.lyao.mo.business.system.bean.RegisterInfo;
 import com.lyao.mo.common.utils.CommonUtils;
@@ -96,8 +96,7 @@ public class SysController {
 								Constant.COOKIE_USERNAME, username, 60);
 					}
 					// 保存登录信息
-					request.getSession().setAttribute(Constant.CURRENT_USER,
-							MapUtils.getObject(resultMap, "seluser"));
+					CommonUtils.addLoginUserToSession(request, (CurrentUser) MapUtils.getObject(resultMap, "seluser"));
 					// 认证失败
 				} else {
 					flag = "no";
@@ -161,8 +160,7 @@ public class SysController {
 								curuser = systemServiceImpl
 										.selectUserByUsername(customer
 												.getUsername());
-								request.getSession().setAttribute(
-										Constant.CURRENT_USER, curuser);
+								CommonUtils.addLoginUserToSession(request, curuser);
 							} else {
 								flag = "no";
 								errorMsg = "注册失败";
@@ -260,8 +258,7 @@ public class SysController {
 				// 保存登录信息
 				CurrentUser curuser = systemServiceImpl
 						.selectUserByID(customerID);
-				request.getSession().setAttribute(Constant.CURRENT_USER,
-						curuser);
+				CommonUtils.addLoginUserToSession(request, curuser);
 			} else {
 				type = "activationFailed";
 				warnMsg = "激活失败";

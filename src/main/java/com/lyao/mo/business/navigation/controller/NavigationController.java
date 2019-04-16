@@ -1,10 +1,10 @@
 package com.lyao.mo.business.navigation.controller;
 
-import com.lyao.mo.bottom.bean.po.T_navigation_folder;
-import com.lyao.mo.bottom.bean.po.T_navigation_url;
-import com.lyao.mo.bottom.service.NavigationService;
+import com.lyao.mo.business.navigation.bean.po.T_navigation_folder;
+import com.lyao.mo.business.navigation.bean.po.T_navigation_url;
+import com.lyao.mo.business.navigation.service.NavigationService;
 import com.lyao.mo.business.system.bean.CurrentUser;
-import com.lyao.mo.common.utils.Constant;
+import com.lyao.mo.common.utils.CommonUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
@@ -51,8 +51,7 @@ public class NavigationController {
 		String flag;
 		// 获取当前客户ID
 		if (StringUtils.isBlank(customerID)) {
-			CurrentUser curuser = (CurrentUser) request.getSession()
-					.getAttribute(Constant.CURRENT_USER);
+			CurrentUser curuser = CommonUtils.getCurrentUser(request);
 			if (curuser != null) {
 				customerID = curuser.getId();
 			}
@@ -113,8 +112,7 @@ public class NavigationController {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
 		String flag;
-		CurrentUser curuser = (CurrentUser) request.getSession().getAttribute(
-				Constant.CURRENT_USER);
+		CurrentUser curuser = CommonUtils.getCurrentUser(request);
 		Map<String, List<T_navigation_url>> newURLS = null;
 		try {
 			newURLS = navigationServiceImpl.selectURLForNormal(curuser.getId(),
@@ -177,8 +175,7 @@ public class NavigationController {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
 		String flag;
-		CurrentUser curuser = (CurrentUser) request.getSession().getAttribute(
-				Constant.CURRENT_USER);
+		CurrentUser curuser = CommonUtils.getCurrentUser(request);
 		boolean addFlag;
 		try {
 			addFlag = navigationServiceImpl.insertURL(urlName, webLocation,

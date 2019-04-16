@@ -22,6 +22,24 @@ public class CommonUtils {
 		return currentUser;
 	}
 
+	public static void addLoginUserToSession(HttpServletRequest request, CurrentUser currentUser){
+		request.getSession().setAttribute(Constant.CURRENT_USER, currentUser);
+	}
+
+	/**
+	 * 判断当前用户是否在线
+	 * @param request
+	 * @return
+	 */
+	public static boolean isOnline(HttpServletRequest request){
+		CurrentUser currentUser = getCurrentUser(request);
+		if (currentUser != null){
+			return true;
+		}else {
+			return false;
+		}
+	}
+
 	/**
 	 * 获取跳转的URL
 	 * 
