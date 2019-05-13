@@ -3,29 +3,38 @@ import java.io.Serializable;
 
 public class T_notepad implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private Integer id;
-	private Integer folderId;
+	private String id;
+	private String folderId;
 	private String customerId;
 	private String notepadName;
+	private String type;
 	private String content;
+	private String sort;
+	private String isTop;
 	private String inTime;
 	private String updateTime;
 	private String image;
 	private String remark;
 
-	public Integer getId() {
+	public T_notepad(){
+		this.type = "2";
+		this.isTop = "0";
+		this.remark = "";
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public Integer getFolderId() {
+	public String getFolderId() {
 		return folderId;
 	}
 
-	public void setFolderId(Integer folderId) {
+	public void setFolderId(String folderId) {
 		this.folderId = folderId;
 	}
 
@@ -45,12 +54,36 @@ public class T_notepad implements Serializable {
 		this.notepadName = notepadName;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public String getContent() {
 		return content;
 	}
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
+	public String getIsTop() {
+		return isTop;
+	}
+
+	public void setIsTop(String isTop) {
+		this.isTop = isTop;
 	}
 
 	public String getInTime() {

@@ -56,7 +56,7 @@ $(function() {
 									str += "</div>";
 								str += "</li>";
 						$(".aside-bar-other").before(str);
-		        	})
+		        	});
 		        	//重新绘制滚动条
 		        	$('.scrollbar-aside').niceScroll(".scrollbar-wrap", {cursorcolor : "#FF6600"}).resize();
 		        }else{
@@ -82,7 +82,7 @@ $(function() {
 				content : $('#login-pop'),
 				title:false,
 				area: ['500px', '340px'],
-				shadeClose : true,
+				shadeClose : true
 			})
 		}
 	})
@@ -127,7 +127,7 @@ function openCollectForm(){
 		content : $('#navigation-add-pop'),
 		title:'收藏地址',
 		area: ['600px', '330px'],
-		shadeClose : true,
+		shadeClose : true
 	})
 	return collect_pop_index;
 }
@@ -221,7 +221,7 @@ function refreshURL(navid){
 								$current_ul.append(str);
 							})
 						}
-					})
+					});
 					// 如果目标导航夹为空则需要清空
 					if (data.newURLS.targetNavURLs == null && navid != 1){
 						$current_ul = $(".aside-bar-item .ul"+navid).empty();

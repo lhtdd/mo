@@ -72,7 +72,7 @@ public class SysController {
 			HttpServletRequest request, HttpServletResponse response) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
-		String flag = null;
+		String flag;
 		String go_url = null;
 		String kaptchaExpected = (String) request.getSession().getAttribute(
 				com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
@@ -93,7 +93,7 @@ public class SysController {
 					// 记录密码等
 					if (StringUtils.isNotBlank(rememberMe) && "1".equals(rememberMe)) {
 						CookiesUtil.setCookie(response,
-								Constant.COOKIE_USERNAME, username, 60);
+								Constant.COOKIE_USERNAME, username, 60*10);
 					}
 					// 保存登录信息
 					CommonUtils.addLoginUserToSession(request, (CurrentUser) MapUtils.getObject(resultMap, "seluser"));
@@ -211,8 +211,8 @@ public class SysController {
 	public ModelMap checkAlias(@RequestParam String alias,
 			HttpServletRequest request) {
 		ModelMap md = new ModelMap();
-		String id = null;
-		String flag = null;
+		String id;
+		String flag;
 		String message = null;
 		try {
 			id = systemServiceImpl.selectAlias(alias);
@@ -244,9 +244,9 @@ public class SysController {
 			@PathVariable("customerID") String customerID,
 			HttpServletRequest request) {
 		ModelAndView md = new ModelAndView();
-		String type = null;
+		String type;
 		String warnMsg = null;
-		String go_url = null;
+		String go_url;
 		log.info("用户号:" + customerID + " 申请激活，激活码：" + validCode);
 		try {
 			boolean flag = systemServiceImpl.updateActivation(customerID,

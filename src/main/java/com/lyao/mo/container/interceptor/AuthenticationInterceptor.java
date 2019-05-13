@@ -1,6 +1,5 @@
 package com.lyao.mo.container.interceptor;
 
-import com.lyao.mo.business.system.bean.CurrentUser;
 import com.lyao.mo.common.utils.CommonUtils;
 import com.lyao.mo.common.utils.Constant;
 import org.apache.log4j.Logger;
@@ -23,14 +22,13 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 		String go_url = request.getServletPath().substring(1);
 		String requestType = request.getHeader("X-Requested-With");
 		log.warn("拦截请求:" + go_url + " 进行登录校验");
-		CurrentUser curUser = CommonUtils.getCurrentUser(request);
-		if (curUser == null){
+		if (!CommonUtils.isOnline(request)){
 			log.warn("访问被拒绝,登录失效或未登录");
 			request.getSession().setAttribute(Constant.GO_URL, go_url);
 			//判断是否是AJAX请求
 			if("XMLHttpRequest".equals(requestType)){
 				log.warn("AJAX请求..");
-				String returnMsg = "{\"flag\":\"no\",\"errorMsg\":\"登录超时,请重新登录后操作\"}";
+				String returnMsg = "{\"flag\":\"no\",\"errorMsg\":\"请登录后操作\"}";
 			    response.getWriter().write(returnMsg);
 			    response.getWriter().flush();
 			}else{

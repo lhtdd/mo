@@ -71,7 +71,7 @@
 		<!-- 使用哪些字符生成验证码 -->
 		<init-param>
 			<param-name>kaptcha.textproducer.char.string</param-name>
-			<param-value>ACDEFHKPRSTWX345679</param-value>
+			<param-value>123456789</param-value>
 		</init-param>
 		<!-- 字符个数 -->
 		<init-param>

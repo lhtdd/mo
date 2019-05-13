@@ -1,17 +1,21 @@
+<%@ page import="java.util.Date" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% String path = request.getContextPath();     
    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
    String  url = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getAttribute("javax.servlet.forward.request_uri").toString();  
    if (request.getQueryString()!=null){   
 	   url+="?"+request.getQueryString();           
-	} 
+	}
+    Date today = new Date();
 %>
 <c:set var="ctx" value="${pageContext.request.contextPath }"></c:set>
 <c:set var="ctxStatic" value="${pageContext.request.contextPath }/staticSource"></c:set>
 <c:set var="currentURL" value="<%=url %>"></c:set>
+<c:set var="today" value="<%=today %>"></c:set>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

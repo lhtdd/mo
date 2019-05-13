@@ -86,7 +86,7 @@ public class CookiesUtil {
 			throws NullPointerException {
 		Map<String, Cookie> cookieMap = readCookieMap(request);
 		for (String key : cookieMap.keySet()) {
-			if (key == deleteKey && key.equals(deleteKey)) {
+			if (key.equals(deleteKey)) {
 				Cookie cookie = cookieMap.get(key);
 				cookie.setMaxAge(0);// 设置cookie有效时间为0
 				cookie.setPath("/");// 不设置存储路径

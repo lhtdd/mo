@@ -33,6 +33,7 @@
 }
 .menu-title .menu-title-fileName{
 	width: 150px;
+	cursor: default;
 }
 .menu-title-settings:hover{
 	color: #FF6600;
@@ -53,16 +54,19 @@
 .menu-content .menu-content-item:hover{
 	background-color: #fbfff2;
 }
-.file-notepad *{
-	vertical-align: middle;
-	font-size: 12px;
+.file-notepad span{
+	vertical-align: top;
+	display: inline-block;
+	float: left;
 }
 .file-notepad .notepad-name{
-	display: inline-block;
-	width: 70%;
+	margin-left: 3px;
+	width: 65%;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	cursor: default;
+	font-size: 12px;
 }
 .file-notepad:hover .notepad-date{
 	display: none;
@@ -76,7 +80,7 @@
 .file-notepad .notepad-edit:hover i{
 	color: #FF6600;
 }
-/* 新建文件工具提示层 */
+/* 便签编辑提示层 */
 .file-notepad .notepad-edit .notepad-edit-tip{
 	display: none;
 	position: absolute;
@@ -104,8 +108,15 @@
 }
 .address-file{
 	height: 41px;
-	line-height: 30px;
+	line-height: 41px;
 	color: #a1a1a1;
+}
+.address-file input{
+	border: 0;
+	outline: none;
+	height: 35px;
+	margin-left: 5px;
+	width: 85%;
 }
 .notepad-save-btn{
 	background-color: #FF6600

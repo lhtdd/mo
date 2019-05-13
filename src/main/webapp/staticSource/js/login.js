@@ -15,17 +15,23 @@ $(function() {
 		});
 
 		// 监听登录提交
-		form.on('submit(login_form)', function(data) {
+		form.on('submit(login_form)', function(formData) {
 			$.ajax({
 			    url:'member/login',
 			    type:'POST',
 			    async:true,
-			    data:data.field,
+			    data:formData.field,
 			    timeout:5000,
 			    dataType:'json',
 			    success:function(data){
 			        if (data.flag == 'yes'){
-			        	window.location.href = data.go_url;
+			        	var eventObject = formData.field.event_object;
+			        	if (eventObject == null || eventObject == ''){
+			        		window.location.href = data.go_url;
+						}else {
+			        		$("#"+eventObject).click();
+                            layer.close(layer.index);
+						}
 			        }else{
 			        	layer.msg(data.errorMsg);
 			        }

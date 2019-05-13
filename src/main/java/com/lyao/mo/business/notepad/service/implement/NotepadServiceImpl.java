@@ -1,15 +1,16 @@
 package com.lyao.mo.business.notepad.service.implement;
 
-import com.lyao.mo.business.notepad.bean.po.T_notepad;
 import com.lyao.mo.bottom.dao.CommonBaseDao;
+import com.lyao.mo.business.notepad.bean.po.T_notepad;
 import com.lyao.mo.business.notepad.service.NotepadService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author lyao
@@ -26,9 +27,13 @@ public class NotepadServiceImpl implements NotepadService {
 
     @Override
     public List<T_notepad> selectNotepads(String customerId) {
-        T_notepad notepadOfTops = commonBaseDao.selectOne("notepad.getTopsNotepad", customerId);
         List<T_notepad> notepads = commonBaseDao.selectList("notepad.getNotepads", customerId);
-        notepads.add(0,notepadOfTops);
+        if (notepads != null && notepads.size() > 0) {
+            T_notepad notepadFirst = notepads.get(0);
+            T_notepad notepad = commonBaseDao.selectOne("notepad.getNotepadById", notepadFirst.getId());
+            notepads.remove(notepadFirst);
+            notepads.add(0, notepad);
+        }
         return notepads;
     }
 
@@ -38,12 +43,41 @@ public class NotepadServiceImpl implements NotepadService {
     }
 
     @Override
-    public boolean addNotepad(T_notepad notepad) {
-        int i = commonBaseDao.insert("notepad.addNotepad", notepad);
-        if (i == 1){
-            return true;
+    public T_notepad addNotepad(String customerId) {
+        List<String> notepadNameNumbers = commonBaseDao.selectList("notepad.getNotepadNameNumbers", customerId);
+        String notepadName = "便签";
+        if (notepadNameNumbers != null && notepadNameNumbers.size() > 0){
+            Integer curNumer = this.getMaxNameNumber(notepadNameNumbers);
+            notepadName = notepadName + String.valueOf(curNumer+1);
         }
-        return false;
+        T_notepad notepad = new T_notepad();
+        notepad.setNotepadName(notepadName);
+        notepad.setCustomerId(customerId);
+        Integer id = this.addNotepad(notepad);
+        return this.selectNotepadById(id.toString());
+    }
+
+    private Integer getMaxNameNumber(List<String> notepadNameNumbers){
+        List<Integer> validNumbers = new ArrayList<Integer>();
+        for (String nameNumber : notepadNameNumbers) {
+            String reg = "^[-\\+]?[\\d]*$";
+            Pattern p = Pattern.compile(reg);
+            Matcher m = p.matcher(nameNumber);
+            boolean result = m.matches();
+            if (result && StringUtils.isNotEmpty(nameNumber)) {
+                validNumbers.add(Integer.valueOf(nameNumber));
+            }
+            if (validNumbers.size() == 0) {
+                validNumbers.add(0);
+            }
+        }
+        return Collections.max(validNumbers);
+    }
+
+    @Override
+    public Integer addNotepad(T_notepad notepad) {
+        commonBaseDao.insert("notepad.addNotepad", notepad);
+        return Integer.valueOf(notepad.getId());
     }
 
     @Override
@@ -71,7 +105,7 @@ public class NotepadServiceImpl implements NotepadService {
     public boolean updateNotepadTops(String customerId, String id) {
         int j = commonBaseDao.update("notepad.updateNoneTopsOfNotepad", customerId);
         int i = commonBaseDao.update("notepad.updateTopsOfNotepad", id);
-        if (i+j == 2){
+        if (i+j >= 1){
             return true;
         }
         return false;
@@ -83,6 +117,19 @@ public class NotepadServiceImpl implements NotepadService {
         noteMap.put("id", id);
         noteMap.put("content", content);
         int i = commonBaseDao.update("notepad.updateNotepadContent", noteMap);
+        if (i == 1){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateNameOrContent(String id, String name, String content) {
+        Map<String, Object> noteMap = new HashMap<String, Object>(5);
+        noteMap.put("id", id);
+        noteMap.put("notepadName", name);
+        noteMap.put("content", content);
+        int i = commonBaseDao.update("notepad.updateNameOrContent", noteMap);
         if (i == 1){
             return true;
         }

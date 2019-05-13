@@ -28,7 +28,7 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		// 1.只有未登录的用户才能自动登陆
-		if (CommonUtils.isOnline(request)) {
+		if (!CommonUtils.isOnline(request)) {
 			//2 获取cookie
 			String cookie_username;
 			Cookie cookie = CookiesUtil.getCookieByName(request, Constant.COOKIE_USERNAME);

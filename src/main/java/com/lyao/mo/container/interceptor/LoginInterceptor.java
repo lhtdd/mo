@@ -1,13 +1,13 @@
 package com.lyao.mo.container.interceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.lyao.mo.common.utils.Constant;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.lyao.mo.common.utils.Constant;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 /**
@@ -19,10 +19,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		String go_url = request.getHeader("Referer");
-		log.warn("请求来自：" + go_url);
+		String from_url = request.getHeader("Referer");
+		log.warn("请求来自：" + from_url);
 		//从浏览器直接访问可能为NULL
-		if (go_url == null){
+		if (from_url == null){
 			return true;
 		}
 		// POST请求直接放过
@@ -30,13 +30,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			return true;
 		}
 		String historyURL = (String) request.getSession().getAttribute(Constant.GO_URL);
-		if ( historyURL != null){
-			if (go_url.endsWith("/member/login") || go_url.endsWith("/member/register") || historyURL.equals(go_url)){
+		if (StringUtils.isNotEmpty(historyURL)){
+			if (from_url.endsWith("/member/login") || from_url.endsWith("/member/register") || historyURL.equals(from_url)){
 				return true;
 			}
 		}
 		// 记录来时的URL
-		request.getSession().setAttribute(Constant.GO_URL, go_url);
+		request.getSession().setAttribute(Constant.GO_URL, from_url);
 		return true;
 	}
 	

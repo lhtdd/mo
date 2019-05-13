@@ -26,11 +26,18 @@ public interface NotepadService {
     T_notepad selectNotepadById(String notepadId);
 
     /**
-     * 新增一个便签
-     * @param notepad
+     * 新增一个便签，名称采用默认规则生成
+     * @param customerId
      * @return
      */
-    boolean addNotepad(T_notepad notepad);
+    T_notepad addNotepad(String customerId);
+
+    /**
+     * 新增一个便签
+     * @param notepad
+     * @return 返回新增后的主键
+     */
+    Integer addNotepad(T_notepad notepad);
 
     /**
      * 删除一个便签
@@ -61,4 +68,13 @@ public interface NotepadService {
      * @return
      */
     boolean updateNotepadContent(String id, String content);
+
+    /**
+     * 更新名称和内容
+     * @param id
+     * @param name
+     * @param content
+     * @return
+     */
+    boolean updateNameOrContent(String id, String name, String content);
 }

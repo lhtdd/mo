@@ -1,36 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="notepad">
-	<!-- 开启二级缓存 各属性默认-->
-	<cache></cache>
+	<!-- 开启二级缓存 各属性默认
+	<cache></cache>-->
 
 	<select id="getNotepads" parameterType="String" resultType="t_notepad">
-		select * from t_notepad where customerid = #{customerID} order by inTime desc
+		(select id,customerID,notepadName,type,sort,isTop,updateTime from t_notepad where customerid = #{customerID} and isTop = 1)
+		UNION
+		(SELECT * from (select id,customerID,notepadName,type,sort,isTop,updateTime from t_notepad where customerid = #{customerID} and isTop = 0 order by inTime desc) b)
 	</select>
 	
 	<select id="getTopsNotepad" parameterType="String" resultType="t_notepad">
-		select * from t_notepad where customerid = #{customerID} and isTop = 1
+		select * from t_notepad where customerid = #{customerId} and isTop = 1
 	</select>
 	
 	<select id="getNotepadById" parameterType="String" resultType="t_notepad">
 		select * from t_notepad where id = #{id}
 	</select>
 
-	<insert id="addNotepad" parameterType="t_notepad">
-		insert into t_notepad(customerid,notepadName,type,content,sort,isTop,inTime,remark)
-		values(
-		#{customerid},
+	<select id="getNotepadNameNumbers" parameterType="String" resultType="String">
+		select SUBSTR(notepadName,3) AS notepadName from t_notepad where customerID = #{customerId} and notepadName like '便签%'
+	</select>
+
+	<insert id="addNotepad" parameterType="t_notepad" useGeneratedKeys="true" keyProperty="id">
+		insert into t_notepad(customerid,notepadName,type,content,sort,isTop,inTime,updateTime,remark)
+		select
+		#{customerId},
 		#{notepadName},
 		#{type},
 		#{content},
-		max(sort)+1,
+		(select IFNULL((select max(sort) from t_notepad),0)+1),
 		#{isTop},
-		#{inTime},
-		#{remark})
+		now(),
+		now(),
+		#{remark}
 	</insert>
 	
 	<update id="updateNotepadName" parameterType="Map">
 		update t_notepad set notepadName = #{notepadName} , updateTime = now() where id = #{id}
+	</update>
+
+	<update id="updateNotepadContent" parameterType="Map">
+		update t_notepad set content = #{content} , updateTime = now() where id = #{id}
+	</update>
+
+	<update id="updateNameOrContent" parameterType="Map">
+		update t_notepad
+		<set>
+			<if test = "notepadName!=null and notepadName!=''">
+				notepadName = #{notepadName},
+			</if>
+			<if test = "content!=null and content!=''">
+				content = #{content},
+			</if>
+			<if test = "1">
+				updateTime = now(),
+			</if>
+		</set>
+		where id = #{id}
 	</update>
 
 	<update id="updateTopsOfNotepad" parameterType="String">
@@ -41,10 +68,6 @@
 		update t_notepad set isTop = 0 , updateTime = now() where customerid = #{customerID} and isTop = 1
 	</update>
 
-	<update id="updateNotepadContent" parameterType="Map">
-		update t_notepad set content = #{content} , updateTime = now() where id = #{id}
-	</update>
-	
 	<delete id="deleteNotepad" parameterType="String">
 		delete from t_notepad
 		<where>
