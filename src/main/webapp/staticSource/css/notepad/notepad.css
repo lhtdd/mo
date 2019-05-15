@@ -9,7 +9,7 @@
 }
 .menu-fileList{
 	background-color: #ffffff;
-	height: 500px;
+	height: 533px;
 	width: 250px;
 	border: 1px solid #D2D2D2;
 }
@@ -41,15 +41,15 @@
 /* 菜单下部 ，展示菜单列表*/
 .menu-content{
 	padding-right: 5px;
-	height: 459px;
+	height: 490px;
 	overflow-y: auto;
 	overflow-x: hidden;
 }
 .menu-content .menu-content-item{
 	position: relative;
 	padding: 0 0 0 8px;
-	height: 30px;
-	line-height: 30px;
+	height: 35px;
+	line-height: 35px;
 }
 .menu-content .menu-content-item:hover{
 	background-color: #fbfff2;
@@ -80,11 +80,17 @@
 .file-notepad .notepad-edit:hover i{
 	color: #FF6600;
 }
+.file-notepad:nth-child(1) .notepad-edit:hover .notepad-edit-tip{
+	top: 35px;
+}
+.file-notepad:nth-child(2) .notepad-edit:hover .notepad-edit-tip{
+	top: 35px;
+}
 /* 便签编辑提示层 */
 .file-notepad .notepad-edit .notepad-edit-tip{
 	display: none;
 	position: absolute;
-	top: 30px;
+	top: -60px;
 	right: 0px;
 	width: 100px;
 	z-index: 20;
@@ -128,5 +134,8 @@
 /*ckeditor 超出上级容器的范围。此处调整一下*/
 .content-notepad .cke_contents{
 	height: 94% !important;
+}
+.cke_copyformatting_notification{
+    display: none;
 }
 /* other */

@@ -19,7 +19,7 @@
 						<input name="notepad-id" type="hidden" value="${notepad.id}" />
 						<span class="notepad-name"><em title="${notepad.notepadName}">${notepad.notepadName}</em></span>
 						<span class="notepad-date clD2">${fn:substring(notepad.updateTime, 2, 10)}</span>
-						<div class="notepad-edit hdn">
+						<div class="notepad-edit hdn fr">
 							<i class='iconfont icon-xiugai fs16'></i>
 							<ul class="notepad-edit-tip">
 								<li class="notepad-delete-btn">删除</li>
@@ -35,7 +35,7 @@
 					<input name="notepad-id" type="hidden" value="" />
 					<span class="notepad-name"><em title="便签">便签</em></span>
 					<span class="notepad-date clD2"><fmt:formatDate value="${today}" pattern="yy-MM-dd" /></span>
-					<div class="notepad-edit hdn">
+					<div class="notepad-edit hdn fr">
 						<i class='iconfont icon-xiugai fs16'></i>
 						<ul class="notepad-edit-tip">
 							<li class="notepad-delete-btn">删除</li>

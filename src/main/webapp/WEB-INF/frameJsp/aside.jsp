@@ -7,8 +7,8 @@
 			<i class="iconfont icon-shoucang"></i>
 		</li>
 		<!-- 此处动态添加后台数据 -->
-		<li class="aside-bar-other">
+		<%--<li class="aside-bar-other">
 			<i class="iconfont icon-xinjian2"></i>
-		</li>
+		</li>--%>
 	</ul>
 </div>

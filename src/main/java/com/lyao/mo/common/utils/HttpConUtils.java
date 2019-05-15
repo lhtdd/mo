@@ -4,11 +4,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 import java.util.logging.Logger;
 
 public class HttpConUtils {
 	private final static Logger log = Logger.getLogger(HttpConUtils.class.getName());
+	private final static String FAVICON_API = "http://api.byi.pw/favicon/?url=";
 	/**
 	 * 根据地址获得数据的字节流
 	 * 
@@ -19,7 +19,9 @@ public class HttpConUtils {
 	public static byte[] getImageFromNetByUrl(String strUrl) {
 		byte[] btImg = null;
 		try {
-			URL url = new URL(strUrl);
+			URL targetUrl = new URL(strUrl);
+			String a = targetUrl.getProtocol()+"://"+targetUrl.getHost();
+			URL url = new URL(FAVICON_API + a);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setConnectTimeout(5 * 1000);

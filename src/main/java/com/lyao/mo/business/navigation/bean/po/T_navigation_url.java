@@ -5,112 +5,137 @@ import java.io.Serializable;
 public class T_navigation_url implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private String customerid;
-	private Integer navigationid;
-	private byte[] urlimage;
-	private String urlname;
+	private String customerId;
+	private Integer navigationId;
+	private byte[] urlImage;
+	private String urlName;
 	private String url;
 	private Integer type;
 	private Integer sort;
-	private String intime;
-	private String updatetime;
-	private String accesstime;
+	private String inTime;
+	private String updateTime;
+	private String accessTime;
 	private Integer hits;
 	private String remark;
 	
 	public T_navigation_url(){
 		this.id = 0;
-		this.customerid = null;
-		this.navigationid = 0;
-		this.urlimage = null;
-		this.urlname = null;
+		this.customerId = null;
+		this.navigationId = 0;
+		this.urlImage = null;
+		this.urlName = null;
 		this.url = null;
 		this.type = 2;
 		this.sort = 0;
-		this.intime = null;
-		this.updatetime = null;
-		this.accesstime = null;
+		this.inTime = null;
+		this.updateTime = null;
+		this.accessTime = null;
 		this.hits = 0;
 		this.remark = null;
 	}
 
-	public void setId(Integer id){
-		this.id=id;
-	}
-	public Integer getId(){
+	public Integer getId() {
 		return id;
 	}
-	public void setCustomerid(String customerid){
-		this.customerid=customerid;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public String getCustomerid(){
-		return customerid;
+
+	public String getCustomerId() {
+		return customerId;
 	}
-	public void setNavigationid(Integer navigationid){
-		this.navigationid=navigationid;
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
 	}
-	public Integer getNavigationid(){
-		return navigationid;
+
+	public Integer getNavigationId() {
+		return navigationId;
 	}
-	public void setUrlimage(byte[] urlimage){
-		this.urlimage=urlimage;
+
+	public void setNavigationId(Integer navigationId) {
+		this.navigationId = navigationId;
 	}
-	public byte[] getUrlimage(){
-		return urlimage;
+
+	public byte[] getUrlImage() {
+		return urlImage;
 	}
-	public void setUrlname(String urlname){
-		this.urlname=urlname;
+
+	public void setUrlImage(byte[] urlImage) {
+		this.urlImage = urlImage;
 	}
-	public String getUrlname(){
-		return urlname;
+
+	public String getUrlName() {
+		return urlName;
 	}
-	public void setUrl(String url){
-		this.url=url;
+
+	public void setUrlName(String urlName) {
+		this.urlName = urlName;
 	}
-	public String getUrl(){
+
+	public String getUrl() {
 		return url;
 	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	public Integer getType() {
 		return type;
 	}
+
 	public void setType(Integer type) {
 		this.type = type;
 	}
-	public void setSort(Integer sort){
-		this.sort=sort;
-	}
-	public Integer getSort(){
+
+	public Integer getSort() {
 		return sort;
 	}
-	public void setIntime(String intime){
-		this.intime=intime;
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
 	}
-	public String getIntime(){
-		return intime;
+
+	public String getInTime() {
+		return inTime;
 	}
-	public void setUpdatetime(String updatetime){
-		this.updatetime=updatetime;
+
+	public void setInTime(String inTime) {
+		this.inTime = inTime;
 	}
-	public String getUpdatetime(){
-		return updatetime;
+
+	public String getUpdateTime() {
+		return updateTime;
 	}
-	public void setAccesstime(String accesstime){
-		this.accesstime=accesstime;
+
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
 	}
-	public String getAccesstime(){
-		return accesstime;
+
+	public String getAccessTime() {
+		return accessTime;
 	}
-	public void setHits(Integer hits){
-		this.hits=hits;
+
+	public void setAccessTime(String accessTime) {
+		this.accessTime = accessTime;
 	}
-	public Integer getHits(){
+
+	public Integer getHits() {
 		return hits;
 	}
-	public void setRemark(String remark){
-		this.remark=remark;
+
+	public void setHits(Integer hits) {
+		this.hits = hits;
 	}
-	public String getRemark(){
+
+	public String getRemark() {
 		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 }
 

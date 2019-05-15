@@ -33,8 +33,8 @@ public class NavigationServiceImpl implements NavigationService {
 		for (T_navigation_folder navFolder : navFolders) {
 			Map<String, Object> urlMap = new LinkedHashMap<String,  Object>(6);
 			urlMap.put("folderID", navFolder.getId());
-			urlMap.put("folderIcon", navFolder.getNavigationicon());
-			urlMap.put("folderName", navFolder.getNavigationname());
+			urlMap.put("folderIcon", navFolder.getNavigationIcon());
+			urlMap.put("folderName", navFolder.getNavigationName());
 			List<T_navigation_url> navURLS = new ArrayList<T_navigation_url>();
 			HashMap<String, Object> paramMap = new HashMap<String, Object>(4);
 			paramMap.put("navigationID", navFolder.getId());
@@ -57,7 +57,7 @@ public class NavigationServiceImpl implements NavigationService {
 			if (navURLS != null && navURLS.size() > 0) {
 				urlMap.put("URLS", navURLS);
 			}
-			returnMap.put(navFolder.getNavigationname(), urlMap);
+			returnMap.put(navFolder.getNavigationName(), urlMap);
 		}
 		return returnMap;
 	}
@@ -112,16 +112,16 @@ public class NavigationServiceImpl implements NavigationService {
 	public boolean insertURL(String urlname, String url, String navid, String customerid) throws Exception {
 		boolean flag = false;
 		T_navigation_url navURL = new T_navigation_url();
-		navURL.setCustomerid(customerid);
-		navURL.setNavigationid(Integer.valueOf(navid));
-		byte[] urlImage = HttpConUtils.getImageFromNetByUrl("");
-		navURL.setUrlimage(urlImage);
-		navURL.setUrlname(urlname);
+		navURL.setCustomerId(customerid);
+		navURL.setNavigationId(Integer.valueOf(navid));
+		byte[] urlImage = HttpConUtils.getImageFromNetByUrl(url);
+		navURL.setUrlImage(urlImage);
+		navURL.setUrlName(urlname);
 		navURL.setUrl(url);
 		navURL.setType(2);
 		navURL.setRemark("");
 		DateTime dt1 = new DateTime();
-		navURL.setIntime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
+		navURL.setInTime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
 		int saveFlag = baseDao.insert("navigation.saveURL", navURL);
 		if (saveFlag == 1){
 			flag = true;
@@ -134,11 +134,11 @@ public class NavigationServiceImpl implements NavigationService {
 		boolean flag = false;
 		T_navigation_url navURL = new T_navigation_url();
 		navURL.setId(urlid);
-		navURL.setNavigationid(Integer.valueOf(navid));
-		navURL.setUrlname(urlname);
+		navURL.setNavigationId(Integer.valueOf(navid));
+		navURL.setUrlName(urlname);
 		navURL.setUrl(url);
 		DateTime dt1 = new DateTime();
-		navURL.setUpdatetime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
+		navURL.setUpdateTime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
 		int updateFlag = baseDao.update("navigation.updateURL", navURL);
 		if (updateFlag == 1){
 			flag = true;

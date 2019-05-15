@@ -19,12 +19,18 @@ $(function() {
 	// 文件列表添加滚动条--展示
     function scrollbarLeftMenuShow() {
         $('.scrollbar-leftMenu').niceScroll({
-            cursorcolor : "#999999",zindex:10
+            cursorcolor : "#999999",
+            mousescrollstep: 10,
+            cursoropacitymax: 0.3,
+            autohidemode: "scroll"
         }).show();
     }
     function scrollbarLeftMenuResize() {
         $('.scrollbar-leftMenu').niceScroll({
-            cursorcolor : "#999999"
+            cursorcolor : "#999999",
+            mousescrollstep: 10,
+            cursoropacitymax: 0.3,
+            autohidemode: "scroll"
         }).resize();
     }
     // 获取便签ID

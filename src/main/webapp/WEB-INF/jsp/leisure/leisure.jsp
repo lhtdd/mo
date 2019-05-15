@@ -23,8 +23,8 @@
 	    	<%@ include file="../../innerJsp/leisure/happy.jsp" %> 
 	    	<!-- 右侧收藏提示-->    
 	    	<%@ include file="../../innerJsp/leisure/happy_mine.jsp" %> 
+    		<div class="clear"></div>
 		</div>
-    	<div class="clear"></div>
 		<!-- 网页底部 -->
 		<%@ include file="../../frameJsp/footer.jsp" %> 
 	</div>

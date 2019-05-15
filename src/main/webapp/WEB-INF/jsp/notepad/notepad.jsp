@@ -6,7 +6,7 @@
 <head>
 	<base href="<%=basePath %>">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>首页--随笔记事</title>
+	<title>默--随笔记事</title>
 	<link rel="stylesheet" href="${ctxStatic }/css/notepad/notepad.css">	
 	<script type="text/javascript" src="${ctxStatic }/js/notepad/notepad.js?r=<%=Math.random() %>"></script>
 	<script src="//cdn.ckeditor.com/4.11.3/full/ckeditor.js"></script>
@@ -23,9 +23,9 @@
 	    	<!-- 左侧菜单栏 -->
 	    	<%@ include file="../../innerJsp/notepad/left_menu.jsp" %> 
 	    	<!-- 右侧主页面 -->    
-	    	<%@ include file="../../innerJsp/notepad/editor.jsp" %> 
+	    	<%@ include file="../../innerJsp/notepad/editor.jsp" %>
+		    <div class="clear"></div>
 		</div>
-		<div class="clear"></div>
 		<!-- 网页底部 -->
 		<%@ include file="../../frameJsp/footer.jsp" %>
 	</div>

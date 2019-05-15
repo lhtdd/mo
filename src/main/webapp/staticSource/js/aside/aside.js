@@ -15,58 +15,34 @@ $(function() {
 		    dataType:'json',
 		    success:function(data){
 		        if (data.flag == 'yes'){
-		        	$.each(data.navFolder,function(key,values){ 
-			        		var str = "<li class='aside-bar-item'>";
-					        		str += "<input type='hidden' name='cur_folder_id' value="+values.folderID+">";
-									str += "<i class='iconfont "+values.folderIcon+"'></i>";
-									str += "<span>"+values.folderName+"</span>";
-									str += "<div class='aside-bar-content scrollbar-aside'>";
-										str += "<div class='scrollbar-wrap'>";
-											str += "<ul class='ul"+values.folderID+"'>";
-											if (values.URLS != null){
-														$.each(values.URLS,function(index,url){
-															str += "<li class='url-item'>";
-															// 如果url前端图片为空则展示系统默认的icon
-															if (url.urlimage == null || url.urlimage == ''){
-																str += "<div class='url-content' style='background:url(/mo/staticSource/image/defaulticon.ico) no-repeat left center;'>";
-															}else {
-																str += "<div class='url-content' style='background:url(navigation/urlIcon/"+url.id+") no-repeat left center;'>";
-															}
-															// 如果不是系统预设的url的在点击量统计及功能编辑上有所区分
-															if (url.type == '2') {
-																str += "<a class='url-info' onclick='visitURL("+url.id+")' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
-															} else {
-																str += "<a class='url-info' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
-															}
-																	if (url.type == '2'){
-																		str += "<div class='url-edit'>";
-																			str += "<i class='iconfont icon-xiugai fs12'></i>";
-																			str += "<ul class='url-edit-tip'>";
-																				str += "<li onclick='updateURL("+url.id+",\""+url.url+"\",\""+url.urlname+"\","+url.navigationid+")'>编辑</li>";
-																				str += "<li onclick='deleteURL("+url.id+","+url.navigationid+");'>删除</li>";
-																			str += "</ul>";
-																		str += "</div>";
-																	}
-																str += "</div>";
-															str += "</li>";
-														})
-											}
-											str += "</ul>";
-										str += "</div>";
-									str += "</div>";
-								str += "</li>";
-						$(".aside-bar-other").before(str);
+                    var str = "";
+		        	$.each(data.navFolder,function(key,values){
+						str += "<li class='aside-bar-item'>";
+							str += "<input type='hidden' name='cur_folder_id' value="+values.folderID+">";
+							str += "<i class='iconfont "+values.folderIcon+"'></i>";
+							str += "<span>"+values.folderName+"</span>";
+							str += "<div class='aside-bar-content scrollbar-aside'>";
+								str += "<div class='scrollbar-wrap'>";
+									str += "<ul class='ul"+values.folderID+"'>";
+									if (values.URLS != null){
+										str += jointUrlContent(values.URLS);
+									}
+									str += "</ul>";
+								str += "</div>";
+							str += "</div>";
+						str += "</li>";
 		        	});
-		        	//重新绘制滚动条
-		        	$('.scrollbar-aside').niceScroll(".scrollbar-wrap", {cursorcolor : "#FF6600"}).resize();
+					$(".aside-bar-collect").after(str);
 		        }else{
 		        	layer.msg(data.errorMsg);
 		        }
 		    }
 		});
 	}
+
 	//添加url
 	$(".btn-url-add").click(function(){
+        clearNavigationAddForm();
 		var cusID = $("#moci").val();
 		if (cusID){
 			//首先查询当前系统内预设的导航夹
@@ -86,6 +62,15 @@ $(function() {
 			})
 		}
 	})
+
+    $(".aside-bar").on("mouseover mouseout",".aside-bar-item",function(event){
+        if(event.type == "mouseover"){
+            $(this).find(".aside-bar-content").css("display", "block");
+            resizeScroll();
+        }else if(event.type == "mouseout"){
+            $(this).find(".aside-bar-content").css("display", "none");
+        }
+    })
 	
 });
 //添加或更新URL信息时，动态添加收藏夹内容
@@ -110,7 +95,7 @@ function prepareNavFolderOption(folderID){
 	        			if (folderID != null && folderID == values.id){
 	        				option += "selected= 'selected'";
 	        			}
-	        			option += ">"+values.navigationname+"</option>";
+	        			option += ">"+values.navigationName+"</option>";
 	        			$select_folder.append(option);
 	        		}
 	        	})
@@ -171,7 +156,46 @@ function submitNavigationForm(formID, urlID, oldID, flag){
 			}
 			return false;
 		});
-	})
+	});
+}
+
+//重新绘制滚动条
+function resizeScroll() {
+    $('.scrollbar-aside').niceScroll(".scrollbar-wrap", {
+    	cursorcolor : "#FF6600",
+        mousescrollstep: 10,
+        cursoropacitymax: 0.3,
+        autohidemode: "scroll"
+    }).resize();
+}
+// 拼接URL的内容
+function jointUrlContent(urls) {
+    var str = "";
+    $.each(urls,function(index,url){
+        str += "<li class='url-item'>";
+        // 如果url前端图片为空则展示系统默认的icon
+        if (url.urlImage == null || url.urlImage == ''){
+            str += "<div class='url-content' style='background:url(/mo/staticSource/image/defaulticon.ico) no-repeat left center;'>";
+        }else {
+            str += "<div class='url-content' style='background:url(navigation/urlIcon/"+url.id+") no-repeat left center;'>";
+        }
+        // 如果不是系统预设的url的在点击量统计及功能编辑上有所区分
+        if (url.type == '2') {
+            str += "<a class='url-info' onclick='visitURL("+url.id+")' href='"+url.url+"' target='_blank'><em title='"+url.urlName+"'>"+url.urlName+"</em></a>";
+            str += "<div class='url-edit'>";
+            str += "<i class='iconfont icon-xiugai fs12'></i>";
+            str += "<ul class='url-edit-tip'>";
+            str += "<li onclick='updateURL("+url.id+",\""+url.url+"\",\""+url.urlName+"\","+url.navigationId+")'>编辑</li>";
+            str += "<li onclick='deleteURL("+url.id+","+url.navigationId+");'>删除</li>";
+            str += "</ul>";
+            str += "</div>";
+        } else {
+            str += "<a class='url-info' href='"+url.url+"' target='_blank'><em title='"+url.urlName+"'>"+url.urlName+"</em></a>";
+        }
+        str += "</div>";
+        str += "</li>";
+    });
+    return str;
 }
 
 //清空form的值
@@ -200,26 +224,8 @@ function refreshURL(navid){
 								$current_ul = $(".aside-bar-item .ul"+navid);
 							}
 							$current_ul.empty();	
-							$.each(values,function(key,url){ 
-								var str = "";
-								str += "<li class='url-item'>";
-									str += "<div class='url-content' style='background:url(/mo/staticSource/image/"+url.urlimage+") no-repeat left center;'>";
-									str += "<a class='url-info' onclick='visitURL("+url.id+")' href='"+url.url+"' target='_blank'><em title='"+url.urlname+"'>"+url.urlname+"</em></a>";
-									if (url.type == '2'){
-										str += "<div class='url-edit'>";
-											str += "<i class='iconfont icon-xiugai fs12'></i>";
-											str += "<div class='url-edit-tip'>";
-												str += "<ul>";
-													str += "<li onclick='updateURL("+url.id+",\""+url.url+"\",\""+url.urlname+"\","+url.navigationid+")'>编辑</li>";
-													str += "<li onclick='deleteURL("+url.id+","+url.navigationid+");'>删除</li>";
-												str += "</ul>";
-											str += "</div>";
-										str += "</div>";
-									}
-									str += "</div>";
-								str += "</li>";
-								$current_ul.append(str);
-							})
+							var str = jointUrlContent(values);
+							$current_ul.append(str);
 						}
 					});
 					// 如果目标导航夹为空则需要清空
@@ -230,8 +236,6 @@ function refreshURL(navid){
 					$(".aside-bar-item .ul1").empty();
 					$current_ul = $(".aside-bar-item .ul"+navid).empty();
 				}
-				//重新绘制滚动条
-				$('.scrollbar-aside').niceScroll(".scrollbar-wrap", {cursorcolor : "#FF6600"}).resize();
 			}else{
 				layer.msg(data.errorMsg);
 			}

@@ -15,9 +15,10 @@
 	background-color: #FFFFFF;
 	cursor: default;
 }
-.aside-bar > li:hover .aside-bar-content{
+/* 改用JS实现，同时增加niceScroll的重绘 */
+/*.aside-bar > li:hover .aside-bar-content{
 	display: block;
-}
+}*/
 .aside-bar-item{
 	height: 60px; 
 }
@@ -101,10 +102,16 @@
 .url-edit:hover i{
 	color: #FF6600;
 }
+.url-item:nth-child(1) .url-edit:hover .url-edit-tip{
+	top: 24px;
+}
+.url-item:nth-child(2) .url-edit:hover .url-edit-tip{
+	top: 24px;
+}
 .url-edit-tip{
 	display: none;
 	position: absolute;
-	top: 24px;
+	top: -40px;
 	width: 50px;
 	z-index: 20;
 	right: 0px;

@@ -30,35 +30,35 @@
 	<insert id="saveURL" parameterType="t_navigation_url">
 		insert into t_navigation_url(customerid,navigationid,urlimage,urlname,url,type,intime,remark)
 		values(
-		#{customerid},
-		#{navigationid},
-		#{urlimage},
-		#{urlname},
+		#{customerId},
+		#{navigationId},
+		#{urlImage},
+		#{urlName},
 		#{url},
 		#{type},
-		#{intime},
+		#{inTime},
 		#{remark})
 	</insert>
 	
 	<update id="updateURL" parameterType="t_navigation_url">
 		update t_navigation_url
 		<set>
-			<if test="navigationid != null">
-				navigationid = #{navigationid},
+			<if test="navigationId != 0">
+				navigationid = #{navigationId},
 			</if>
-			<if test="urlname != null">
-				urlname = #{urlname},
+			<if test="urlName != null">
+				urlname = #{urlName},
 			</if>
 			<if test="url != null">
 				url = #{url},
 			</if>
-			<if test="updatetime != null">
-				updatetime = #{updatetime},
+			<if test="updateTime != null">
+				updatetime = #{updateTime},
 			</if>
-			<if test="accesstime != null">
-				accesstime = #{accesstime},
+			<if test="accessTime != null">
+				accesstime = #{accessTime},
 			</if>
-			<if test="hits != null">
+			<if test="hits != 0">
 				hits = #{hits},
 			</if>
 			<if test="remark != null">
@@ -71,7 +71,7 @@
 	</update>
 	<!-- 访问URL则更新其点击次数及访问时间 -->
 	<update id="updateURLForHits" parameterType="map">
-		update t_navigation_url set hits = hits + 1 , accesstime = #{accesstime} where id = #{id}
+		update t_navigation_url set hits = hits + 1 , accesstime = #{accessTime} where id = #{id}
 	</update>
 	
 	<delete id="deleteURL" parameterType="String">
