@@ -157,3 +157,8 @@ body, html {
 	background-color: #EE6600;
 	width: 160px;
 }
+/* layer 自定义样式 */
+.btn-bg .layui-layer-btn .layui-layer-btn0 {
+	background-color: #EE6600;
+	border-color: #EE6600;
+}

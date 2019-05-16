@@ -58,21 +58,7 @@
 .aside-bar-content .url-item:hover{
 	background-color: #F4F8FB;
 }
-/* 实现下划线从中间向两边延伸 */
-.aside-bar-content .url-item:after{
-	content: "";
-	width: 0px;
-	height: 0px;
-	border-bottom: 1px dotted #FF6600;
-	position: absolute;
-	top: 100%;
-	left: 50%;
-	transition: all 1s;
-}
-.aside-bar-content .url-item:hover:after{
-	left: 0%;
-	width: 100%   /*原理是left:50%变成0%的同时，宽度从0%变成100%*/
-}
+
 /* 实现图标靠左居中对齐，且右侧文字超出范围使用省略号代替（单行文本） */
 .url-content{
 	height:25px; 

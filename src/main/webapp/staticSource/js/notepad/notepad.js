@@ -143,162 +143,175 @@ $(function() {
             selectedNotepad(nextLi);
         }
     }
-    layui.use([ 'layer'], function() {
-        var layer = layui.layer;
-        /* 新增事件 */
-        $("#notepad-add-btn").on("click",function () {
-            var op = {};
-            op._method="PUT";
-            $.ajax({
-                url:'notepad/add/authc',
-                type:'POST',
-                async:true,
-                data:op,
-                timeout:5000,
-                dataType:'json',
-                success:function(data){
-                    if (data.flag == '0000'){
-                        if (getNotepadId() == ''){
-                            window.location.href = $("#mol").val();
-                        }else {
-                            addNotepad(data.notepad);
-                            scrollbarLeftMenuResize();
-                        }
-                    }else{
-                        // 要求登录先
-                        layer.msg(data.errorMsg);
+    /* 新增事件 */
+    $("#notepad-add-btn").on("click",function () {
+        var op = {};
+        op._method="PUT";
+        $.ajax({
+            url:'notepad/add/authc',
+            type:'POST',
+            async:true,
+            data:op,
+            timeout:5000,
+            dataType:'json',
+            success:function(data){
+                if (data.flag == '0000'){
+                    if (getNotepadId() == ''){
+                        window.location.href = $("#mol").val();
+                    }else {
+                        addNotepad(data.notepad);
+                        scrollbarLeftMenuResize();
                     }
+                }else{
+                    // 要求登录先
+                    layer.msg(data.errorMsg);
                 }
-            });
+            }
         });
-        /* 文件列表点击事件 */
-        $("#notepad-menu").on("click",".file-notepad",function() {
-            selectedNotepad($(this));
+    });
+    /* 文件列表点击事件 */
+    $("#notepad-menu").on("click",".file-notepad",function() {
+        selectedNotepad($(this));
+    });
+    /* 编辑器提交 */
+    function dealNotepad() {
+        var notepad = {};
+        notepad.id = getNotepadId();
+        notepad.notepadName = getTitle();
+        notepad.content = getContent();
+        $.ajax({
+            url:'notepad/content/authc',
+            type:'POST',
+            async:true,
+            data:notepad,
+            timeout:5000,
+            dataType:'json',
+            success:function(data){
+                if (data.flag == 'yes'){
+                    if (notepad.id == ''){
+                        window.location.href = $("#mol").val();
+                    }
+                    setSelectedNotepadName(data.notepad.notepadName, data.notepad.updateTime);
+                    layer.msg("保存成功");
+                }else{
+                    // 要求登录先
+                    var $loginPop = $('#login-pop');
+                    $loginPop.find("input[name=event_object]").val("notepad-save-btn");
+                    layer.open({
+                        type : 1,
+                        content : $loginPop,
+                        title:false,
+                        area: ['500px', '340px'],
+                        shadeClose : true
+                    })
+                }
+            }
         });
-        /* 编辑器提交 */
-        function dealNotepad() {
+    }
+    // 点击保存按钮
+    $("#notepad-save-btn").on("click",function () {
+        dealNotepad();
+    });
+    // 修改标题函数
+    function updateNotepadName() {
+        var curName = getSelectedNotepadName();
+        if (getTitle() == ""){
+            layer.msg("标题不能为空");
+            setTitle(curName);
+        }else {
+            if (getNotepadId() != ""){
+                if (getTitle() != curName){
+                    dealNotepad();
+                }
+            }
+        }
+    }
+    // 标题框失去焦点
+    $(".main-notepad .address-file").find("input[name=notepadName]").blur(function () {
+        updateNotepadName();
+    });
+    // 标题框enter事件
+    $(".main-notepad .address-file").find("input[name=notepadName]").keyup(function () {
+        if(event.keyCode == 13 ){
+            updateNotepadName();
+        }
+    });
+    /* 删除操作 */
+    $("#notepad-menu").on("click",'.notepad-delete-btn',function (event) {
+        event.stopPropagation();
+        var obj = $(this);
+        layer.open({
+           title:"删除提示",
+            content:"删除后将不能恢复，确认要删除吗？",
+            btn:["确认","取消"],
+            btn1:function (index) {
+                confirmDelete(obj);
+                layer.close(index);
+            },
+            btn2:function (index) {
+                layer.close(index);
+            },
+            skin:"btn-bg"
+        });
+    });
+
+    function confirmDelete(obj) {
+        var $curNotepadDiv = obj.parents(".file-notepad");
+        var $notepadId = $curNotepadDiv.find("input[name=notepad-id]").val();
+        if ($notepadId != ''){
             var notepad = {};
-            notepad.id = getNotepadId();
-            notepad.notepadName = getTitle();
-            notepad.content = getContent();
+            notepad._method="DELETE";
+            notepad.notepadId=$notepadId;
             $.ajax({
-                url:'notepad/content/authc',
+                url:'notepad/'+$notepadId+'/authc',
                 type:'POST',
                 async:true,
                 data:notepad,
                 timeout:5000,
                 dataType:'json',
                 success:function(data){
-                    if (data.flag == 'yes'){
-                        if (notepad.id == ''){
-                            window.location.href = $("#mol").val();
-                        }
-                        setSelectedNotepadName(data.notepad.notepadName, data.notepad.updateTime);
-                        layer.msg("保存成功");
+                    if (data.flag == '0000'){
+                        selectNextNotepad($curNotepadDiv);
+                        $curNotepadDiv.remove();
+                        scrollbarLeftMenuResize();
                     }else{
                         // 要求登录先
-                        var $loginPop = $('#login-pop');
-                        $loginPop.find("input[name=event_object]").val("notepad-save-btn");
-                        layer.open({
-                            type : 1,
-                            content : $loginPop,
-                            title:false,
-                            area: ['500px', '340px'],
-                            shadeClose : true
-                        })
+                        layer.msg(data.errorMsg);
                     }
                 }
             });
         }
-        // 点击保存按钮
-        $("#notepad-save-btn").on("click",function () {
-            dealNotepad();
-        });
-        // 修改标题函数
-        function updateNotepadName() {
-            var curName = getSelectedNotepadName();
-            if (getTitle() == ""){
-                layer.msg("标题不能为空");
-                setTitle(curName);
-            }else {
-                if (getNotepadId() != ""){
-                    if (getTitle() != curName){
-                        dealNotepad();
+    }
+
+    /* 置顶操作 */
+    $("#notepad-menu").on("click",'.notepad-top-btn',function (event) {
+        event.stopPropagation();
+        var obj = $(this);
+        var $curNotepadDiv = obj.parents(".file-notepad");
+        var $notepadId = $curNotepadDiv.find("input[name=notepad-id]").val();
+        if ($notepadId != ''){
+            var notepad = {};
+            notepad._method="PUT";
+            notepad.notepadId=$notepadId;
+            $.ajax({
+                url:'notepad/'+$notepadId+'/authc',
+                type:'POST',
+                async:true,
+                data:notepad,
+                timeout:5000,
+                dataType:'json',
+                success:function(data){
+                    if (data.flag == '0000'){
+                        obj.parents("#notepad-menu").prepend($curNotepadDiv);
+                        selectedNotepad($curNotepadDiv);
+                        layer.msg("置顶成功");
+                    }else{
+                        // 要求登录先
+                        layer.msg(data.errorMsg);
                     }
                 }
-            }
+            });
         }
-        // 标题框失去焦点
-        $(".main-notepad .address-file").find("input[name=notepadName]").blur(function () {
-            updateNotepadName();
-        });
-        // 标题框enter事件
-        $(".main-notepad .address-file").find("input[name=notepadName]").keyup(function () {
-            if(event.keyCode == 13 ){
-                updateNotepadName();
-            }
-        });
-        /* 删除操作 */
-        $("#notepad-menu").on("click",'.notepad-delete-btn',function (event) {
-            event.stopPropagation();
-            var obj = $(this);
-            var $curNotepadDiv = obj.parents(".file-notepad");
-            var $notepadId = $curNotepadDiv.find("input[name=notepad-id]").val();
-            if ($notepadId != ''){
-                var notepad = {};
-                notepad._method="DELETE";
-                notepad.notepadId=$notepadId;
-                $.ajax({
-                    url:'notepad/'+$notepadId+'/authc',
-                    type:'POST',
-                    async:true,
-                    data:notepad,
-                    timeout:5000,
-                    dataType:'json',
-                    success:function(data){
-                        if (data.flag == '0000'){
-                            selectNextNotepad($curNotepadDiv);
-                            $curNotepadDiv.remove();
-                            scrollbarLeftMenuResize();
-                        }else{
-                            // 要求登录先
-                            layer.msg(data.errorMsg);
-                        }
-                    }
-                });
-            }
-        });
-
-        /* 置顶操作 */
-        $("#notepad-menu").on("click",'.notepad-top-btn',function (event) {
-            event.stopPropagation();
-            var obj = $(this);
-            var $curNotepadDiv = obj.parents(".file-notepad");
-            var $notepadId = $curNotepadDiv.find("input[name=notepad-id]").val();
-            if ($notepadId != ''){
-                var notepad = {};
-                notepad._method="PUT";
-                notepad.notepadId=$notepadId;
-                $.ajax({
-                    url:'notepad/'+$notepadId+'/authc',
-                    type:'POST',
-                    async:true,
-                    data:notepad,
-                    timeout:5000,
-                    dataType:'json',
-                    success:function(data){
-                        if (data.flag == '0000'){
-                            obj.parents("#notepad-menu").prepend($curNotepadDiv);
-                            selectedNotepad($curNotepadDiv);
-                            layer.msg("置顶成功");
-                        }else{
-                            // 要求登录先
-                            layer.msg(data.errorMsg);
-                        }
-                    }
-                });
-            }
-        });
     });
 
 });
