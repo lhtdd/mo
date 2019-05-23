@@ -61,4 +61,11 @@ public interface SystemService {
 	 * @throws Exception
 	 */
 	boolean updateActivation(String customerID, String validCode) throws Exception;
+
+	/**
+	 * 更新某用户的lastHappyId
+	 * @param currentUser
+	 * @return
+	 */
+	boolean updateLastHappyIdByCustomerId(CurrentUser currentUser);
 }

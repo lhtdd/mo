@@ -1,6 +1,5 @@
 $(function() {
-	//fixDiv("header");
-	fixDiv("happy-mine-operation","10");
+	fixDiv("header");
 
 	function jointHappyItem(item) {
 		var happyItem = "";
@@ -18,7 +17,7 @@ $(function() {
         happyItem += '</div>';
         happyItem += '<div class="happy-operation fs14">';
         happyItem += '<ul>';
-        happyItem += '<li class="collection"><i class="iconfont icon-dianzan4"></i><span class="collectHits">'+item.collectHits+'</span></li>';
+        happyItem += '<li class="collection has-collection"><i class="iconfont icon-dianzan4"></i><span>'+item.collectHits+'</span></li>';
         happyItem += '</ul>';
         happyItem += '</div>';
         happyItem += '</li>';
@@ -31,12 +30,7 @@ $(function() {
             elem: '.happy-list'
             ,done: function(page, next){
                 var lis = [];
-                var lastHappyId = 0;
-                var itemCount = $(".happy-list").children(".happy-item").length;
-                if (itemCount > 0){
-                    lastHappyId = $(".happy-list .happy-item:last-of-type").find("input[name='happyId']").val();
-                }
-                var goUrl = 'leisure/happy/'+page+'/'+lastHappyId;
+                var goUrl = 'leisure/happy/'+page+'/authc';
                 $.get(goUrl, function(res){
                     layui.each(res.happyItems, function(index, item){
                     	var happyItem = jointHappyItem(item);
@@ -48,34 +42,13 @@ $(function() {
         });
     });
 
-	// 收藏
-	$(".happy-list").on("click",'.happy-item .collection', function(){
-        if ($(this).hasClass("has-collection")){
-            cancelCollectHappy($(this));
-        }else {
-            collectHappy($(this));
+    // 取消收藏
+    $(".happy-list").on("click",'.happy-item .collection', function(){
+        var flag = subCollection($(this), "PUT");
+        if (flag){
+            $(this).parents(".happy-item").remove();
         }
     });
-
-    function collectHappy(obj) {
-        var flag = subCollection(obj, "POST");
-        if (flag){
-            var collectSpan = obj.find(".collectHits");
-            var oldHits = parseInt(collectSpan.text());
-            collectSpan.text(oldHits+1);
-            obj.addClass("has-collection");
-        }
-    }
-
-    function cancelCollectHappy(obj) {
-        var flag = subCollection(obj, "PUT");
-        if (flag){
-            var collectSpan = obj.find(".collectHits");
-            var oldHits = parseInt(collectSpan.text());
-            collectSpan.text(oldHits-1);
-            obj.removeClass("has-collection");
-        }
-    }
 
     function subCollection(obj, method) {
         var subFlag = false;
@@ -111,8 +84,4 @@ $(function() {
         return subFlag;
     }
 
-	// 点击我的收藏
-	$("#happy-mine-btn").click(function(){
-        window.location.href = "leisure/index_mine";
-	});
 });

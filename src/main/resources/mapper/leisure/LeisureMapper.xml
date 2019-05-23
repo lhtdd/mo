@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="leisure">
+	<!-- 开启二级缓存 各属性默认
+	<cache></cache>-->
+
+	<select id="getHappiness" parameterType="HappyPagingQuery" resultType="HappyItem">
+		select
+        c.id AS customerId,
+        c.userImage AS userImagePath,
+        c.alias AS alias,
+        c.type AS customerType,
+        a.id AS happyId,
+        a.happyText AS happyText,
+        a.inTime AS inTime,
+        a.collectHits AS collectHits,
+        a.contentType AS contentType,
+        a.resource AS resource
+		from t_happy AS a
+		LEFT JOIN t_customer AS c ON a.customerID = c.id
+		WHERE a.status = 1 AND a.id > #{lastHappyId}
+		ORDER BY a.id ASC
+		limit #{perPageCount}
+	</select>
+
+    <update id="addCollectHits" parameterType="Integer">
+        UPDATE t_happy SET collectHits = collectHits+1 WHERE id = #{id} 
+    </update>
+
+    <update id="substractCollectHits" parameterType="Integer">
+        UPDATE t_happy SET collectHits = collectHits-1 WHERE id = #{id}
+    </update>
+
+    <select id="getHappyCollectsByCustomerId" parameterType="HappyItem" resultType="HappyItem">
+        select
+        c.id AS customerId,
+        c.alias AS alias,
+        c.userImage AS userImagePath,
+        c.type AS customerType,
+        b.id AS happyId,
+        b.happyText AS happyText,
+        b.inTime AS inTime,
+        b.collectHits AS collectHits,
+        b.contentType AS contentType,
+        b.resource AS resource
+		from t_happy_collect AS a
+		LEFT JOIN t_happy AS b ON a.happyID = b.id
+		LEFT JOIN t_customer AS c ON b.customerID = c.id
+		WHERE a.customerID = #{customerId}
+		AND a.type = 1
+		ORDER BY a.id ASC
+		limit #{initial},#{perPageCount}
+    </select>
+
+    <select id="getHappyCollectByCustomerIdAndHappyId" parameterType="HappyCollect" resultType="HappyCollect">
+        select *
+        from t_happy_collect AS a
+        WHERE a.customerID = #{customerId}
+        AND a.happyID = #{happyId}
+        AND a.type = #{type}
+    </select>
+
+    <insert id="insertHappyCollect" parameterType="HappyCollect">
+        INSERT INTO t_happy_collect(customerID,type,happyID,dealTime,transmitPlatform,status,remark)
+        VALUES (
+        #{customerId},
+        #{type},
+        #{happyId},
+        now(),
+        #{transmitPlatform},
+        #{status},
+        #{remark}
+        )
+    </insert>
+
+    <delete id="deleteHappyByIdAndCustomerId" parameterType="HappyCollect">
+        DELETE FROM t_happy_collect
+        WHERE customerID = #{customerId}
+        AND happyID = #{happyId}
+        AND type = #{type}
+    </delete>
+
+</mapper>

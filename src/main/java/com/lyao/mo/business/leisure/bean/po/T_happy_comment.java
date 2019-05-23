@@ -5,11 +5,11 @@ import java.util.Date;
 public class T_happy_comment implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private String customerid;
+	private String customerId;
 	private Integer type;
-	private String commentinfo;
-	private Integer commentedid;
-	private Date intime;
+	private String commentInfo;
+	private Integer commentedId;
+	private Date inTime;
 	private Integer status;
 	private Integer level;
 	private String remark;
@@ -20,36 +20,47 @@ public class T_happy_comment implements Serializable {
 	public Integer getId(){
 		return id;
 	}
-	public void setCustomerid(String customerid){
-		this.customerid=customerid;
+
+	public String getCustomerId() {
+		return customerId;
 	}
-	public String getCustomerid(){
-		return customerid;
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
 	}
-	public void setType(Integer type){
-		this.type=type;
-	}
-	public Integer getType(){
+
+	public Integer getType() {
 		return type;
 	}
-	public void setCommentinfo(String commentinfo){
-		this.commentinfo=commentinfo;
+
+	public void setType(Integer type) {
+		this.type = type;
 	}
-	public String getCommentinfo(){
-		return commentinfo;
+
+	public String getCommentInfo() {
+		return commentInfo;
 	}
-	public void setCommentedid(Integer commentedid){
-		this.commentedid=commentedid;
+
+	public void setCommentInfo(String commentInfo) {
+		this.commentInfo = commentInfo;
 	}
-	public Integer getCommentedid(){
-		return commentedid;
+
+	public Integer getCommentedId() {
+		return commentedId;
 	}
-	public void setIntime(Date intime){
-		this.intime=intime;
+
+	public void setCommentedId(Integer commentedId) {
+		this.commentedId = commentedId;
 	}
-	public Date getIntime(){
-		return intime;
+
+	public Date getInTime() {
+		return inTime;
 	}
+
+	public void setInTime(Date inTime) {
+		this.inTime = inTime;
+	}
+
 	public void setStatus(Integer status){
 		this.status=status;
 	}

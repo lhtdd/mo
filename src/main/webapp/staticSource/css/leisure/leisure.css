@@ -6,7 +6,7 @@
 .happy-item{
 	margin: 0 0 10px 0;
 	background-color: #FFFFFF;
-	padding: 20px;
+	padding: 10px 20px 0 20px;
 	border-radius: 3px;
 }
 .happy-header img,.happy-name-wrapper{
@@ -26,6 +26,9 @@
 	padding: 10px 0 20px 0;
 	color: #4d4d4d;
 }
+.happy-operation{
+	color: #a1a1a1;
+}
 .happy-operation li{
 	display: inline-block;
 	height: 30px;
@@ -33,7 +36,6 @@
 	text-align: center;
 	margin-right: 10px;
 	cursor:pointer; 
-	color: #a1a1a1;
 }
 .happy-operation li:hover{
 	color: #EE6600;
@@ -41,17 +43,20 @@
 .happy-operation i{
 	font-size: 18px;
 }
+/* 收藏样式 */
+.has-collection{
+	color: #EE6600;
+}
 /*** happyMine.jsp ***/
 /* 右侧内容 */
 .happy-right-wrapper{
 	width: 300px;
-	
 }
 #happy-mine-operation{
 	width: inherit;
 }
 /* 投稿 */
-.happy-edit{
+.happy-collection{
 	height: 50px;
 	line-height: 50px;
 	background-color: #EE6600;
@@ -60,15 +65,15 @@
 	font-size: 20px;
 	border-radius: 3px;
 }
-.happy-edit:hover{
+.happy-collection:hover{
 	background-color: #ff8b33;  /* #ff8b33 */
 	cursor: pointer;
 }
-.happy-edit i,.happy-edit span{
+.happy-collection i,.happy-edit span{
 	font-size: 24px;
 	display: inline-block;
 }
-.happy-edit i{
+.happy-collection i{
 	margin-right: 10px;
 }
 /* 我的收藏等  */

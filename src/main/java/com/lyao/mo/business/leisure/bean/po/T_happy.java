@@ -5,19 +5,19 @@ import java.util.Date;
 public class T_happy implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private String customerid;
-	private String happytext;
-	private String happyimage;
-	private String happyvideo;
-	private Date intime;
+	private String customerId;
+	private String happyText;
+	private String happyImage;
+	private String happyVideo;
+	private Date inTime;
 	private Integer status;
-	private Integer priasehits;
-	private Integer treadhits;
-	private Integer commethits;
-	private Integer transmithits;
-	private Integer collecthits;
-	private Integer contenttype;
-	private Integer qualitytype;
+	private Integer praiseHits;
+	private Integer treadHits;
+	private Integer commentHits;
+	private Integer transmitHits;
+	private Integer collectHits;
+	private Integer contentType;
+	private Integer qualityType;
 	private Integer resource;
 	private String remark;
 
@@ -27,90 +27,119 @@ public class T_happy implements Serializable {
 	public Integer getId(){
 		return id;
 	}
-	public void setCustomerid(String customerid){
-		this.customerid=customerid;
+
+	public String getCustomerId() {
+		return customerId;
 	}
-	public String getCustomerid(){
-		return customerid;
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
 	}
-	public void setHappytext(String happytext){
-		this.happytext=happytext;
+
+	public String getHappyText() {
+		return happyText;
 	}
-	public String getHappytext(){
-		return happytext;
+
+	public void setHappyText(String happyText) {
+		this.happyText = happyText;
 	}
-	public void setHappyimage(String happyimage){
-		this.happyimage=happyimage;
+
+	public String getHappyImage() {
+		return happyImage;
 	}
-	public String getHappyimage(){
-		return happyimage;
+
+	public void setHappyImage(String happyImage) {
+		this.happyImage = happyImage;
 	}
-	public void setHappyvideo(String happyvideo){
-		this.happyvideo=happyvideo;
+
+	public String getHappyVideo() {
+		return happyVideo;
 	}
-	public String getHappyvideo(){
-		return happyvideo;
+
+	public void setHappyVideo(String happyVideo) {
+		this.happyVideo = happyVideo;
 	}
-	public void setIntime(Date intime){
-		this.intime=intime;
+
+	public Date getInTime() {
+		return inTime;
 	}
-	public Date getIntime(){
-		return intime;
+
+	public void setInTime(Date inTime) {
+		this.inTime = inTime;
 	}
-	public void setStatus(Integer status){
-		this.status=status;
-	}
-	public Integer getStatus(){
+
+	public Integer getStatus() {
 		return status;
 	}
-	public void setPriasehits(Integer priasehits){
-		this.priasehits=priasehits;
+
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
-	public Integer getPriasehits(){
-		return priasehits;
+
+	public Integer getPraiseHits() {
+		return praiseHits;
 	}
-	public void setTreadhits(Integer treadhits){
-		this.treadhits=treadhits;
+
+	public void setPraiseHits(Integer praiseHits) {
+		this.praiseHits = praiseHits;
 	}
-	public Integer getTreadhits(){
-		return treadhits;
+
+	public Integer getTreadHits() {
+		return treadHits;
 	}
-	public void setCommethits(Integer commethits){
-		this.commethits=commethits;
+
+	public void setTreadHits(Integer treadHits) {
+		this.treadHits = treadHits;
 	}
-	public Integer getCommethits(){
-		return commethits;
+
+	public Integer getCommentHits() {
+		return commentHits;
 	}
-	public void setTransmithits(Integer transmithits){
-		this.transmithits=transmithits;
+
+	public void setCommentHits(Integer commentHits) {
+		this.commentHits = commentHits;
 	}
-	public Integer getTransmithits(){
-		return transmithits;
+
+	public Integer getTransmitHits() {
+		return transmitHits;
 	}
-	public void setCollecthits(Integer collecthits){
-		this.collecthits=collecthits;
+
+	public void setTransmitHits(Integer transmitHits) {
+		this.transmitHits = transmitHits;
 	}
-	public Integer getCollecthits(){
-		return collecthits;
+
+	public Integer getCollectHits() {
+		return collectHits;
 	}
-	public void setContenttype(Integer contenttype){
-		this.contenttype=contenttype;
+
+	public void setCollectHits(Integer collectHits) {
+		this.collectHits = collectHits;
 	}
-	public Integer getContenttype(){
-		return contenttype;
+
+	public Integer getContentType() {
+		return contentType;
 	}
-	public void setQualitytype(Integer qualitytype){
-		this.qualitytype=qualitytype;
+
+	public void setContentType(Integer contentType) {
+		this.contentType = contentType;
 	}
-	public Integer getQualitytype(){
-		return qualitytype;
+
+	public Integer getQualityType() {
+		return qualityType;
 	}
-	public void setResource(Integer resource){
-		this.resource=resource;
+
+	public void setQualityType(Integer qualityType) {
+		this.qualityType = qualityType;
 	}
-	public Integer getResource(){
+
+	public Integer getResource() {
 		return resource;
 	}
+
+	public void setResource(Integer resource) {
+		this.resource = resource;
+	}
+
 	public void setRemark(String remark){
 		this.remark=remark;
 	}

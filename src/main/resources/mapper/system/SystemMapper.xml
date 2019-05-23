@@ -10,6 +10,7 @@
 		 c.password as password,
 		 c.status as status,
 		 c.alias as alias,
+		 c.lastHappyId AS lastHappyId,
 		 d.sex as sex,
 		 c.type as type	    
 	    from t_customer as c 
@@ -24,6 +25,7 @@
 		 c.username as username,
 		 c.password as password,
 		 c.alias as alias,
+		 c.lastHappyId AS lastHappyId,
 		 d.sex as sex,
 		 c.type as type	    
 	    from t_customer as c 
@@ -57,5 +59,9 @@
 	</select>
 	<update id="activation" parameterType="Map">
 		update t_customer set status = 2, activationTime = #{activationTime} where id = #{customerID}
+	</update>
+
+	<update id="updateLastHappyIdByCustomerId" parameterType="CurrentUser">
+		update t_customer set lastHappyId = #{lastHappyId} WHERE id = #{id}
 	</update>
 </mapper>

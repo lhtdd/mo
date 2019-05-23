@@ -16,6 +16,7 @@ public class CurrentUser implements Serializable {
 	private String alias;
 	private String sex;
 	private String type;
+	private Integer lastHappyId;
 
 	public String getId() {
 		return id;
@@ -81,4 +82,11 @@ public class CurrentUser implements Serializable {
 		this.type = type;
 	}
 
+	public Integer getLastHappyId() {
+		return lastHappyId;
+	}
+
+	public void setLastHappyId(Integer lastHappyId) {
+		this.lastHappyId = lastHappyId;
+	}
 }

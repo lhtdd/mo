@@ -5,12 +5,12 @@ import java.util.Date;
 public class T_customer_detail implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String id;
-	private String realname;
+	private String realName;
 	private Integer sex;
-	private Integer idtype;
-	private String idnumber;
+	private Integer idType;
+	private String idNumber;
 	private Integer occupation;
-	private Date updatetime;
+	private Date updateTime;
 	private String remark;
 
 	public void setId(String id){
@@ -19,42 +19,55 @@ public class T_customer_detail implements Serializable {
 	public String getId(){
 		return id;
 	}
-	public void setRealname(String realname){
-		this.realname=realname;
+
+	public String getRealName() {
+		return realName;
 	}
-	public String getRealname(){
-		return realname;
+
+	public void setRealName(String realName) {
+		this.realName = realName;
 	}
-	public void setSex(Integer sex){
-		this.sex=sex;
-	}
-	public Integer getSex(){
+
+	public Integer getSex() {
 		return sex;
 	}
-	public void setIdtype(Integer idtype){
-		this.idtype=idtype;
+
+	public void setSex(Integer sex) {
+		this.sex = sex;
 	}
-	public Integer getIdtype(){
-		return idtype;
+
+	public Integer getIdType() {
+		return idType;
 	}
-	public void setIdnumber(String idnumber){
-		this.idnumber=idnumber;
+
+	public void setIdType(Integer idType) {
+		this.idType = idType;
 	}
-	public String getIdnumber(){
-		return idnumber;
+
+	public String getIdNumber() {
+		return idNumber;
 	}
-	public void setOccupation(Integer occupation){
-		this.occupation=occupation;
+
+	public void setIdNumber(String idNumber) {
+		this.idNumber = idNumber;
 	}
-	public Integer getOccupation(){
+
+	public Integer getOccupation() {
 		return occupation;
 	}
-	public void setUpdatetime(Date updatetime){
-		this.updatetime=updatetime;
+
+	public void setOccupation(Integer occupation) {
+		this.occupation = occupation;
 	}
-	public Date getUpdatetime(){
-		return updatetime;
+
+	public Date getUpdateTime() {
+		return updateTime;
 	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+
 	public void setRemark(String remark){
 		this.remark=remark;
 	}

@@ -6,11 +6,11 @@ import java.util.Date;
 public class T_happy_collect implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private String customerid;
+	private String customerId;
 	private Integer type;
-	private Integer happyid;
-	private Date dealtime;
-	private Integer transmitplatform;
+	private Integer happyId;
+	private Date dealTime;
+	private Integer transmitPlatform;
 	private Integer status;
 	private String remark;
 
@@ -20,36 +20,47 @@ public class T_happy_collect implements Serializable {
 	public Integer getId(){
 		return id;
 	}
-	public void setCustomerid(String customerid){
-		this.customerid=customerid;
+
+	public String getCustomerId() {
+		return customerId;
 	}
-	public String getCustomerid(){
-		return customerid;
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
 	}
-	public void setType(Integer type){
-		this.type=type;
-	}
-	public Integer getType(){
+
+	public Integer getType() {
 		return type;
 	}
-	public void setHappyid(Integer happyid){
-		this.happyid=happyid;
+
+	public void setType(Integer type) {
+		this.type = type;
 	}
-	public Integer getHappyid(){
-		return happyid;
+
+	public Integer getHappyId() {
+		return happyId;
 	}
-	public void setDealtime(Date dealtime){
-		this.dealtime=dealtime;
+
+	public void setHappyId(Integer happyId) {
+		this.happyId = happyId;
 	}
-	public Date getDealtime(){
-		return dealtime;
+
+	public Date getDealTime() {
+		return dealTime;
 	}
-	public void setTransmitplatform(Integer transmitplatform){
-		this.transmitplatform=transmitplatform;
+
+	public void setDealTime(Date dealTime) {
+		this.dealTime = dealTime;
 	}
-	public Integer getTransmitplatform(){
-		return transmitplatform;
+
+	public Integer getTransmitPlatform() {
+		return transmitPlatform;
 	}
+
+	public void setTransmitPlatform(Integer transmitPlatform) {
+		this.transmitPlatform = transmitPlatform;
+	}
+
 	public void setStatus(Integer status){
 		this.status=status;
 	}

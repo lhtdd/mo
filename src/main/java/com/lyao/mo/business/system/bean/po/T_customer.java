@@ -5,16 +5,17 @@ import java.util.Date;
 public class T_customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String id;
-	private String userimage;
+	private String userImage;
 	private String username;
 	private String alias;
 	private String password;
-	private Integer registertype;
+	private Integer registerType;
 	private Integer status;
-	private String validcode;
-	private Date intime;
-	private Date activationtime;
+	private String validCode;
+	private Date inTime;
+	private Date activationTime;
 	private Integer type;
+	private Integer lastHappyId;
 	private String remark;
 
 	public void setId(String id){
@@ -23,60 +24,87 @@ public class T_customer implements Serializable {
 	public String getId(){
 		return id;
 	}
-	public void setUserimage(String userimage){
-		this.userimage=userimage;
+
+	public String getUserImage() {
+		return userImage;
 	}
-	public String getUserimage(){
-		return userimage;
+
+	public void setUserImage(String userImage) {
+		this.userImage = userImage;
 	}
-	public void setUsername(String username){
-		this.username=username;
-	}
-	public String getUsername(){
+
+	public String getUsername() {
 		return username;
 	}
-	public void setAlias(String alias){
-		this.alias=alias;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	public String getAlias(){
+
+	public String getAlias() {
 		return alias;
 	}
-	public void setPassword(String password){
-		this.password=password;
+
+	public void setAlias(String alias) {
+		this.alias = alias;
 	}
-	public String getPassword(){
+
+	public String getPassword() {
 		return password;
 	}
-	public void setRegistertype(Integer registertype){
-		this.registertype=registertype;
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public Integer getRegistertype(){
-		return registertype;
+
+	public Integer getRegisterType() {
+		return registerType;
 	}
-	public void setStatus(Integer status){
-		this.status=status;
+
+	public void setRegisterType(Integer registerType) {
+		this.registerType = registerType;
 	}
-	public Integer getStatus(){
+
+	public Integer getStatus() {
 		return status;
 	}
-	public void setValidcode(String validcode){
-		this.validcode=validcode;
+
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
-	public String getValidcode(){
-		return validcode;
+
+	public String getValidCode() {
+		return validCode;
 	}
-	public void setIntime(Date intime){
-		this.intime=intime;
+
+	public void setValidCode(String validCode) {
+		this.validCode = validCode;
 	}
-	public Date getIntime(){
-		return intime;
+
+	public Date getInTime() {
+		return inTime;
 	}
-	public void setActivationtime(Date activationtime){
-		this.activationtime=activationtime;
+
+	public void setInTime(Date inTime) {
+		this.inTime = inTime;
 	}
-	public Date getActivationtime(){
-		return activationtime;
+
+	public Date getActivationTime() {
+		return activationTime;
 	}
+
+	public void setActivationTime(Date activationTime) {
+		this.activationTime = activationTime;
+	}
+
+	public Integer getLastHappyId() {
+		return lastHappyId;
+	}
+
+	public void setLastHappyId(Integer lastHappyId) {
+		this.lastHappyId = lastHappyId;
+	}
+
 	public void setType(Integer type){
 		this.type=type;
 	}
