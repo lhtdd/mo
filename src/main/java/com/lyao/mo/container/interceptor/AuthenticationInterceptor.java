@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author lyao
+ * 验证访问权限
+ * 对authc结尾的url进行拦截
  */
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 	
@@ -20,12 +22,15 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		String go_url = request.getServletPath().substring(1);
-		String requestType = request.getHeader("X-Requested-With");
-		log.warn("拦截请求:" + go_url + " 进行登录校验");
+		String requestMethod = request.getMethod();
+		log.warn("拦截"+requestMethod+"请求:" + go_url + " 进行登录校验");
 		if (!CommonUtils.isOnline(request)){
 			log.warn("访问被拒绝,登录失效或未登录");
-			request.getSession().setAttribute(Constant.GO_URL, go_url);
+			if (requestMethod.equalsIgnoreCase("GET")){
+				request.getSession().setAttribute(Constant.GO_URL, go_url);
+			}
 			//判断是否是AJAX请求
+			String requestType = request.getHeader("X-Requested-With");
 			if("XMLHttpRequest".equals(requestType)){
 				log.warn("AJAX请求..");
 				String returnMsg = "{\"flag\":\"no\",\"errorMsg\":\"请登录后操作\"}";

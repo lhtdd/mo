@@ -47,7 +47,7 @@ public class LeisureController {
 	 * 跳转至我的收藏主页
 	 * @return
 	 */
-	@RequestMapping(value = "/index_mine",method = RequestMethod.GET)
+	@RequestMapping(value = "/index_mine/authc",method = RequestMethod.GET)
 	public ModelAndView myLeisureHome(){
 		ModelAndView md = new ModelAndView();
 		md.setViewName("leisure/leisure_mine");

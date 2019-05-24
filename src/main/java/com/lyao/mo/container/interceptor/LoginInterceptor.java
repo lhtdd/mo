@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author lyao
+ * 记录请求来自于哪里
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter{
 	
@@ -31,6 +32,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		}
 		String historyURL = (String) request.getSession().getAttribute(Constant.GO_URL);
 		if (StringUtils.isNotEmpty(historyURL)){
+			if (historyURL.endsWith("authc")){
+				return true;
+			}
 			if (from_url.endsWith("/member/login") || from_url.endsWith("/member/register") || historyURL.equals(from_url)){
 				return true;
 			}

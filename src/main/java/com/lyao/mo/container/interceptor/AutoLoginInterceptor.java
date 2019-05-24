@@ -18,6 +18,8 @@ import java.net.URLDecoder;
 
 /**
  * @author lyao
+ * 用户自动登录功能
+ * cookie
  */
 public class AutoLoginInterceptor extends HandlerInterceptorAdapter {
 

@@ -16,6 +16,7 @@ $(function() {
 
 		// 监听登录提交
 		form.on('submit(login_form)', function(formData) {
+			var $this = $(this);
 			$.ajax({
 			    url:'member/login',
 			    type:'POST',
@@ -29,6 +30,7 @@ $(function() {
 			        	if (eventObject == null || eventObject == ''){
 			        		window.location.href = data.go_url;
 						}else {
+                            $this.find("input[name=event_object]").val("");
 			        		$("#"+eventObject).click();
                             layer.close(layer.index);
 						}

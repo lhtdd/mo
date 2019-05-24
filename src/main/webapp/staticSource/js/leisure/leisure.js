@@ -113,6 +113,6 @@ $(function() {
 
 	// 点击我的收藏
 	$("#happy-mine-btn").click(function(){
-        window.location.href = "leisure/index_mine";
+        window.location.href = "leisure/index_mine/authc";
 	});
 });

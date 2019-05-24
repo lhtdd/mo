@@ -234,7 +234,7 @@ public class SysController {
 	}
 
 	/**
-	 * 
+	 * 邮箱注册后激活
 	 * @param validCode
 	 * @return
 	 */
