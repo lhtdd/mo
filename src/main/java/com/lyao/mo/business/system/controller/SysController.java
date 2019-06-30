@@ -1,11 +1,12 @@
 package com.lyao.mo.business.system.controller;
 
-import com.lyao.mo.business.system.service.SystemService;
 import com.lyao.mo.business.system.bean.CurrentUser;
 import com.lyao.mo.business.system.bean.RegisterInfo;
+import com.lyao.mo.business.system.service.SystemService;
 import com.lyao.mo.common.utils.CommonUtils;
 import com.lyao.mo.common.utils.Constant;
-import com.lyao.mo.common.utils.CookiesUtil;
+import com.lyao.mo.common.utils.CookiesUtils;
+import com.lyao.mo.common.utils.RandomName;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -92,7 +93,7 @@ public class SysController {
 					}
 					// 记录密码等
 					if (StringUtils.isNotBlank(rememberMe) && "1".equals(rememberMe)) {
-						CookiesUtil.setCookie(response,
+						CookiesUtils.setCookie(response,
 								Constant.COOKIE_USERNAME, username, 60*10);
 					}
 					// 保存登录信息
@@ -128,54 +129,38 @@ public class SysController {
 	public ModelMap doRegister(RegisterInfo customer, HttpServletRequest request) {
 		ModelMap md = new ModelMap();
 		String errorMsg = null;
-		boolean registerFlag = false;
+		boolean registerFlag;
 		String flag = null;
 		String go_url = null;
-		String kaptchaExpected = (String) request.getSession().getAttribute(
-				com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-		if (!kaptchaExpected.equalsIgnoreCase(customer.getValidCode())) {
+		String code = (String) request.getSession().getAttribute(Constant.SHORT_MESSAGE_CODE);
+		if (customer.getShortMessageCode().equalsIgnoreCase(code)) {
 			try {
-				CurrentUser curuser = systemServiceImpl
-						.selectUserByUsername(customer.getUsername());
-				if (curuser != null) {
-					flag = "no";
-					errorMsg = "邮箱已存在";
-				} else {
-					// 判断昵称是否存在
-					String id = systemServiceImpl.selectAlias(customer
-							.getAlias());
-					if (StringUtils.isNotBlank(id)) {
-						flag = "no";
-						log.warn("昵称:" + customer.getAlias() + "已经存在");
-						errorMsg = "昵称已存在";
+				customer.setAlias(RandomName.getNickName(customer.getUsername()));
+				// 手机号注册
+				if ("1".equals(customer.getRegisterType())) {
+					registerFlag = systemServiceImpl
+							.insertMemberByMobile(customer);
+					if (registerFlag) {
+						flag = "yes";
+						go_url = CommonUtils.getGoURL(request);
+						// 保存登录信息
+						CurrentUser curuser = systemServiceImpl
+								.selectUserByUsername(customer
+										.getUsername());
+						CommonUtils.addLoginUserToSession(request, curuser);
 					} else {
-						// 手机号注册
-						if ("1".equals(customer.getRegisterType())) {
-							registerFlag = systemServiceImpl
-									.insertMemberByMobile(customer);
-							if (registerFlag) {
-								flag = "yes";
-								go_url = CommonUtils.getGoURL(request);
-								// 保存登录信息
-								curuser = systemServiceImpl
-										.selectUserByUsername(customer
-												.getUsername());
-								CommonUtils.addLoginUserToSession(request, curuser);
-							} else {
-								flag = "no";
-								errorMsg = "注册失败";
-							}
-							// 邮箱注册
-						} else if ("2".equals(customer.getRegisterType())) {
-							registerFlag = systemServiceImpl
-									.insertMemberByEmail(customer);
-							if (registerFlag) {
-								flag = "yes";
-							} else {
-								flag = "no";
-								errorMsg = "注册失败";
-							}
-						}
+						flag = "no";
+						errorMsg = "注册失败";
+					}
+					// 邮箱注册
+				} else if ("2".equals(customer.getRegisterType())) {
+					registerFlag = systemServiceImpl
+							.insertMemberByEmail(customer);
+					if (registerFlag) {
+						flag = "yes";
+					} else {
+						flag = "no";
+						errorMsg = "注册失败";
 					}
 				}
 			} catch (Exception e) {
@@ -200,26 +185,23 @@ public class SysController {
 	}
 
 	/**
-	 * 查询该用户的昵称是否已存在 -- 暂时没有，直接在提交注册信息后再进行判断了
+	 * 查询手机号是否已经注册
 	 * 
-	 * @param alias
-	 * @param request
+	 * @param mobile
 	 * @return
 	 */
-	@RequestMapping(value = "/member/userInfo/alias", method = RequestMethod.GET)
+	@RequestMapping(value = "/userInfo/mobile", method = RequestMethod.GET)
 	@ResponseBody
-	public ModelMap checkAlias(@RequestParam String alias,
-			HttpServletRequest request) {
+	public ModelMap checkMobile(@RequestParam String mobile) {
 		ModelMap md = new ModelMap();
-		String id;
 		String flag;
 		String message = null;
 		try {
-			id = systemServiceImpl.selectAlias(alias);
-			if (StringUtils.isNotBlank(id)) {
+			CurrentUser curuser = systemServiceImpl
+					.selectUserByUsername(mobile);
+			if (curuser != null) {
 				flag = "no";
-				log.warn("昵称:" + alias + "已经存在");
-				message = "该昵称已存在";
+				message = "手机号已存在";
 			} else {
 				flag = "yes";
 			}
@@ -290,7 +272,18 @@ public class SysController {
 		md.setViewName("system/system_tips");
 		return md;
 	}
-	
+
+	/**
+	 * 跳转到重置密码页面
+	 * @return
+	 */
+	@RequestMapping(value = "/system/changepassword", method = RequestMethod.GET)
+	public ModelAndView changePassword() {
+		ModelAndView md = new ModelAndView();
+		md.setViewName("system/change_password");
+		return md;
+	}
+
 	/**
 	 * 退出操作
 	 * @param request
@@ -303,7 +296,7 @@ public class SysController {
 		String go_url = request.getHeader("Referer");
 		HttpSession session = request.getSession();
         session.invalidate();
-        CookiesUtil.delectCookieByName(request, response, Constant.COOKIE_USERNAME);
+        CookiesUtils.delectCookieByName(request, response, Constant.COOKIE_USERNAME);
 		md.setViewName("redirect:" + go_url);
 		return md;
 	}

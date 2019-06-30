@@ -4,7 +4,7 @@ import com.lyao.mo.business.system.service.SystemService;
 import com.lyao.mo.business.system.bean.CurrentUser;
 import com.lyao.mo.common.utils.CommonUtils;
 import com.lyao.mo.common.utils.Constant;
-import com.lyao.mo.common.utils.CookiesUtil;
+import com.lyao.mo.common.utils.CookiesUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter {
 		if (!CommonUtils.isOnline(request)) {
 			//2 获取cookie
 			String cookie_username;
-			Cookie cookie = CookiesUtil.getCookieByName(request, Constant.COOKIE_USERNAME);
+			Cookie cookie = CookiesUtils.getCookieByName(request, Constant.COOKIE_USERNAME);
 			if (cookie != null){
 				cookie_username = URLDecoder.decode(cookie.getValue(), "utf-8");
 				log.warn("用户：" + cookie_username + "自动登录");

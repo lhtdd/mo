@@ -5,10 +5,7 @@ import com.lyao.mo.bottom.dao.CommonBaseDao;
 import com.lyao.mo.business.system.bean.CurrentUser;
 import com.lyao.mo.business.system.bean.RegisterInfo;
 import com.lyao.mo.business.system.service.SystemService;
-import com.lyao.mo.common.utils.GenerateID;
-import com.lyao.mo.common.utils.MD5Utils;
-import com.lyao.mo.common.utils.RandomUtils;
-import com.lyao.mo.common.utils.Sendmail;
+import com.lyao.mo.common.utils.*;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -16,6 +13,7 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -35,7 +33,7 @@ public class SystemServiceImpl implements SystemService{
 		HashMap<String, Object> resultMap = new HashMap<String, Object>(4);
 		String flag = null;
 		String errorMsg = null;
-		CurrentUser seluser = null;
+		CurrentUser seluser;
 		seluser = baseDao.selectOne("system.selectUserByName", username);
 		if (seluser == null){
 			flag = "0";
@@ -69,21 +67,21 @@ public class SystemServiceImpl implements SystemService{
 	
 	@Override
 	public CurrentUser selectUserByUsername(String username) throws Exception {
-		CurrentUser seluser = null;
+		CurrentUser seluser;
 		seluser = baseDao.selectOne("system.selectUserByName", username);
 		return seluser;
 	}
 	
 	@Override
 	public CurrentUser selectUserByID(String customerID) throws Exception {
-		CurrentUser seluser = null;
+		CurrentUser seluser;
 		seluser = baseDao.selectOne("system.selectUserByID", customerID);
 		return seluser;
 	}
 	
 	@Override
 	public String selectAlias(String alias) throws Exception {
-		String id = null;
+		String id;
 		id = baseDao.selectOne("system.selectAlias", alias);
 		return id;
 	}
@@ -91,16 +89,14 @@ public class SystemServiceImpl implements SystemService{
 	@Override
 	public boolean insertMemberByMobile(RegisterInfo customer) throws Exception {
 		boolean flag = false;
-		int i = 0;
-		int j = 0;
-		customer.setId(GenerateID.generateCustomerID(customer.getSex()));
-		DateTime dt1 = new DateTime();
-		customer.setIntime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
-		customer.setUpdateTime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
+		int i;
+		customer.setId(GenerateID.generateCustomerID(null));
+		String currentDate = DateUtils.dateTimeToDateString(new Date());
+		customer.setInTime(currentDate);
+		customer.setUpdateTime(currentDate);
 		customer.setPassword(MD5Utils.encryptPassword(customer.getPassword(), customer.getUsername()));
 		i = baseDao.insert("system.insertIntoCustomer", customer);
-		j = baseDao.insert("system.insertIntoCustomerDetail", customer);
-		if (2 == i+j){
+		if (1 == i){
 			flag = true;
 		}
 		return flag;
@@ -109,22 +105,20 @@ public class SystemServiceImpl implements SystemService{
 	@Override
 	public boolean insertMemberByEmail(RegisterInfo customer) throws Exception {
 		boolean flag = false;
-		int i = 0;
-		int j = 0;
+		int i;
 		customer.setId(GenerateID.generateCustomerID(customer.getSex()));
 		customer.setPassword(MD5Utils.encryptPassword(customer.getPassword(), customer.getUsername()));
-		DateTime dt1 = new DateTime();
-		customer.setIntime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
-		customer.setUpdateTime(dt1.toString("yyyy-MM-dd HH:mm:ss"));
+		String currentDate = DateUtils.dateTimeToDateString(new Date());
+		customer.setInTime(currentDate);
+		customer.setUpdateTime(currentDate);
 		//生成验证码
 		String validCode = RandomUtils.generateString(8);
 		customer.setValidCode(validCode);
 		//设置用户状态为未激活，默认为正常。
 		customer.setStatus(1);
 		i = baseDao.insert("system.insertIntoCustomer", customer);
-		j = baseDao.insert("system.insertIntoCustomerDetail", customer);
 		//发送激活邮件
-		if(2 == i+j){
+		if(1 == i){
 			ValidCodeEmail validCodeEmail = new ValidCodeEmail();
 			validCodeEmail.setUserName(customer.getUsername());
 			validCodeEmail.setReceiver(customer.getUsername());
@@ -141,8 +135,8 @@ public class SystemServiceImpl implements SystemService{
 			throws Exception {
 		boolean flag = false;
 		HashMap<String, Object> resultMap = new HashMap<String, Object>(4);
-		String selVaildCode = null;
-		Integer status = null;
+		String selVaildCode;
+		Integer status;
 		resultMap = baseDao.selectOne("system.selectValidCode", customerID);
 		status = MapUtils.getInteger(resultMap, "status");
 		selVaildCode = MapUtils.getString(resultMap, "validCode");

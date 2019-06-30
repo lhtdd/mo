@@ -166,12 +166,6 @@
 			<artifactId>commons-collections4</artifactId>
 			<version>4.1</version>
 		</dependency>
-		<!-- HttpClient -->
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.3.4</version>
-		</dependency>
 		<!-- 验证码框架 -->
 		<dependency>
 			<groupId>com.github.axet</groupId>
@@ -195,7 +189,12 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
-
+		<!-- 阿里云核心库SDK -->
+		<dependency>
+			<groupId>com.aliyun</groupId>
+			<artifactId>aliyun-java-sdk-core</artifactId>
+			<version>4.4.2</version>
+		</dependency>
 	</dependencies>
 	<!-- 工程编译阶段配置 -->
 	<build>

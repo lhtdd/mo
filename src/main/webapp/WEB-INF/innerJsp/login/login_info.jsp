@@ -8,18 +8,18 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label">用户名</label>
 					<div class="layui-input-inline">
-						<input name="username" lay-verify="required|email" placeholder="邮箱"
+						<input name="username" lay-verify="required|phone" placeholder="手机"
 							class="layui-input" type="text">
 					</div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">密码</label>
 					<div class="layui-input-inline">
-						<input name="password" lay-verify="required" placeholder="请输入密码"
+						<input name="password" lay-verify="required" placeholder="密码"
 							class="layui-input" type="password">
 					</div>
 					<div class="layui-form-mid layui-word-aux">
-						<a class="clD2" href="#">忘记密码?</a>
+						<a class="clD2" href="system/changepassword">忘记密码?</a>
 					</div>
 				</div>
 				<div class="layui-form-item">

@@ -89,6 +89,9 @@ body, html {
 .cl33{
 	color: #333333;
 }
+.cl-red{
+	color: red;
+}
 .bgFF{
 	background-color: #FFFFFF;
 }
@@ -161,4 +164,9 @@ body, html {
 .btn-bg .layui-layer-btn .layui-layer-btn0 {
 	background-color: #EE6600;
 	border-color: #EE6600;
+}
+/* 验证码弹出页面 */
+#validCode-pop-form{
+	display: none;
+	padding: 20px 5px 0px 5px;
 }

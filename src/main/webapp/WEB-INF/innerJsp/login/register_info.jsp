@@ -5,43 +5,30 @@
 	<div class="layui-field-box">
 		<div class="spead fl">
 			<form class="layui-form layui-form-pane">
-				<input type="hidden" name="registerType" value="2" />
+				<input type="hidden" name="registerType" value="1" />
 				<div class="layui-form-item">
-					<label class="layui-form-label">邮箱</label>
+					<label class="layui-form-label">手机号</label>
 					<div class="layui-input-inline">
-						<input name="username" placeholder="请输入常用邮箱"
-							lay-verify="required|email" class="layui-input" type="text">
+						<input id="registorMobile" name="username" placeholder="请输入手机号"
+							lay-verify="required|phone" class="layui-input" type="text">
 					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">昵称</label>
-					<div class="layui-input-inline">
-						<input name="alias" placeholder="起个昵称吧"
-							lay-verify="required" class="layui-input" type="text">
-					</div>
+					<div id="mobileTip" class="layui-form-mid"></div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">密码</label>
 					<div class="layui-input-inline">
-						<input name="password" placeholder="请设置密码" lay-verify="required"
+						<input id="registorPassword" name="password" placeholder="请设置6-12位密码" lay-verify="required"
 							class="layui-input" type="password">
 					</div>
+					<div id="passTip" class="layui-form-mid layui-word-aux">由字母、数字或下划线组成</div>
 				</div>
 				<div class="layui-form-item">
-					<label class="layui-form-label">性别</label>
-					<div class="layui-input-block">
-						<input name="sex" value="1" title="男" checked="" type="radio">
-						<input name="sex" value="2" title="女" type="radio">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">验证码</label>
 					<div class="layui-input-inline">
-						<input name="validCode" lay-verify="required"
-							placeholder="请输入右侧验证码" autocomplete="off" class="layui-input"
+						<input name="shortMessageCode" lay-verify="required"
+							placeholder="验证码" autocomplete="off" class="layui-input"
 							type="text">
 					</div>
-					<img src="kaptcha.jpg" class="verifyImg" title="点击换一张" />
+					<button id="shortMessageCode-btn" type="button" class="layui-btn layui-btn-primary">获取验证码</button>
 				</div>
 				<div class="layui-form-item">
 					<div class="layui-input-inline">

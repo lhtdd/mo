@@ -37,9 +37,9 @@
 					<li class="nav-ul-item">
 						<span class="item-title wd40"><i class="layui-icon">&#xe614;</i></span> 
 						<div class="subnav subnav-userInfo"> 
-							<a href="#">我的主页</a>
+							<%--<a href="#">我的主页</a>
 							<hr width="90%" class="ht">
-							<a href="#">修改资料</a>
+							<a href="#">修改资料</a>--%>
 							<a href="loginOut">退出</a>
 						</div>
 					</li>

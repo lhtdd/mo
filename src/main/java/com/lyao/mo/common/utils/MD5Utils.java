@@ -27,7 +27,7 @@ public class MD5Utils {
 	 * @param originString
 	 * @return
 	 */
-	private static String encodeByMD5(String originString) {
+	public static String encodeByMD5(String originString) {
 		if (originString != null) {
 			try {
 				// 创建具有指定算法名称的信息摘要
@@ -36,7 +36,7 @@ public class MD5Utils {
 				byte[] results = md.digest(originString.getBytes());
 				// 将得到的字节数组变成字符串返回
 				String resultString = byteArrayToHexString(results);
-				return resultString.toUpperCase();
+				return resultString;
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
@@ -46,8 +46,8 @@ public class MD5Utils {
 
 	/**
 	 * 转换字节数组为十六进制字符串
-	 * 
-	 * @param 字节数组
+	 *
+	 * @param
 	 * @return 十六进制字符串
 	 */
 	private static String byteArrayToHexString(byte[] b) {

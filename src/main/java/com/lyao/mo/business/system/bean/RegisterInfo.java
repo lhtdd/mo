@@ -14,7 +14,8 @@ public class RegisterInfo implements Serializable {
 	private String sex;
 	private String registerType;
 	private String validCode;
-	private String intime;
+	private String shortMessageCode;
+	private String inTime;
 	private String updateTime;
 	private Integer status;
 
@@ -75,12 +76,20 @@ public class RegisterInfo implements Serializable {
 		this.validCode = validCode;
 	}
 
-	public String getIntime() {
-		return intime;
+	public String getShortMessageCode() {
+		return shortMessageCode;
 	}
 
-	public void setIntime(String intime) {
-		this.intime = intime;
+	public void setShortMessageCode(String shortMessageCode) {
+		this.shortMessageCode = shortMessageCode;
+	}
+
+	public String getInTime() {
+		return inTime;
+	}
+
+	public void setInTime(String inTime) {
+		this.inTime = inTime;
 	}
 
 	public String getUpdateTime() {

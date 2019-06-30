@@ -43,7 +43,7 @@
 	<insert id="insertIntoCustomer" parameterType="RegisterInfo">
 		insert into
 		t_customer(id,username,alias,password,registerType,status,validCode,intime)
-		values(#{id},#{username},#{alias},#{password},#{registerType},#{status},#{validCode},#{intime})
+		values(#{id},#{username},#{alias},#{password},#{registerType},#{status},#{validCode},#{inTime})
 	</insert>
 	<insert id="insertIntoCustomerDetail" parameterType="RegisterInfo">
 		insert into

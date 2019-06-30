@@ -7,18 +7,13 @@ import java.util.GregorianCalendar;
 public class GenerateID {
 
 	/**
-	 * 生成客户的注册号，根据性别进行区分
-	 * @param sex
+	 * 生成客户的注册号，根据手机号+随机数做MD5
+	 * @param mobile
 	 * @return
 	 */
-	public static String generateCustomerID(String sex){
-		String ID = null;
-		
-		if (sex.equals("1")){
-			ID = "M"+RandomUtils.generateString(6)+getMillisecond();
-		}else{
-			ID = "O"+RandomUtils.generateString(6)+getMillisecond();
-		}
+	public static String generateCustomerID(String mobile){
+		String ID;
+		ID = MD5Utils.encodeByMD5(mobile + RandomUtils.generateString(6) + getMillisecond());
 		return ID;
 	}
 	

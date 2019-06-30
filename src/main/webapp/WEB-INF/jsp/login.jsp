@@ -35,6 +35,8 @@
 			</div>
 		</div>
 		<div class="clear"></div>
+		<%-- 弹出层部分 --%>
+		<%@ include file="../frameJsp/pop/validCode_pop.jsp" %>
 	</div>
 </body>
 </html>

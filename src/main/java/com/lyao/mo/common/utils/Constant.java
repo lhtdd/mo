@@ -7,6 +7,7 @@ public class Constant {
 	public static final String GO_URL = "go_url"; 
 	public static final String COOKIE_USERNAME = "useraccount";  
 	public static final String CURRENT_MODULE = "current_module";
+	public static final String SHORT_MESSAGE_CODE = "short_message_code";
 
 	// 响应信息
 	public static final String LOGIN_TIMEOUT = "9000";

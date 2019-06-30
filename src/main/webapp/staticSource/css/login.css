@@ -46,3 +46,30 @@
 .register-a a:hover{
 	color: #EE6600;
 }
+/* √‹¬Î÷ÿ÷√ */
+.change-password-wrapper{
+	margin-top: 15px;
+}
+#short-Message-div{
+	display: none;
+}
+#confirm-password-div{
+	display: none;
+}
+.change-password-wrapper .change-password{
+	text-align: center;
+}
+.change-password-wrapper .step-image-div{
+	margin-top: 35px;
+}
+.change-password-wrapper .notice-content{
+	margin-top: 40px;
+	padding: 0px 150px;
+}
+.change-password-wrapper .verifyImg{
+	float: left;
+}
+.change-password-wrapper .next-step{
+	float: left;
+	margin-left: 30px;
+}
