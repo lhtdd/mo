@@ -2,6 +2,7 @@ package com.lyao.mo.business.system.controller;
 
 import com.lyao.mo.bottom.bean.to.SmsResponse;
 import com.lyao.mo.bottom.service.AliyunSdkService;
+import com.lyao.mo.common.utils.CaptchaUtils;
 import com.lyao.mo.common.utils.Constant;
 import com.lyao.mo.common.utils.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -39,9 +40,8 @@ public class ShortMessageController {
         String flag = "no";
         String message;
         final HttpSession session = request.getSession();
-        String kaptchaExpected = (String) session.getAttribute(
-                com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-        if (validCode.equals(kaptchaExpected)) {
+        boolean isLegalCaptcha = CaptchaUtils.isLegalCaptcha(request, validCode);
+        if (isLegalCaptcha) {
             String shortMessageCode = (String) session.getAttribute(Constant.SHORT_MESSAGE_CODE);
             if (StringUtils.isNotEmpty(shortMessageCode)) {
                 message = "之前的验证码依然有效，请使用它吧";

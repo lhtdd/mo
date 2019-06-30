@@ -64,4 +64,8 @@
 	<update id="updateLastHappyIdByCustomerId" parameterType="CurrentUser">
 		update t_customer set lastHappyId = #{lastHappyId} WHERE id = #{id}
 	</update>
+
+	<update id="updatePassword" parameterType="RegisterInfo">
+		update t_customer set password = #{password} WHERE username = #{username}
+	</update>
 </mapper>

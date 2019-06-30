@@ -72,7 +72,7 @@ $(function() {
         }
     }
 
-	// 校验手机号
+	// 校验手机号--注册时
     $("#registorMobile").blur(function () {
         var mobile = $(this).val();
         var $vlMobile = $("#mobileTip");
@@ -85,7 +85,7 @@ $(function() {
                 timeout:5000,
                 dataType:'json',
                 success:function(data){
-                    if (data.flag == 'yes'){
+                    if (data.flag == 'no'){
                         $vlMobile.removeClass("cl-red");
                         $vlMobile.html("");
                     }else{
@@ -199,6 +199,32 @@ $(function() {
     }
 
     /* 忘记密码 */
-
+    // 校验手机号--找回密码时
+    $("#yourMobile").blur(function () {
+        var mobile = $(this).val();
+        var $vlMobile = $("#yourMobileTip");
+        if (isPoneAvailable(mobile)){
+            $.ajax({
+                url:'userInfo/mobile',
+                type:'GET',
+                async:true,
+                data:{'mobile':mobile},
+                timeout:5000,
+                dataType:'json',
+                success:function(data){
+                    if (data.flag == 'yes'){
+                        $vlMobile.removeClass("cl-red");
+                        $vlMobile.html("");
+                    }else{
+                        $vlMobile.addClass("cl-red");
+                        $vlMobile.html(data.message);
+                    }
+                }
+            });
+        }else {
+            $vlMobile.addClass("cl-red");
+            $vlMobile.html("手机号码非法");
+        }
+    });
 	
 });

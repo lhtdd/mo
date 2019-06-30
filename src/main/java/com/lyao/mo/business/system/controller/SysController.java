@@ -3,10 +3,7 @@ package com.lyao.mo.business.system.controller;
 import com.lyao.mo.business.system.bean.CurrentUser;
 import com.lyao.mo.business.system.bean.RegisterInfo;
 import com.lyao.mo.business.system.service.SystemService;
-import com.lyao.mo.common.utils.CommonUtils;
-import com.lyao.mo.common.utils.Constant;
-import com.lyao.mo.common.utils.CookiesUtils;
-import com.lyao.mo.common.utils.RandomName;
+import com.lyao.mo.common.utils.*;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -75,9 +72,8 @@ public class SysController {
 		String errorMsg = null;
 		String flag;
 		String go_url = null;
-		String kaptchaExpected = (String) request.getSession().getAttribute(
-				com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-		if (!kaptchaExpected.equalsIgnoreCase(validCode)) {
+		boolean isLegalCaptcha = CaptchaUtils.isLegalCaptcha(request, validCode);
+		if (isLegalCaptcha) {
 			try {
 				HashMap<String, Object> resultMap = systemServiceImpl.doLogin(
 						username, password);
@@ -195,18 +191,19 @@ public class SysController {
 	public ModelMap checkMobile(@RequestParam String mobile) {
 		ModelMap md = new ModelMap();
 		String flag;
-		String message = null;
+		String message;
 		try {
 			CurrentUser curuser = systemServiceImpl
 					.selectUserByUsername(mobile);
 			if (curuser != null) {
-				flag = "no";
+				flag = "yes";
 				message = "手机号已存在";
 			} else {
-				flag = "yes";
+				flag = "no";
+				message = "手机号不存在";
 			}
 		} catch (Exception e) {
-			flag = "no";
+			flag = "error";
 			message = "查询异常,请稍后再试";
 			log.warn("查询异常");
 		}
@@ -284,6 +281,59 @@ public class SysController {
 		return md;
 	}
 
+	/**
+	 * 查询验证码是否有效
+	 *
+	 * @param validCode
+	 * @return
+	 */
+	@RequestMapping(value = "/userInfo/mobile", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelMap checkCaptcha(HttpServletRequest request, String validCode) {
+		ModelMap md = new ModelMap();
+		String flag = "no";
+		String message = "验证码错误";
+		boolean isLegalCaptcha = CaptchaUtils.isLegalCaptcha(request, validCode);
+		if (isLegalCaptcha) {
+			flag = "yes";
+		}
+		md.put("flag", flag);
+		md.put("message", message);
+		return md;
+	}
+	/**
+	 * 注册
+	 *
+	 * @param customer
+	 * @return
+	 */
+	@RequestMapping(value = "/system/pw", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelMap forgetPassword(RegisterInfo customer, HttpServletRequest request) {
+		ModelMap md = new ModelMap();
+		String flag = null;
+		String errorMsg = null;
+		String code = (String) request.getSession().getAttribute(Constant.SHORT_MESSAGE_CODE);
+		if (customer.getShortMessageCode().equalsIgnoreCase(code)) {
+			try {
+				boolean updateFlag = systemServiceImpl.updatePasswordByUsername(customer);
+				if (updateFlag) {
+					flag = "yes";
+				}
+			} catch (Exception e) {
+				flag = "no";
+				log.error("更新失败", e);
+				errorMsg = "更新失败";
+			}
+		} else {
+			log.error("验证码错误");
+			flag = "no";
+			errorMsg = "验证码错误";
+		}
+		md.put("flag", flag);
+		md.put("errorMsg", errorMsg);
+		return md;
+	}
 	/**
 	 * 退出操作
 	 * @param request

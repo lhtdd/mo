@@ -177,4 +177,14 @@ public class SystemServiceImpl implements SystemService{
 		}
 		return false;
 	}
+
+	@Override
+	public boolean updatePasswordByUsername(RegisterInfo customer) {
+		customer.setPassword(MD5Utils.encryptPassword(customer.getPassword(), customer.getUsername()));
+		int i = baseDao.update("system.updatePassword", customer);
+		if (i > 0) {
+			return true;
+		}
+		return false;
+	}
 }

@@ -68,4 +68,11 @@ public interface SystemService {
 	 * @return
 	 */
 	boolean updateLastHappyIdByCustomerId(CurrentUser currentUser);
+
+	/**
+	 * 传入用户名称重新更新密码
+	 * @param customer
+	 * @return
+	 */
+	boolean updatePasswordByUsername(RegisterInfo customer);
 }
