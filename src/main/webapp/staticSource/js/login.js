@@ -78,7 +78,7 @@ $(function() {
         var $vlMobile = $("#mobileTip");
         if (isPoneAvailable(mobile)){
             $.ajax({
-                url:'userInfo/mobile',
+                url:'system/mobile',
                 type:'GET',
                 async:true,
                 data:{'mobile':mobile},
@@ -175,7 +175,7 @@ $(function() {
                         subBtn.addClass("layui-btn-disabled");
                         subBtn.attr("disabled", "true");
                         subBtn.text(curCount + "秒后重新获取");
-                        InterValObj = window.setInterval(repeatObtainCode, 1000); //启动计时器，1秒执行一次
+                        InterValObj = window.setInterval(function () {repeatObtainCode(subBtn)  }, 1000); //启动计时器，1秒执行一次
 					}
 				}
 			});
@@ -185,8 +185,7 @@ $(function() {
     });
     
     // 倒计时重新获取短信验证码
-	function repeatObtainCode() {
-        var subBtn = $("#shortMessageCode-btn");
+	function repeatObtainCode(subBtn) {
         if(curCount == 0) {
             window.clearInterval(InterValObj); //停止计时器
             subBtn.removeClass("layui-btn-disabled");
@@ -199,31 +198,93 @@ $(function() {
     }
 
     /* 忘记密码 */
-    // 校验手机号--找回密码时
-    $("#yourMobile").blur(function () {
-        var mobile = $(this).val();
-        var $vlMobile = $("#yourMobileTip");
+    var legalMobile;
+    var legalValidCode;
+    // 校验图形验证码--找回密码时
+    $("#password-next-step1").click(function () {
+        var mobile = $("#yourMobile").val();
+        var validCode = $("#valid-code").val();
         if (isPoneAvailable(mobile)){
             $.ajax({
-                url:'userInfo/mobile',
-                type:'GET',
+                url:'system/captcha',
+                type:'POST',
                 async:true,
-                data:{'mobile':mobile},
+                data:{'mobile':mobile,'validCode':validCode},
                 timeout:5000,
                 dataType:'json',
                 success:function(data){
                     if (data.flag == 'yes'){
-                        $vlMobile.removeClass("cl-red");
-                        $vlMobile.html("");
+                        legalMobile = mobile;
+                        legalValidCode = validCode;
+                        $("#validMobile").val(legalMobile);
+                        $("#mobile-captcha-div").css("display", "none");
+                        $("#short-Message-div").css("display", "block");
                     }else{
-                        $vlMobile.addClass("cl-red");
-                        $vlMobile.html(data.message);
+                        layer.msg(data.message);
                     }
                 }
             });
         }else {
-            $vlMobile.addClass("cl-red");
-            $vlMobile.html("手机号码非法");
+            layer.msg("手机号码非法");
+        }
+    });
+
+    // 点击获取验证码
+    $("#password-shortMessageCode-btn").click(function () {
+        var newPassword = $("#newPassword").val();
+        var subBtn = $("#password-shortMessageCode-btn");
+        if (isPasswordAvailable(newPassword)){
+            $.ajax({
+                url:'sms/captcha',
+                type:'POST',
+                async:true,
+                data:{'mobile':legalMobile,'validCode':legalValidCode},
+                timeout:5000,
+                dataType:'json',
+                success:function(data){
+                    layer.msg(data.message);
+                    if (data.flag == 'yes'){
+                        curCount = count;
+                        subBtn.addClass("layui-btn-disabled");
+                        subBtn.attr("disabled", "true");
+                        subBtn.text(curCount + "秒后重新获取");
+                        InterValObj = window.setInterval(function () {repeatObtainCode(subBtn)  }, 1000); //启动计时器，1秒执行一次
+                    }else {
+                        layer.msg(data.message);
+                    }
+                }
+            });
+        }else {
+            layer.msg("密码非法", {icon:6});
+        }
+    });
+    // 提交新密码
+    $("#password-next-step2").click(function () {
+        var shortMessageCode = $("#shortMessageCode").val();
+        if (shortMessageCode.trim() == ''){
+            layer.msg("请填写验证码");
+            return
+        }
+        var newPassword = $("#newPassword").val();
+        if (isPasswordAvailable(newPassword)){
+            $.ajax({
+                url:'system/pw',
+                type:'POST',
+                async:true,
+                data:{'username':legalMobile,'password':newPassword,'shortMessageCode':shortMessageCode},
+                timeout:5000,
+                dataType:'json',
+                success:function(data){
+                    if (data.flag == 'yes'){
+                        $("#short-Message-div").css("display", "none");
+                        $("#confirm-password-div").css("display", "block");
+                    }else{
+                        layer.msg(data.errorMsg);
+                    }
+                }
+            });
+        }else {
+            layer.msg("密码非法", {icon:6});
         }
     });
 	

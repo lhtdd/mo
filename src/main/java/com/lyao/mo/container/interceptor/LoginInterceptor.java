@@ -26,6 +26,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		if (from_url == null){
 			return true;
 		}
+		if (from_url.endsWith("/member/login") || from_url.endsWith("/member/register") || from_url.endsWith("/system/changepassword")){
+			return true;
+		}
 		// POST请求直接放过
 		if (request.getMethod().equalsIgnoreCase("POST")){
 			return true;
@@ -35,7 +38,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			if (historyURL.endsWith("authc")){
 				return true;
 			}
-			if (from_url.endsWith("/member/login") || from_url.endsWith("/member/register") || historyURL.equals(from_url)){
+			if (historyURL.equals(from_url)){
 				return true;
 			}
 		}

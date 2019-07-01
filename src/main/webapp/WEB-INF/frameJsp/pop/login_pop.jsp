@@ -10,7 +10,7 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label">用户名</label>
 				<div class="layui-input-inline">
-					<input name="username" lay-verify="required|email" placeholder="邮箱"
+					<input name="username" lay-verify="required|phone" placeholder="手机号"
 						class="layui-input" type="text">
 				</div>
 			</div>
@@ -21,7 +21,7 @@
 						class="layui-input" type="password">
 				</div>
 				<div class="layui-form-mid layui-word-aux">
-					<a class="clD2" href="#">忘记密码?</a>
+					<a class="clD2" href="system/changepassword">忘记密码?</a>
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -33,8 +33,8 @@
 				</div>
 				<img src="kaptcha.jpg" class="verifyImg" title="点击换一张" />
 			</div>
-			<div class="layui-form-item login-btn-div">
-				<input type="checkbox"  name="rememberMe" title="自动登录" value="1">
+			<div class="layui-form-item login-btn-div" style="height: 30px">
+				<input type="checkbox" lay-skin="primary" name="rememberMe" title="自动登录" value="1">
 				<input type="hidden"  name="from_url" value="${currentURL }">
 				<input type="hidden"  name="event_object" value="">
 				<button class="layui-btn login-btn" lay-submit lay-filter="login_form">登录</button>

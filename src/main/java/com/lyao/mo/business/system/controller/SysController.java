@@ -186,7 +186,7 @@ public class SysController {
 	 * @param mobile
 	 * @return
 	 */
-	@RequestMapping(value = "/userInfo/mobile", method = RequestMethod.GET)
+	@RequestMapping(value = "/system/mobile", method = RequestMethod.GET)
 	@ResponseBody
 	public ModelMap checkMobile(@RequestParam String mobile) {
 		ModelMap md = new ModelMap();
@@ -282,20 +282,33 @@ public class SysController {
 	}
 
 	/**
-	 * 查询验证码是否有效
+	 * 查询手机号及验证码是否有效
 	 *
 	 * @param validCode
 	 * @return
 	 */
-	@RequestMapping(value = "/userInfo/mobile", method = RequestMethod.GET)
+	@RequestMapping(value = "/system/captcha", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelMap checkCaptcha(HttpServletRequest request, String validCode) {
+	public ModelMap checkMobileCaptcha(HttpServletRequest request, String mobile, String validCode) {
 		ModelMap md = new ModelMap();
 		String flag = "no";
 		String message = "验证码错误";
 		boolean isLegalCaptcha = CaptchaUtils.isLegalCaptcha(request, validCode);
 		if (isLegalCaptcha) {
-			flag = "yes";
+			try {
+				CurrentUser curuser = systemServiceImpl
+						.selectUserByUsername(mobile);
+				if (curuser != null) {
+					flag = "yes";
+				} else {
+					flag = "no";
+					message = "手机号不存在";
+				}
+			} catch (Exception e) {
+				flag = "error";
+				message = "查询异常,请稍后再试";
+				log.warn("查询异常");
+			}
 		}
 		md.put("flag", flag);
 		md.put("message", message);
