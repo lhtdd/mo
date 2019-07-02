@@ -17,7 +17,7 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label">网址</label>
 				<div class="layui-input-inline">
-					<input name="webLocation" lay-verify="required" placeholder="例如:https://www.taobao.com (可从浏览器地址栏复制后黏贴于此,你懂的)"
+					<input name="webLocation" lay-verify="required|url" placeholder="例如:https://www.taobao.com (可从浏览器地址栏复制后黏贴于此,你懂的)"
 						class="layui-input url-input" type="text">
 				</div>
 			</div>

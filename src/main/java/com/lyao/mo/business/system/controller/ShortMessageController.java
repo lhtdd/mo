@@ -47,9 +47,9 @@ public class ShortMessageController {
                 message = "之前的验证码依然有效，请使用它吧";
             }else {
                 String code = RandomUtils.generateNumberCode(4);
-                //SmsResponse smsResponse = aliyunSdkService.sendShortMessage(mobile, code);
-                SmsResponse smsResponse = new SmsResponse();
-                smsResponse.setCode(OK);
+                SmsResponse smsResponse = aliyunSdkService.sendShortMessage(mobile, code);
+                //SmsResponse smsResponse = new SmsResponse();
+                //smsResponse.setCode(OK);
                 if (OK.equals(smsResponse.getCode())){
                     session.setAttribute(Constant.SHORT_MESSAGE_CODE, code);
                     final Timer timer = new Timer();
