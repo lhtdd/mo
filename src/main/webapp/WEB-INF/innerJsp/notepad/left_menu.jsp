@@ -4,7 +4,7 @@
 	<div class="menu-title">
 		<ul>
 			<li class="menu-title-return"><i class="iconfont icon-wenjian-copy1"></i></li>
-			<li class="menu-title-fileName"><span>便签夹</span></li>
+			<li class="menu-title-fileName clEE"><span>便签夹</span></li>
 			<li class="menu-title-settings" id="notepad-add-btn">
 				<i class="iconfont icon-xinjian5"></i>
 			</li>
