@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">  
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"  
+    debug="false">  
+      
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">  
+    	<param name="Encoding" value="utf-8"/> 
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%t] %l %p %m%n" />  
+        </layout>  
+    </appender>   
+    
+     <appender name="LogFile" class="org.apache.log4j.RollingFileAppender">    
+        <param name="File" value="../logs/mo.log" /><!-- 设置日志输出文件名 -->  
+        <!-- 最大文件的size,单位:Kb,Mb... -->  
+        <param name="MaxFileSize" value="10MB" />  
+        <!-- 重启了服务器之后，是否在原有文件的后面追加？true(默认):追加;false:不追加 -->  
+        <param name="Append" value="true"/>  
+        <!-- 默认 MaxBackupIndex 为 1 -->  
+        <param name="MaxBackupIndex" value="10" />  
+        <param name="Encoding" value="utf-8"/>   
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%t] %l %p %m%n" />  
+        </layout>  
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">  
+            <param name="LevelMin" value="DEBUG" />
+            <param name="LevelMax" value="ERROR" />  
+        </filter>  
+    </appender>
+     
+    <!-- 下面是打印 mybatis语句的配置 -->  
+    <logger name="org.mybatis" additivity="true">  
+        <level value="DEBUG" />
+    </logger>  
+  
+    <logger name="java.sql.Connection" additivity="true">  
+        <level value="DEBUG" />  
+    </logger>  
+  
+    <logger name="java.sql.Statement" additivity="true">  
+        <level value="DEBUG" />  
+    </logger>  
+  
+    <logger name="java.sql.PreparedStatement" additivity="true">  
+        <level value="DEBUG" />  
+    </logger>  
+  
+    <logger name="java.sql.ResultSet" additivity="true">  
+        <level value="DEBUG" />  
+    </logger>  
+  
+    <root>  
+        <level value="DEBUG" />
+        <appender-ref ref="CONSOLE" />  
+        <appender-ref ref="LogFile" />  
+    </root>  
+</log4j:configuration>

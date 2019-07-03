@@ -16,7 +16,7 @@ public class PropertiesFactory {
     }  
       
     private static SystemProperties createSystemProperties() {  
-        return new SystemProperties("systemFiles/system.properties");  
+        return new SystemProperties("dev/system.properties");
     } 
     private static QQMailProperties createQQMailProperties() {  
     	return new QQMailProperties("systemFiles/qqmail.properties");  
