@@ -61,7 +61,7 @@ $(function() {
 				shadeClose : true
 			})
 		}
-	})
+	});
 
     $(".aside-bar").on("mouseover mouseout",".aside-bar-item",function(event){
         if(event.type == "mouseover"){
@@ -122,6 +122,7 @@ function openCollectForm(){
 // oldID 是修改URL的之前所在导航夹的ID，用于刷新之前的导航夹
 // flag 是新增或者修改的标识
 function submitNavigationForm(formID, urlID, oldID, flag){
+	var $navigation_add_btn = $("#navigation_add_btn");
 	layui.use('form', function() {
 		var form = layui.form;
 		form.on('submit(navigation_add_form)', function(data) {
@@ -139,6 +140,9 @@ function submitNavigationForm(formID, urlID, oldID, flag){
 			    data:data.field,
 			    timeout:5000,
 			    dataType:'json',
+				beforeSend:function () {
+                    $navigation_add_btn.attr("disabled", "disabled");
+                },
 			    success:function(data){
 			        if (data.flag == 'yes'){
 			        	layer.close(formID);
@@ -148,7 +152,10 @@ function submitNavigationForm(formID, urlID, oldID, flag){
 			        }else{
 			        	layer.msg(data.errorMsg);
 			        }
-			    }
+			    },
+				complete:function () {
+                    $navigation_add_btn.removeAttr("disabled");
+                }
 			});
 			// 如果是更新URL的所在位置，需要刷新一下该url之前所在的导航夹
 			if (flag == 'update' && oldID != null && oldID != targent_Folder_id){

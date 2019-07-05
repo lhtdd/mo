@@ -30,7 +30,7 @@
 			</div>
 			<div class="layui-form-item">
 				<div class="layui-input-block navigation_add_btn">
-					<button class="layui-btn bgEE" lay-submit lay-filter="navigation_add_form">添加</button>
+					<button id="navigation_add_btn" class="layui-btn bgEE" lay-submit lay-filter="navigation_add_form">添加</button>
 					<button class="layui-btn bgEE" type="reset">重置</button>
 				</div>
 			</div>
