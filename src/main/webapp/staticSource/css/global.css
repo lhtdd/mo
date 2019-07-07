@@ -25,7 +25,7 @@ body,button, input, select, textarea {
 /* 标题字体大小适应网站基础设置即 12px */
 h1, h2, h3, h4, h5, h6 { font-size: 100%; }
 /* 将斜体扶正 */
-address, cite, dfn, em, var { font-style: normal; } 
+address, cite, dfn, em, var, i{ font-style: normal; }
 /* 统一等宽字体 */
 code, kbd, pre, samp { font-family: courier new, courier, monospace; } 
 small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */

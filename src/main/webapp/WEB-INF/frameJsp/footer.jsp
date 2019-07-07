@@ -20,8 +20,8 @@
 	<div class="about-mo ht">
 		<ul>
 			<li><a href="#">使用说明</a></li>
-			<li><a href="#">联系我们</a></li>
-			<li><i class="iconfont icon-copyright"></i>2017 默</li>
+			<li><a href="${ctx}/home/about">关于</a></li>
+			<li><i class="iconfont icon-copyright"></i>2019 默</li>
 		</ul>
 	</div>
 </div>
