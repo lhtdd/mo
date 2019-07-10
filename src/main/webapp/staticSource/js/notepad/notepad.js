@@ -105,8 +105,6 @@ $(function() {
     }
     // 选中相邻便签
     function selectedNotepad(obj) {
-        removeCurrentSelectedNotepadBack();
-        obj.addClass("notepad-selected");
         var $notepadId = obj.find("input[name=notepad-id]").val();
         if ($notepadId != ''){
             $.ajax({
@@ -117,6 +115,8 @@ $(function() {
                 dataType:'json',
                 success:function(data){
                     if (data.flag == 'yes'){
+                        removeCurrentSelectedNotepadBack();
+                        obj.addClass("notepad-selected");
                         setTitle(data.notepad.notepadName);
                         setContent(data.notepad.content);
                     }else{

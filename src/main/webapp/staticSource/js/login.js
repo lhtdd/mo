@@ -23,8 +23,8 @@ $(function() {
 			        		window.location.href = data.go_url;
 						}else {
                             $this.find("input[name=event_object]").val("");
-			        		$("#"+eventObject).click();
                             layer.close(layer.index);
+			        		$("#"+eventObject).click();
 						}
 			        }else{
 			        	layer.msg(data.errorMsg);

@@ -97,7 +97,6 @@ $(function() {
                 }else{
                     // 要求登录先
                     var $loginPop = $('#login-pop');
-                    $loginPop.find("input[name=event_object]").val("notepad-save-btn");
                     layer.open({
                         type : 1,
                         content : $loginPop,

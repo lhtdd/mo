@@ -26,9 +26,6 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 		log.warn("拦截"+requestMethod+"请求:" + go_url + " 进行登录校验");
 		if (!CommonUtils.isOnline(request)){
 			log.warn("访问被拒绝,登录失效或未登录");
-			if (requestMethod.equalsIgnoreCase("GET")){
-				request.getSession().setAttribute(Constant.GO_URL, go_url);
-			}
 			//判断是否是AJAX请求
 			String requestType = request.getHeader("X-Requested-With");
 			if("XMLHttpRequest".equals(requestType)){
@@ -38,6 +35,9 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 			    response.getWriter().flush();
 			}else{
 				log.warn("非AJAX请求..");
+				if (requestMethod.equalsIgnoreCase("GET")){
+					request.getSession().setAttribute(Constant.GO_URL, go_url);
+				}
 				//非ajax请求，例如从浏览器直接输入则跳转至整个登录页面
 				request.getRequestDispatcher("/member/login").forward(request, response);
 			}
