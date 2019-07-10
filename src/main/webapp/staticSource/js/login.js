@@ -144,7 +144,10 @@ $(function() {
             idx_validCode = layer.open({
                 type: 1,
 				title: false,
-                content: $('#validCode-pop-form')
+                content: $('#validCode-pop-form'),
+                success:function(){
+                    $(".verifyImg").click();
+                }
             });
 		}
     });

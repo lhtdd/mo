@@ -8,7 +8,7 @@
 					   placeholder="请输入右侧验证码" autocomplete="off" class="layui-input"
 					   type="text">
 			</div>
-			<img src="kaptcha.jpg" class="verifyImg" title="点击换一张" />
+			<img src="" class="verifyImg" title="点击换一张" />
 		</div>
 		<div class="layui-form-item">
 			<div class="layui-input-inline">

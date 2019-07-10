@@ -202,7 +202,11 @@ $(function() {
                         content : $loginPop,
                         title:false,
                         area: ['500px', '340px'],
-                        shadeClose : true
+                        shadeClose : true,
+                        success: function () {
+                            $(".verifyImg").click();
+                        }
+
                     })
                 }
             }

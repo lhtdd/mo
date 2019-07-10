@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class CaptchaUtils {
 
-    private final Logger log = Logger.getLogger(CaptchaUtils.class);
+    private static final Logger log = Logger.getLogger(CaptchaUtils.class);
 
     /**
      * 校验图形验证码是否相等
@@ -22,6 +22,7 @@ public class CaptchaUtils {
     public static boolean isLegalCaptcha(HttpServletRequest request, String captcha){
         String kaptchaExpected = (String) request.getSession().getAttribute(
                 com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
+                log.info("系统captch:" + kaptchaExpected);
         if (captcha.equals(kaptchaExpected)){
             return true;
         }
