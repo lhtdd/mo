@@ -28,8 +28,9 @@ $(function() {
     layui.use('flow', function(){
         var flow = layui.flow;
         flow.load({
-            elem: '.happy-list'
-            ,done: function(page, next){
+            elem: '.happy-list',
+            isAuto: false,
+            done: function(page, next){
                 var lis = [];
                 var lastHappyId = 0;
                 var itemCount = $(".happy-list").children(".happy-item").length;

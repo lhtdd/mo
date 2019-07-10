@@ -11,32 +11,29 @@
 <script type="text/javascript" src="${ctxStatic }/js/login.js?r=<%=Math.random() %>"></script>
 </head>
 <body>
-	<!-- 调整整个页面的宽高 -->
-	<div class="wrapper">
-		<!-- 网页中部 -->
-		<div class="container">
-			<div class="login-header">
-				<a href="."><img
-					src="${ctxStatic }/image/logo.png" alt="LOGO 默" title="LOGO MO" /></a>
-				<div class="mo-explain">
-					<span class="fs14 cl99">一种态度，一种沉淀...</span> <span class="fs18 cl99">恭默思道。——《书·说命》</span>
-				</div>
-			</div>
-			<!--  -->
-			<div class="submit-wrapper">
-			<c:if test="${type == 'register' }">
-		    	<!--  注册   --> 
-		    	<%@ include file="../innerJsp/login/register_info.jsp" %> 
-			</c:if>
-			<c:if test="${type != 'register' }">
-				<!-- 登录 -->
-		    	<%@ include file="../innerJsp/login/login_info.jsp" %> 
-			</c:if>
+	<!-- 网页中部 -->
+	<div class="container">
+		<div class="login-header">
+			<a href="."><img
+				src="${ctxStatic }/image/logo.png" alt="LOGO 默" title="LOGO MO" /></a>
+			<div class="mo-explain">
+				<span class="fs14 cl99">一种态度，一种沉淀...</span> <span class="fs18 cl99">恭默思道。——《书·说命》</span>
 			</div>
 		</div>
-		<div class="clear"></div>
-		<%-- 弹出层部分 --%>
-		<%@ include file="../frameJsp/pop/validCode_pop.jsp" %>
+		<!--  -->
+		<div class="submit-wrapper">
+		<c:if test="${type == 'register' }">
+			<!--  注册   -->
+			<%@ include file="../innerJsp/login/register_info.jsp" %>
+		</c:if>
+		<c:if test="${type != 'register' }">
+			<!-- 登录 -->
+			<%@ include file="../innerJsp/login/login_info.jsp" %>
+		</c:if>
+		</div>
 	</div>
+	<div class="clear"></div>
+	<%-- 弹出层部分 --%>
+	<%@ include file="../frameJsp/pop/validCode_pop.jsp" %>
 </body>
 </html>

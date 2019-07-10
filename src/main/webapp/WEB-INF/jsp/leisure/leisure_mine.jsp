@@ -11,21 +11,18 @@
 	<script type="text/javascript" src="${ctxStatic }/js/leisure/leisure_mine.js?r=<%=Math.random() %>"></script>
 </head>
 <body>
-	<!-- 调整整个页面的宽高 -->
-	<div class="wrapper">
-		<!-- 网页头部 -->
-		<%@ include file="../../frameJsp/header.jsp" %> 
-		<!-- 左侧导航栏 -->
-		<%@ include file="../../frameJsp/aside.jsp" %> 
-		<!-- 网页中部 -->
-		<div class="container">
-	    	<!-- 左侧开心果内容-->
-	    	<%@ include file="../../innerJsp/leisure/happy.jsp" %>
-		</div>
-    	<div class="clear"></div>
-		<!-- 网页底部 -->
-		<%@ include file="../../frameJsp/footer.jsp" %> 
+	<!-- 网页头部 -->
+	<%@ include file="../../frameJsp/header.jsp" %>
+	<!-- 左侧导航栏 -->
+	<%@ include file="../../frameJsp/aside.jsp" %>
+	<!-- 网页中部 -->
+	<div class="container">
+		<!-- 左侧开心果内容-->
+		<%@ include file="../../innerJsp/leisure/happy.jsp" %>
 	</div>
+	<div class="clear"></div>
+	<!-- 网页底部 -->
+	<%@ include file="../../frameJsp/footer.jsp" %>
 	<!-- 弹出层部分  返回顶部等-->
 	<%@ include file="../../frameJsp/pop/fix_top.jsp" %> 
 	<%@ include file="../../frameJsp/pop/login_pop.jsp" %>

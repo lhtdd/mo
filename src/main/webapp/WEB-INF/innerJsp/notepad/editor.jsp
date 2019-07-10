@@ -13,7 +13,7 @@
 		<script type="text/javascript">
 			var notepadEditor = CKEDITOR.replace('editor1',{
                 customConfig : '${ctxStatic }/js/notepad/ck_config.js',
-                height: 'auto'
+                height: '720px'
 			});
 		</script>
 	</div>

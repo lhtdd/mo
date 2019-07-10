@@ -1,13 +1,8 @@
-/*记事本主页比较特殊，他需要适应整个页面的高度。*/
-/*padding-bottom 本身设置60px,但是在IE8及以下版本不兼容box-sizing: border-box;导致出现滚动条。*/
-.wrapper {
-	padding-bottom: 0px;
-	background-color: #FFFFFF;
-}
 /*这里设置固定高度，防止出现滚动条*/
 .container {
 	margin: 0 auto;
 	padding: 80px 50px;
+	background-color: #FFFFFF;
 }
 /* 头部 */
 .login-header{
