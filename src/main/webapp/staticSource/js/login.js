@@ -58,11 +58,6 @@ $(function() {
 		});
 	});
 	
-	// 点击切换验证码
-	$(".verifyImg").click(function(){
-		$(this).attr("src", "kaptcha.jpg?" + Math.floor(Math.random() * 100));
-	});
-
     function isPoneAvailable(mobile) {
         var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
         if (!myreg.test(mobile)) {

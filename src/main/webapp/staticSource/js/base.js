@@ -5,4 +5,8 @@ $(function() {
 	});
 	// 返回顶部
 	rollingTop("rolling-top");
+    // 点击切换验证码
+    $(".verifyImg").click(function(){
+        $(this).attr("src", "kaptcha.jpg?" + Math.floor(Math.random() * 100));
+    });
 });

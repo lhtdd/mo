@@ -201,6 +201,7 @@ $(function() {
                         type : 1,
                         content : $loginPop,
                         title:false,
+                        offset: '200px',
                         area: ['500px', '340px'],
                         shadeClose : true,
                         success: function () {
