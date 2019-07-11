@@ -1,8 +1,5 @@
 /*** happy.jsp ***/
 /* ×ó²àÄÚÈİ */
-.happy-wrapper{
-	width: 680px;
-}
 .happy-item{
 	margin: 0 0 10px 0;
 	background-color: #FFFFFF;
@@ -49,12 +46,7 @@
 }
 /*** happyMine.jsp ***/
 /* ÓÒ²àÄÚÈİ */
-.happy-right-wrapper{
-	width: 300px;
-}
-#happy-mine-operation{
-	width: inherit;
-}
+
 /* Í¶¸å */
 .happy-collection{
 	height: 50px;

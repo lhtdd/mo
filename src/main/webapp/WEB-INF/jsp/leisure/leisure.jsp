@@ -16,12 +16,19 @@
 	<!-- 左侧导航栏 -->
 	<%@ include file="../../frameJsp/aside.jsp" %>
 	<!-- 网页中部 -->
-	<div class="container">
-		<!-- 左侧开心果内容-->
-		<%@ include file="../../innerJsp/leisure/happy.jsp" %>
-		<!-- 右侧收藏提示-->
-		<%@ include file="../../innerJsp/leisure/happy_mine.jsp" %>
-		<div class="clear"></div>
+	<div class="layui-container">
+		<div class="layui-row layui-col-space10">
+			<!-- 左侧开心果内容-->
+			<div class="layui-col-md8">
+				<ul class="happy-list">
+					<%-- 流式加载 happy-item --%>
+				</ul>
+			</div>
+			<!-- 右侧收藏提示-->
+			<div class="layui-col-md4">
+				<%@ include file="../../innerJsp/leisure/happy_mine.jsp" %>
+			</div>
+		</div>
 	</div>
 	<!-- 网页底部 -->
 	<%@ include file="../../frameJsp/footer.jsp" %>

@@ -1,3 +1,9 @@
+.notepad-container {
+	width: 1000px;
+	margin: 0px auto;
+	position: relative;
+}
+
 .menu-fileList{
 	background-color: #ffffff;
 	height: 533px;

@@ -17,18 +17,17 @@
 	<!-- 左侧导航栏 -->
 	<%@ include file="../../frameJsp/aside.jsp" %>
 	<!-- 网页中部 -->
-	 <div class="container">
-		<!-- 左侧菜单栏 -->
-		<%@ include file="../../innerJsp/notepad/left_menu.jsp" %>
-		<!-- 右侧主页面 -->
-		<%@ include file="../../innerJsp/notepad/editor.jsp" %>
-		<div class="clear"></div>
+	 <div class="notepad-container">
+         <!-- 左侧菜单栏 -->
+        <%@ include file="../../innerJsp/notepad/left_menu.jsp" %>
+         <!-- 右侧主页面 -->
+        <%@ include file="../../innerJsp/notepad/editor.jsp" %>
+        <div class="clear"></div>
 	</div>
 	<!-- 网页底部 -->
 	<%@ include file="../../frameJsp/footer.jsp" %>
 	<!-- 弹出层部分 -->
 	<%@ include file="../../frameJsp/hidden_info.jsp" %> 
 	<%@ include file="../../frameJsp/pop/login_pop.jsp" %> 
-	<%@ include file="../../frameJsp/pop/navigation_add.jsp" %> 
 </body>
 </html>

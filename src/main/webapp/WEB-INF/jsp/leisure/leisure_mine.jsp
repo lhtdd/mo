@@ -16,11 +16,12 @@
 	<!-- 左侧导航栏 -->
 	<%@ include file="../../frameJsp/aside.jsp" %>
 	<!-- 网页中部 -->
-	<div class="container">
+	<div class="layui-container">
 		<!-- 左侧开心果内容-->
-		<%@ include file="../../innerJsp/leisure/happy.jsp" %>
+		<ul class="happy-list">
+			<%-- 流式加载 happy-item --%>
+		</ul>
 	</div>
-	<div class="clear"></div>
 	<!-- 网页底部 -->
 	<%@ include file="../../frameJsp/footer.jsp" %>
 	<!-- 弹出层部分  返回顶部等-->

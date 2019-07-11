@@ -12,7 +12,7 @@
 	});
 </script>
 <div id="header" class="header header-note">
-	<div class="header-wrapper ht">
+	<div class="layui-container">
 		<div class="logo">
 			<a href="."><img src="${ctxStatic }/image/logo.png" alt="LOGO 默"
 				title="LOGO MO" /></a>

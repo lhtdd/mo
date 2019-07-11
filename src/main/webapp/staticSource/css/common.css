@@ -1,14 +1,15 @@
 html, body {
 	background-color: #f7f7f7;
 	width: 100%;
-
 }
 
-.container {
-	width: 1000px;
-	margin: 10px auto 0px;
-	position: relative;
+@media screen and (min-width: 1200px){
+	.layui-container{
+		width: 1000px;
+	}
 }
+
+
 /* вўВи */
 .hdn{
 	display: none;

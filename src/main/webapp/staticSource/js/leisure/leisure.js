@@ -1,6 +1,7 @@
 $(function() {
 	//fixDiv("header");
-	fixDiv("happy-mine-operation","10");
+    var len = $("#happy-mine-operation").outerWidth();
+	fixDiv("happy-mine-operation", "10", len);
 
 	function jointHappyItem(item) {
 		var happyItem = "";
@@ -94,7 +95,9 @@ $(function() {
             success:function(data){
                 if (data.flag == 'yes'){
                     subFlag = true;
-                    layer.msg(data.errorMsg);
+                    layer.msg(data.errorMsg,{
+                        offset: 'auto'
+                    });
                 }else{
                     // 要求登录先
                     var $loginPop = $('#login-pop');

@@ -16,13 +16,13 @@
 	<!-- 左侧导航栏 -->
 	<%@ include file="../../frameJsp/aside.jsp" %>
 	<!-- 网页中部 -->
-	<div class="container">
+	<div class="layui-container">
 		<!-- 左侧开心果内容-->
 		<%@ include file="../../innerJsp/leisure/happy_detail.jsp" %>
 		<!-- 右侧收藏提示-->
 		<%@ include file="../../innerJsp/leisure/happy_mine.jsp" %>
+		<div class="clear"></div>
 	</div>
-	<div class="clear"></div>
 	<!-- 网页底部 -->
 	<%@ include file="../../frameJsp/footer.jsp" %>
 	<!-- 弹出层部分  返回顶部等-->

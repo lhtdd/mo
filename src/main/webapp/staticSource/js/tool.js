@@ -36,12 +36,13 @@ function getInfo() {
 /*
  * 滚动条滑动，位置不变的DIV层 div_id：DIV的ID属性值，必填参数 offsetTop：滚动条滑动时DIV层距顶部的高度，可选参数
  */
-function fixDiv(div_id, offsetTop) {
+function fixDiv(div_id, offsetTop, len) {
 	var Obj = $('#' + div_id);
 	if (Obj.length != 1) {
 		return false;
 	}
 	var offsetTop = arguments[1] ? arguments[1] : 0;
+    var len = arguments[2] ? arguments[2] : 0;
 	var ObjTop = Obj.offset().top;
 	$(window).scroll(function() {
 		if ($(window).scrollTop() <= ObjTop) {
@@ -50,11 +51,20 @@ function fixDiv(div_id, offsetTop) {
 				'top' : 0
 			});
 		} else {
-			Obj.css({
-				'position' : 'fixed',
-				'top' : 0 + offsetTop + 'px',
-				'z-index' : 1
-			});
+			if (len == 0){
+				Obj.css({
+					'position' : 'fixed',
+					'top' : 0 + offsetTop + 'px',
+					'z-index' : 1
+				});
+			}else {
+                Obj.css({
+                    'position' : 'fixed',
+                    'top' : 0 + offsetTop + 'px',
+                    'z-index' : 1,
+					'width' : len + 'px'
+                });
+			}
 		}
 	});
 }

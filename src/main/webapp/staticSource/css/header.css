@@ -3,15 +3,16 @@
 	height: 50px;
 	width: 100%;
 	box-shadow: 0px 1px 5px #cccccc;
+	margin-bottom: 10px;
 }
 .header-note{
 	background-color: #FFFFFF;
 	font-size: 16px;
 }
-.header-wrapper{
+/*.header-wrapper{
 	width: 1000px;
 	position: relative;
-}
+}*/
 .current-module{
 	border-bottom: 3px solid #99CC33;
 }

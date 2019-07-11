@@ -12,7 +12,7 @@
 </head>
 <body>
     <%@ include file="../../frameJsp/header.jsp" %>
-    <div class="container">
+    <div class="layui-container">
         <div class="layui-row layui-col-space15">
             <div class="layui-col-md3">
                 <div class="layui-collapse bgFF">

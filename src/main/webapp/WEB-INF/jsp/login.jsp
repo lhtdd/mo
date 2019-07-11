@@ -12,7 +12,7 @@
 </head>
 <body>
 	<!-- 网页中部 -->
-	<div class="container">
+	<div class="layui-container">
 		<div class="login-header">
 			<a href="."><img
 				src="${ctxStatic }/image/logo.png" alt="LOGO 默" title="LOGO MO" /></a>
