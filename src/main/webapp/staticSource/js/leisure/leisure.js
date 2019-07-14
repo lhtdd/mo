@@ -30,7 +30,7 @@ $(function() {
         var flow = layui.flow;
         flow.load({
             elem: '.happy-list',
-            isAuto: false,
+
             done: function(page, next){
                 var lis = [];
                 var lastHappyId = 0;
@@ -95,9 +95,7 @@ $(function() {
             success:function(data){
                 if (data.flag == 'yes'){
                     subFlag = true;
-                    layer.msg(data.errorMsg,{
-                        offset: 'auto'
-                    });
+                    layer.msg(data.errorMsg);
                 }else{
                     // 要求登录先
                     var $loginPop = $('#login-pop');
@@ -105,7 +103,6 @@ $(function() {
                         type : 1,
                         content : $loginPop,
                         title:false,
-                        offset: '200px',
                         area: ['500px', '340px'],
                         shadeClose : true,
                         success: function () {

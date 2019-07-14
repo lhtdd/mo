@@ -57,7 +57,6 @@ $(function() {
 				type : 1,
 				content : $('#login-pop'),
 				title:false,
-				offset: '200px',
 				area: ['500px', '340px'],
 				shadeClose : true,
                 success: function () {
