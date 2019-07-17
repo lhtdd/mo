@@ -44,7 +44,6 @@
 						</div>
 					</li>
 				</ul>
-				<span></span>
 			</c:if>
 			<c:if test="${user == null}">
 				<a class="cl99" href="member/login">登录</a>&nbsp;|&nbsp;<a class="cl99" href="member/register">注册</a>
