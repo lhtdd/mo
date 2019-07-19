@@ -1,8 +1,10 @@
 $(function() {
+    var oldLen;
     initNotepadIndex();
     scrollbarLeftMenuShow();
 	// 默认选中第一个便签并展示
     function initNotepadIndex() {
+        oldLen = getContent().length;
         removeCurrentSelectedNotepadBack();
         $(".menu-content ul li:first").addClass("notepad-selected");
         var curNotepadName = $(".menu-content ul li:first").find(".notepad-name em").html();
@@ -81,7 +83,7 @@ $(function() {
     }
     // 获取编辑器内容
     function getContent() {
-        return notepadEditor.getData();
+        return notepadEditor.getData().trim();
     }
     // 新增一个标签
     function addNotepad(notepad) {
@@ -119,6 +121,7 @@ $(function() {
                         obj.addClass("notepad-selected");
                         setTitle(data.notepad.notepadName);
                         setContent(data.notepad.content);
+                        oldLen = getContent().length;
                     }else{
                         // 要求登录先
                         layer.msg(data.errorMsg);
@@ -240,6 +243,14 @@ $(function() {
             updateNotepadName();
         }
     });
+    // 编辑器失去焦点
+    /*notepadEditor.on('blur', function () {
+        var currentLen = getContent().length;
+        if (oldLen != currentLen){
+            dealNotepad();
+            oldLen = currentLen;
+        }
+    });*/
     /* 删除操作 */
     $("#notepad-menu").on("click",'.notepad-delete-btn',function (event) {
         event.stopPropagation();
