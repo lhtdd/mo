@@ -33,6 +33,8 @@
 		</div>
 	</div>
 	<div class="clear"></div>
+	<!-- 网页底部 -->
+	<%@ include file="../frameJsp/footer.jsp" %>
 	<%-- 弹出层部分 --%>
 	<%@ include file="../frameJsp/pop/validCode_pop.jsp" %>
 </body>

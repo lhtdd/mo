@@ -5,9 +5,11 @@
 <%@ include file="/common/common.jsp" %>
 <head>
 	<base href="<%=basePath %>">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>默--闲暇小憩</title>
-	<link rel="stylesheet" href="${ctxStatic }/css/leisure/leisure.css">	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="Keywords" content="默,mo,笑话,段子,糗事,开心一笑,休闲一刻,闲暇小憩">
+	<meta name="Description" content="一些段子,笑话,开心果。在忙碌的工作,学习,生活中可以有一点可以轻松一笑的乐园。">
+	<link rel="stylesheet" href="${ctxStatic }/css/leisure/leisure.css">
 	<script type="text/javascript" src="${ctxStatic }/js/leisure/leisure.js?r=<%=Math.random() %>"></script>
 </head>
 <body>

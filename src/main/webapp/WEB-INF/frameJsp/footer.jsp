@@ -20,9 +20,9 @@
 		<div class="clear"></div>
 		<div class="about-mo ht">
 			<ul>
-				<li><a href="#">使用说明</a></li>
-				<li><a href="${ctx}/home/about">关于</a></li>
-				<li><i class="iconfont icon-copyright"></i>2019 默</li>
+				<li><a href="${ctx}/home/about">关于默</a></li>
+				<li><i class="iconfont icon-copyright"></i>2019 万里无云的天空</li>
+				<li><a href="http://www.beian.miit.gov.cn" target="_blank">鲁ICP备19034735号-1</a></li>
 			</ul>
 		</div>
 	</div>
