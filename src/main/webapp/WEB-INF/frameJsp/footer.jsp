@@ -23,6 +23,7 @@
 				<li><a href="${ctx}/home/about">关于默</a></li>
 				<li><i class="iconfont icon-copyright"></i>2019 万里无云的天空</li>
 				<li><a href="http://www.beian.miit.gov.cn" target="_blank">鲁ICP备19034735号-1</a></li>
+				<li><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37018102000569" style="display:inline-block;text-decoration:none;"><img src="${ctxStatic }/image/beian.png" alt="网警备案" style="float:left;height:20px;line-height:20px;"/><p style="float:left;margin: 0px 0px 0px 5px; ">鲁公网安备 37018102000569号</p></a></li>
 			</ul>
 		</div>
 	</div>
