@@ -90,7 +90,7 @@ public class SysController {
 					// 记录密码等
 					if (StringUtils.isNotBlank(rememberMe) && "1".equals(rememberMe)) {
 						CookiesUtils.setCookie(response,
-								Constant.COOKIE_USERNAME, username, 60*60*12);
+								Constant.COOKIE_USERNAME, username, 60*60*18);
 					}
 					// 保存登录信息
 					CommonUtils.addLoginUserToSession(request, (CurrentUser) MapUtils.getObject(resultMap, "seluser"));
