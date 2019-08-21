@@ -243,14 +243,6 @@ $(function() {
             updateNotepadName();
         }
     });
-    // 编辑器失去焦点
-    /*notepadEditor.on('blur', function () {
-        var currentLen = getContent().length;
-        if (oldLen != currentLen){
-            dealNotepad();
-            oldLen = currentLen;
-        }
-    });*/
     /* 删除操作 */
     $("#notepad-menu").on("click",'.notepad-delete-btn',function (event) {
         event.stopPropagation();
@@ -328,5 +320,52 @@ $(function() {
             });
         }
     });
-
+    //编辑器失去焦点保存
+    /*notepadEditor.on('blur', function () {
+        var currentLen = getContent().length;
+        layer.msg('oldLen:'+oldLen+' currentLenth:' + currentLen, {
+            offset: 'b'
+        });
+        if (oldLen != currentLen){
+            //dealNotepad();
+            oldLen = currentLen;
+        }
+    });*/
+    //定时保存
+    var autoSave = setInterval(dealSave, 100000);
+    function dealSave() {
+        var notepadId = getNotepadId();
+        //当前记录ID为空则不自动保存
+        if (notepadId != ''){
+            var currentLen = getContent().length;
+            if (oldLen != currentLen){
+                increamentalSave();
+                oldLen = currentLen;
+            }
+        }
+    }
+    function increamentalSave() {
+        var notepad = {};
+        notepad.id = getNotepadId();
+        notepad.notepadName = getTitle();
+        notepad.content = getContent();
+        $.ajax({
+            url:'notepad/content/authc',
+            type:'POST',
+            async:true,
+            data:notepad,
+            timeout:5000,
+            dataType:'json',
+            success:function(data){
+                if (data.flag == 'yes'){
+                    setSelectedNotepadName(data.notepad.notepadName, data.notepad.updateTime);
+                    layer.msg('当前资料已保存', {
+                        offset: 'b'
+                    });
+                }else {
+                    clearInterval(autoSave);
+                }
+            }
+        });
+    }
 });
