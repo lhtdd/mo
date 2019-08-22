@@ -7,7 +7,7 @@
 	<base href="<%=basePath %>">
 	<title>默--随笔记事</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="Keywords" content="默,mo,便签,记事本,备忘录">
+	<meta name="Keywords" content="默,mo,随笔记事,便签,记事本,备忘录">
 	<meta name="Description" content="简单的对日常工作,学习,生活中的一些小事进行记录。以便能够方便的找到并完成,随建随删。">
 	<link rel="stylesheet" href="${ctxStatic }/css/notepad/notepad.css">
 	<script type="text/javascript" src="${ctxStatic }/js/notepad/notepad.js?r=<%=Math.random() %>"></script>

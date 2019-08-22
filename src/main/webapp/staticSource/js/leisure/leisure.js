@@ -1,5 +1,5 @@
 $(function() {
-	//fixDiv("header");
+	// fixDiv("header");
     var len = $("#happy-mine-operation").outerWidth();
 	fixDiv("happy-mine-operation", "10", len);
 
