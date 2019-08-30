@@ -58,6 +58,7 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/favicon.ico"/>
+			<mvc:exclude-mapping path="/robots.txt"/>
 			<mvc:exclude-mapping path="/staticSource/**"/>
 			<mvc:exclude-mapping path="/publicPages/**"/>
 			<bean class="com.lyao.mo.container.interceptor.AutoLoginInterceptor"></bean>
