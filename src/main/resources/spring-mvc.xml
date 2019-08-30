@@ -39,6 +39,7 @@
 	<!-- 对静态资源文件的访问 ,被注释掉的这种方式依赖与WEB容器的的静态资源处理类，例如tomcat默认的是default -->
 	<!-- <mvc:default-servlet-handler /> -->
 	<mvc:resources location="/favicon.ico" mapping="/favicon.ico" />
+	<mvc:resources location="/robots.txt" mapping="/robots.txt" />
 	<mvc:resources location="/staticSource/" mapping="/staticSource/**" />
 	<mvc:resources location="/publicPages/" mapping="/publicPages/**" />
 	<!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
