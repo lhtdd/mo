@@ -8,7 +8,8 @@ import java.util.logging.Logger;
 
 public class HttpConUtils {
 	private final static Logger log = Logger.getLogger(HttpConUtils.class.getName());
-	private final static String FAVICON_API = "http://api.byi.pw/favicon/?url=";
+	//private final static String FAVICON_API = "http://api.byi.pw/favicon/?url=";
+	private final static String FAVICON_API = "http://statics.dnspod.cn/proxy_favicon/_/favicon?domain=";
 	/**
 	 * 根据地址获得数据的字节流
 	 * 
@@ -20,13 +21,14 @@ public class HttpConUtils {
 		byte[] btImg = null;
 		try {
 			URL targetUrl = new URL(strUrl);
-			String a = targetUrl.getProtocol()+"://"+targetUrl.getHost();
+			//String a = targetUrl.getProtocol()+"://"+targetUrl.getHost();
+			String a = targetUrl.getHost();
 			URL url = new URL(FAVICON_API + a);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setConnectTimeout(5 * 1000);
-			InputStream inStream = conn.getInputStream();// 通过输入流获取图片数据
-			btImg = readInputStream(inStream);// 得到图片的二进制数据
+			InputStream inStream = conn.getInputStream();
+			btImg = readInputStream(inStream);
 		} catch (Exception e) {
 			log.info("获取URL失败");
 			e.printStackTrace();
