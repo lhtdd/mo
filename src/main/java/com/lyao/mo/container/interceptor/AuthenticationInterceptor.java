@@ -30,9 +30,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 			String requestType = request.getHeader("X-Requested-With");
 			if("XMLHttpRequest".equals(requestType)){
 				log.warn("AJAX请求..");
-				String returnMsg = "{\"flag\":\"no\",\"errorMsg\":\"请登录后操作\"}";
-			    response.getWriter().write(returnMsg);
-			    response.getWriter().flush();
+				response.setHeader("Session-Expire", "yes");
 			}else{
 				log.warn("非AJAX请求..");
 				if (requestMethod.equalsIgnoreCase("GET")){

@@ -36,7 +36,6 @@
 			<div class="layui-form-item login-btn-div" style="height: 30px">
 				<input type="checkbox" lay-skin="primary" name="rememberMe" title="自动登录" value="1">
 				<input type="hidden"  name="from_url" value="${currentURL }">
-				<input type="hidden"  name="event_object" value="">
 				<button class="layui-btn login-btn" lay-submit lay-filter="login_form">登录</button>
 			</div>
 		</form>

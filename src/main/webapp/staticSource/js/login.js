@@ -8,7 +8,6 @@ $(function() {
 
 		// 监听登录提交
 		form.on('submit(login_form)', function(formData) {
-			var $this = $(this);
 			$.ajax({
 			    url:'member/login',
 			    type:'POST',
@@ -18,14 +17,17 @@ $(function() {
 			    dataType:'json',
 			    success:function(data){
 			        if (data.flag == 'yes'){
-			        	var eventObject = formData.field.event_object;
-			        	if (eventObject == null || eventObject == ''){
-			        		window.location.href = data.go_url;
-						}else {
-                            $this.find("input[name=event_object]").val("");
+                        if (refreshPage.refreshType == 'page'){
+                            window.location.href = data.go_url;
+                        }
+                        if (refreshPage.refreshType == 'pop'){
                             layer.close(layer.index);
-			        		$("#"+eventObject).click();
-						}
+                            if (refreshPage.refreshMethod == 'click'){
+                                refreshPage.refreshObject.click();
+                            }
+                        }
+                        initRefreshPage();
+                        initLoginPop();
 			        }else{
 			        	layer.msg(data.errorMsg);
 			        }

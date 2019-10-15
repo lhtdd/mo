@@ -177,7 +177,7 @@ $(function() {
         selectedNotepad($(this));
     });
     /* 编辑器提交 */
-    function dealNotepad() {
+    function dealNotepad(obj, method) {
         var notepad = {};
         notepad.id = getNotepadId();
         notepad.notepadName = getTitle();
@@ -189,6 +189,13 @@ $(function() {
             data:notepad,
             timeout:5000,
             dataType:'json',
+            beforeSend:function (xhr) {
+                if ('click' == method){
+                    refreshPage.refreshType = 'pop';
+                    refreshPage.refreshObject = obj;
+                    refreshPage.refreshMethod = 'click';
+                }
+            },
             success:function(data){
                 if (data.flag == 'yes'){
                     if (notepad.id == ''){
@@ -196,28 +203,15 @@ $(function() {
                     }
                     setSelectedNotepadName(data.notepad.notepadName, data.notepad.updateTime);
                     layer.msg("保存成功");
-                }else{
-                    // 要求登录先
-                    var $loginPop = $('#login-pop');
-                    $loginPop.find("input[name=event_object]").val("notepad-save-btn");
-                    layer.open({
-                        type : 1,
-                        content : $loginPop,
-                        title:false,
-                        area: ['500px', '340px'],
-                        shadeClose : true,
-                        success: function () {
-                            $(".verifyImg").click();
-                        }
-
-                    })
+                }else {
+                    layer.msg(data.errorMsg);
                 }
             }
         });
     }
     // 点击保存按钮
     $("#notepad-save-btn").on("click",function () {
-        dealNotepad();
+        dealNotepad($(this), 'click');
     });
     // 修改标题函数
     function updateNotepadName() {

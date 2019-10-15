@@ -92,23 +92,15 @@ $(function() {
             data:happy,
             timeout:5000,
             dataType:'json',
+            beforeSend:function (xhr) {
+                refreshPage.refreshType = 'pop';
+                refreshPage.refreshObject = obj;
+                refreshPage.refreshMethod = 'click';
+            },
             success:function(data){
                 if (data.flag == 'yes'){
                     subFlag = true;
                     layer.msg(data.errorMsg);
-                }else{
-                    // 要求登录先
-                    var $loginPop = $('#login-pop');
-                    layer.open({
-                        type : 1,
-                        content : $loginPop,
-                        title:false,
-                        area: ['500px', '340px'],
-                        shadeClose : true,
-                        success: function () {
-                            $(".verifyImg").click();
-                        }
-                    })
                 }
             }
         });

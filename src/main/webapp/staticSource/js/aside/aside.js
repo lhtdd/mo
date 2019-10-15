@@ -144,7 +144,9 @@ function submitNavigationForm(formID, urlID, oldID, flag){
 			    timeout:5000,
 			    dataType:'json',
 				beforeSend:function () {
-                    $navigation_add_btn.attr("disabled", "disabled");
+                    refreshPage.refreshType = 'pop';
+                    refreshPage.refreshObject = $navigation_add_btn;
+                    refreshPage.refreshMethod = 'click';
                 },
 			    success:function(data){
 			        if (data.flag == 'yes'){
@@ -156,9 +158,9 @@ function submitNavigationForm(formID, urlID, oldID, flag){
 			        	layer.msg(data.errorMsg);
 			        }
 			    },
-				complete:function () {
+				/*complete:function () {
                     $navigation_add_btn.removeAttr("disabled");
-                }
+                }*/
 			});
 			// 如果是更新URL的所在位置，需要刷新一下该url之前所在的导航夹
 			if (flag == 'update' && oldID != null && oldID != targent_Folder_id){
