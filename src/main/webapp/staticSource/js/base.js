@@ -22,10 +22,10 @@ $.ajaxSetup({
         try {
             var sessionIsExpire = request.getResponseHeader('Session-Expire');
             if (sessionIsExpire == 'yes') {
-                if (refreshPage.refreshType != null && refreshPage.refreshType == 'page'){
+                if (refreshPage.refreshType == 'page'){
                     window.location.href = 'member/login';
                 }
-                if (refreshPage.refreshType != null && refreshPage.refreshType == 'pop'){
+                if (refreshPage.refreshType == 'pop'){
                     var $loginPop = $('#login-pop');
                     layer.open({
                         type : 1,

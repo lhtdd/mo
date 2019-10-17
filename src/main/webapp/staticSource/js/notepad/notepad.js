@@ -359,6 +359,16 @@ $(function() {
                 }else {
                     clearInterval(autoSave);
                 }
+            },
+            complete: function (request, status) {
+                try {
+                    var sessionIsExpire = request.getResponseHeader('Session-Expire');
+                    if (sessionIsExpire == 'yes') {
+                        clearInterval(autoSave);
+                    }
+                } catch (e) {
+                    //后台没有设置responseHeader则不做处理
+                }
             }
         });
     }
